@@ -13,3 +13,6 @@ models/
 # Course handouts
 Assignment 1.pdf
 Assignment 2 (1).pdf
+
+# Report sources (Markdown, figure scripts, PDF build tooling) kept locally
+_report_sources/
