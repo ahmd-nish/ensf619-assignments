@@ -1,0 +1,15 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# OS
+.DS_Store
+
+# Large artifacts (trained model weights, raw instance backup)
+vast_backup/
+models/
+
+# Course handouts
+Assignment 1.pdf
+Assignment 2 (1).pdf
