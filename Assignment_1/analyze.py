@@ -1,4 +1,4 @@
-"""Aggregate the experimental matrix into summary tables and figures for the report.
+"""Aggregate the experimental matrix into summary tables (CSV + Excel).
 
 Efficiency ratio (ER) = accuracy rate / average total tokens x 1000, i.e. correct docstrings per
 1,000 tokens processed. Higher is greener: more correct outputs for the same compute.
@@ -6,16 +6,10 @@ Efficiency ratio (ER) = accuracy rate / average total tokens x 1000, i.e. correc
 import os
 import sys
 
-import matplotlib
 import pandas as pd
-
-matplotlib.use("Agg")
-import matplotlib.pyplot as plt  # noqa: E402
 
 SRC = sys.argv[1] if len(sys.argv) > 1 else "results/experimental_matrix.csv"
 OUT = os.path.dirname(SRC.split(",")[0])
-FIG = os.path.join(OUT, "figures")
-os.makedirs(FIG, exist_ok=True)
 
 df = pd.concat([pd.read_csv(f) for f in SRC.split(",")], ignore_index=True)
 df["Env"] = df["Hardware"].map(lambda h: "Cloud A6000" if "A6000" in h else "Local M2 Pro")
@@ -51,41 +45,7 @@ with pd.ExcelWriter(os.path.join(OUT, "experimental_matrix.xlsx")) as xw:
     by_prompt.round(4).to_excel(xw, sheet_name="Summary per prompt", index=False)
 
 pd.set_option("display.width", 250)
-print(summary[keys[1:] + ["Env","T_in", "T_out_mean", "T_total_mean", "Time_mean_s", "Time_median_s", "Time_std_s", "T_out_var",
+print(summary[keys[1:] + ["Env", "T_in", "T_out_mean", "T_total_mean", "Time_mean_s", "Time_median_s", "Time_std_s", "T_out_var",
                       "Energy_mean_J", "Energy_median_J", "Accuracy_rate", "Efficiency_ratio", "Time_CV_%"]].to_string(index=False))
 print()
 print(by_prompt.round(3).to_string(index=False))
-
-# ---- figures ----
-summary["Config"] = (summary["Model"].str.replace("-Instruct", "").str.replace("-Coder", "")
-                     + "\n" + summary["Quantization"] + " (" + summary["Env"].str.replace("Cloud ", "") + ")")
-configs = list(dict.fromkeys(summary["Config"]))
-prompts = ["P-1", "P-2", "P-3"]
-colors = {"P-1": "#4C72B0", "P-2": "#DD8452", "P-3": "#55A868"}
-
-
-def grouped_bar(col, ylabel, fname, title):
-    fig, ax = plt.subplots(figsize=(10, 4.2))
-    w = 0.26
-    for i, p in enumerate(prompts):
-        vals = [summary[(summary.Config == c) & (summary.Prompt == p)][col].mean() for c in configs]
-        ax.bar([x + (i - 1) * w for x in range(len(configs))], vals, w, label=p, color=colors[p])
-    ax.set_xticks(range(len(configs)))
-    ax.set_xticklabels(configs, fontsize=8)
-    ax.set_ylabel(ylabel)
-    ax.set_title(title)
-    ax.legend()
-    ax.grid(axis="y", alpha=0.3)
-    fig.tight_layout()
-    fig.savefig(os.path.join(FIG, fname), dpi=150)
-    plt.close(fig)
-
-
-grouped_bar("T_total_mean", "Avg total tokens (T_in + T_out)", "avg_total_tokens.png",
-            "Average total token count per model / quantization / prompt")
-grouped_bar("Time_median_s", "Median inference time (s)", "avg_inference_time.png",
-            "Median inference time over 5 epochs")
-grouped_bar("Accuracy_rate", "Accuracy (pass rate)", "accuracy.png", "Task accuracy (P/F pass rate)")
-grouped_bar("Energy_mean_J", "Avg GPU energy per inference (J)", "gpu_energy.png",
-            "GPU energy per inference (NVML counter)")
-print("figures written to", FIG)

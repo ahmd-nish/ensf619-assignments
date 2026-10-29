@@ -1,16 +1,10 @@
-"""Build the Assignment 2 summary table and figures from results/runs.csv + results/variant_info.json."""
+"""Build the Assignment 2 summary table (CSV + Excel) from results/runs.csv + results/variant_info.json."""
 import json
 import os
 
-import matplotlib
 import pandas as pd
 
-matplotlib.use("Agg")
-import matplotlib.pyplot as plt  # noqa: E402
-
 RES = os.path.join(os.path.dirname(os.path.abspath(__file__)), "results")
-FIG = os.path.join(RES, "figures")
-os.makedirs(FIG, exist_ok=True)
 
 runs = pd.read_csv(os.path.join(RES, "runs.csv"))
 info = json.load(open(os.path.join(RES, "variant_info.json")))
@@ -50,56 +44,3 @@ pd.set_option("display.max_columns", 30)
 print(summary.to_string(index=False))
 print("\ncountry/region:", runs.country.unique(), runs.region.unique(),
       "carbon intensity g/kWh:", runs.carbon_intensity_g_per_kwh.round(1).unique()[:5])
-
-main = summary[~summary.Variant.str.startswith("ref")]
-colors = ["#4C72B0", "#DD8452", "#E9A97A", "#55A868", "#8172B2"][:len(main)]
-labels = [n.split(". ", 1)[-1].replace(" + ", "\n+ ").replace(" (", "\n(").replace("Distilled student", "Distilled\nstudent") for n in main.Variant]
-
-fig, axes = plt.subplots(1, 3, figsize=(14, 4.4))
-for ax, col, title in zip(axes, ["CO2 per run (mg CO2eq)", "Latency median (s)", "Model size (MB)"],
-                          ["CO2 emissions per inference (mg CO2eq)", "Median latency (s)", "Model size (MB)"]):
-    ax.bar(labels, main[col], color=colors)
-    ax.set_title(title, fontsize=10)
-    ax.tick_params(axis="x", labelsize=7.5)
-    ax.grid(axis="y", alpha=0.3)
-    for x, y in enumerate(main[col]):
-        ax.text(x, y, f"{y:,.0f}" if y >= 100 else f"{y:.3g}", ha="center", va="bottom", fontsize=7.5)
-fig.tight_layout()
-fig.savefig(os.path.join(FIG, "comparison.png"), dpi=150)
-plt.close(fig)
-
-fig, ax = plt.subplots(figsize=(6, 4.2))
-for (_, r), c, lab in zip(main.iterrows(), colors, labels):
-    ax.scatter(r["Model size (MB)"], r["CO2 per run (mg CO2eq)"], s=90, color=c,
-               marker="o" if r["Accuracy (P/F)"] == "P" else "x")
-    off = (-118, 7) if "Pruned" in lab else ((-80, -13) if "Baseline" in lab else (6, 4))
-    ax.annotate(lab.replace("\n", " "), (r["Model size (MB)"], r["CO2 per run (mg CO2eq)"]), fontsize=7,
-                xytext=off, textcoords="offset points")
-ax.set_xlabel("Model size (MB)")
-ax.set_ylabel("CO2 per inference (mg CO2eq)")
-ax.set_title("Model size vs. emissions (o = pass, x = fail)", fontsize=10)
-ax.grid(alpha=0.3)
-fig.tight_layout()
-fig.savefig(os.path.join(FIG, "size_vs_co2.png"), dpi=150)
-plt.close(fig)
-
-for log_name, title in [("prune_log.json", "Pruned model recovery fine-tuning"),
-                        ("distill_log.json", "Knowledge distillation (student)")]:
-    p = os.path.join(RES, log_name)
-    if not os.path.exists(p):
-        continue
-    h = pd.DataFrame(json.load(open(p))["history"])
-    fig, ax = plt.subplots(figsize=(6, 3.2))
-    ax.plot(h.step, h.loss.rolling(5, min_periods=1).mean(), label="total loss")
-    if h.kl.notna().any():
-        ax.plot(h.step, h.ce.rolling(5, min_periods=1).mean(), label="CE")
-        ax.plot(h.step, h.kl.rolling(5, min_periods=1).mean(), label="KL (T^2-scaled)")
-    ax.set_xlabel("step")
-    ax.set_ylabel("loss (5-step mean)")
-    ax.set_title(title, fontsize=10)
-    ax.legend()
-    ax.grid(alpha=0.3)
-    fig.tight_layout()
-    fig.savefig(os.path.join(FIG, log_name.replace(".json", ".png")), dpi=150)
-    plt.close(fig)
-print("figures written to", FIG)
