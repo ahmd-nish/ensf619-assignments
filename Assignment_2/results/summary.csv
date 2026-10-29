@@ -1,0 +1,8 @@
+Variant,Technique,CO2 per run (mg CO2eq),CO2 SD (mg),CO2 total 5 runs (mg),Energy per run (J),GPU energy per run (J),Latency mean (s),Latency median (s),Latency SD (s),T_out,Model size (MB),Params (M),Non-zero params (M),Accuracy (P/F),Accuracy runs,Held-out HumanEval pass,Held-out pass %,Outputs identical across epochs,CO2 vs baseline (%),Size vs baseline (%)
+1. Baseline (FP16),None,33.28,0.593,166.402,497.995,426.542,3.858,3.836,0.064,129.0,2944.528,1543.714,1543.712,P,5/5,5/33,15.152,True,0.0,0.0
+2. Quantized (INT4 NF4),Quantization,53.926,0.789,269.631,806.932,674.723,7.148,7.124,0.056,149.0,1148.585,888.616,888.616,P,5/5,5/33,15.152,True,62.036,-60.993
+2b. Quantized (INT8),Quantization,238.042,104.257,1190.21,3561.979,2882.575,36.823,24.385,16.845,147.0,1697.606,1543.714,1543.714,P,5/5,4/33,12.121,True,615.264,-42.347
+3. Pruned 40% + fine-tune,Pruning,36.005,2.42,180.027,538.771,457.648,4.381,4.201,0.393,138.0,2944.528,1543.714,1019.636,P,5/5,27/33,81.818,True,8.188,0.0
+4. Distilled student (0.5B),Knowledge Distillation,28.02,0.331,140.099,419.278,346.784,3.929,3.965,0.047,151.0,942.401,494.033,494.032,P,5/5,12/33,36.364,True,-15.807,-67.995
+"ref: Pruned 40%, no fine-tune",Pruning (ablation),55.651,0.567,278.253,832.737,707.266,6.78,6.799,0.108,217.0,2944.528,1543.714,1019.636,F,0/5,2/33,6.061,True,67.218,0.0
+"ref: Student 0.5B, before KD",Distillation (ablation),20.26,0.506,101.299,303.161,252.615,2.729,2.743,0.024,103.0,942.401,494.033,494.032,F,0/5,1/33,3.03,True,-39.124,-67.995
