@@ -1,0 +1,37 @@
+epoch 1 step 10/336 loss=0.4566 ce=0.1428 kl=0.7705
+epoch 1 step 20/336 loss=0.3994 ce=0.1156 kl=0.6832
+[W1028 18:55:58.399920409 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 2816475136 bytes (free: 2607022080, total: 50897289216).
+epoch 1 step 30/336 loss=0.3472 ce=0.1039 kl=0.5905
+epoch 1 step 40/336 loss=0.2674 ce=0.0822 kl=0.4526
+epoch 1 step 50/336 loss=0.2460 ce=0.0910 kl=0.4010
+epoch 1 step 60/336 loss=0.3165 ce=0.1395 kl=0.4936
+epoch 1 step 70/336 loss=0.3063 ce=0.1355 kl=0.4771
+epoch 1 step 80/336 loss=0.3294 ce=0.1814 kl=0.4773
+[W1028 18:56:38.557675986 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 4110417920 bytes (free: 1562640384, total: 50897289216).
+epoch 1 step 90/336 loss=0.3290 ce=0.1703 kl=0.4877
+epoch 1 step 100/336 loss=0.2843 ce=0.1235 kl=0.4451
+epoch 1 step 110/336 loss=0.2340 ce=0.0930 kl=0.3751
+epoch 2 step 120/336 loss=0.2884 ce=0.1121 kl=0.4646
+epoch 2 step 130/336 loss=0.2809 ce=0.0990 kl=0.4629
+epoch 2 step 140/336 loss=0.1705 ce=0.0550 kl=0.2861
+epoch 2 step 150/336 loss=0.1993 ce=0.0623 kl=0.3362
+epoch 2 step 160/336 loss=0.2703 ce=0.1255 kl=0.4151
+epoch 2 step 170/336 loss=0.2194 ce=0.0632 kl=0.3755
+epoch 2 step 180/336 loss=0.2221 ce=0.1003 kl=0.3439
+epoch 2 step 190/336 loss=0.2384 ce=0.0686 kl=0.4082
+epoch 2 step 200/336 loss=0.1618 ce=0.0594 kl=0.2642
+epoch 2 step 210/336 loss=0.1831 ce=0.0634 kl=0.3028
+epoch 2 step 220/336 loss=0.1798 ce=0.0637 kl=0.2959
+epoch 3 step 230/336 loss=0.1591 ce=0.0446 kl=0.2735
+epoch 3 step 240/336 loss=0.1573 ce=0.0399 kl=0.2747
+epoch 3 step 250/336 loss=0.1475 ce=0.0380 kl=0.2571
+epoch 3 step 260/336 loss=0.1813 ce=0.0491 kl=0.3136
+epoch 3 step 270/336 loss=0.1538 ce=0.0471 kl=0.2605
+epoch 3 step 280/336 loss=0.1970 ce=0.0527 kl=0.3414
+epoch 3 step 290/336 loss=0.1809 ce=0.0603 kl=0.3015
+epoch 3 step 300/336 loss=0.1461 ce=0.0351 kl=0.2570
+epoch 3 step 310/336 loss=0.1573 ce=0.0441 kl=0.2704
+epoch 3 step 320/336 loss=0.1630 ce=0.0535 kl=0.2724
+epoch 3 step 330/336 loss=0.1302 ce=0.0352 kl=0.2252
+epoch 3 step 336/336 loss=0.1610 ce=0.0422 kl=0.2798
+teacher 1.54B params -> student 0.49B params

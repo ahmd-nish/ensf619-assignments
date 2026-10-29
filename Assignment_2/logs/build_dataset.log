@@ -1,0 +1,56 @@
+Using the latest cached version of the dataset since openai/openai_humaneval couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'openai_humaneval' at /workspace/.hf_home/datasets/openai___openai_humaneval/openai_humaneval/0.0.0/7dce6050a7d6d172f3cc5c32aa97f52fa1a2e544 (last modified on Wed Oct 28 17:52:35 2026).
+Using the latest cached version of the dataset since google-research-datasets/mbpp couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'full' at /workspace/.hf_home/datasets/google-research-datasets___mbpp/full/0.0.0/4bb6404fdc6cacfda99d4ac4205087b89d32030c (last modified on Wed Oct 28 18:25:10 2026).
+Using the latest cached version of the dataset since google-research-datasets/mbpp couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'full' at /workspace/.hf_home/datasets/google-research-datasets___mbpp/full/0.0.0/4bb6404fdc6cacfda99d4ac4205087b89d32030c (last modified on Wed Oct 28 18:25:10 2026).
+Using the latest cached version of the dataset since google-research-datasets/mbpp couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'full' at /workspace/.hf_home/datasets/google-research-datasets___mbpp/full/0.0.0/4bb6404fdc6cacfda99d4ac4205087b89d32030c (last modified on Wed Oct 28 18:25:10 2026).
+Using the latest cached version of the dataset since google-research-datasets/mbpp couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'full' at /workspace/.hf_home/datasets/google-research-datasets___mbpp/full/0.0.0/4bb6404fdc6cacfda99d4ac4205087b89d32030c (last modified on Wed Oct 28 18:25:10 2026).
+32/1364 kept=3
+64/1364 kept=11
+96/1364 kept=19
+128/1364 kept=31
+160/1364 kept=35
+192/1364 kept=41
+224/1364 kept=47
+256/1364 kept=48
+288/1364 kept=50
+320/1364 kept=52
+352/1364 kept=56
+384/1364 kept=59
+416/1364 kept=81
+448/1364 kept=106
+480/1364 kept=131
+512/1364 kept=160
+544/1364 kept=188
+576/1364 kept=217
+608/1364 kept=245
+640/1364 kept=272
+672/1364 kept=300
+704/1364 kept=323
+736/1364 kept=351
+768/1364 kept=378
+800/1364 kept=401
+832/1364 kept=432
+((5.0, 0.9272952180016122), (-2+2.4492935982947064e-16j))
+864/1364 kept=455
+896/1364 kept=482
+928/1364 kept=509
+960/1364 kept=536
+992/1364 kept=563
+1024/1364 kept=589
+1056/1364 kept=614
+1088/1364 kept=641
+1120/1364 kept=672
+1152/1364 kept=703
+1184/1364 kept=733
+1216/1364 kept=760
+1248/1364 kept=791
+1280/1364 kept=820
+1312/1364 kept=846
+1344/1364 kept=875
+1364/1364 kept=892
+checker outcomes: {'body changed': 126, 'no Args section': 248, 'ok': 892, 'no docstring': 45, 'syntax error': 10, 'tests fail': 19, 'function missing': 22, 'doctest wrong': 2}
+kept 892 / 1364 teacher outputs (HumanEval 60, MBPP 832)

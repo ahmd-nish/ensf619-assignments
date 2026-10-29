@@ -1,0 +1,66 @@
+Using the latest cached version of the dataset since openai/openai_humaneval couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'openai_humaneval' at /workspace/.hf_home/datasets/openai___openai_humaneval/openai_humaneval/0.0.0/7dce6050a7d6d172f3cc5c32aa97f52fa1a2e544 (last modified on Wed Oct 28 17:52:35 2026).
+
+=== 1. Baseline (FP16) ===
+baseline e1: CO2=3.420e-05 kg  E=511.8 J  lat=3.97s Tout=129 acc=P (ok)
+baseline e2: CO2=3.303e-05 kg  E=494.2 J  lat=3.79s Tout=129 acc=P (ok)
+baseline e3: CO2=3.287e-05 kg  E=491.9 J  lat=3.84s Tout=129 acc=P (ok)
+baseline e4: CO2=3.371e-05 kg  E=504.5 J  lat=3.88s Tout=129 acc=P (ok)
+baseline e5: CO2=3.258e-05 kg  E=487.6 J  lat=3.81s Tout=129 acc=P (ok)
+baseline: size=2944.5 MB nonzero=1544M/1544M held-out 5/33
+
+=== 2. Quantized (INT4 NF4) ===
+quant-int4 e1: CO2=5.448e-05 kg  E=815.2 J  lat=7.12s Tout=149 acc=P (ok)
+quant-int4 e2: CO2=5.385e-05 kg  E=805.7 J  lat=7.11s Tout=149 acc=P (ok)
+quant-int4 e3: CO2=5.474e-05 kg  E=819.2 J  lat=7.22s Tout=149 acc=P (ok)
+quant-int4 e4: CO2=5.247e-05 kg  E=785.2 J  lat=7.08s Tout=149 acc=P (ok)
+quant-int4 e5: CO2=5.409e-05 kg  E=809.3 J  lat=7.20s Tout=149 acc=P (ok)
+quant-int4: size=1148.6 MB nonzero=889M/889M held-out 5/33
+
+=== 2b. Quantized (INT8) ===
+quant-int8 e1: CO2=1.569e-04 kg  E=2348.1 J  lat=23.43s Tout=147 acc=P (ok)
+quant-int8 e2: CO2=4.095e-04 kg  E=6128.3 J  lat=64.52s Tout=147 acc=P (ok)
+quant-int8 e3: CO2=1.538e-04 kg  E=2300.8 J  lat=23.32s Tout=147 acc=P (ok)
+quant-int8 e4: CO2=1.601e-04 kg  E=2395.0 J  lat=24.39s Tout=147 acc=P (ok)
+quant-int8 e5: CO2=3.099e-04 kg  E=4637.7 J  lat=48.46s Tout=147 acc=P (ok)
+quant-int8: size=1697.6 MB nonzero=1544M/1544M held-out 4/33
+
+=== 3. Pruned 40% + fine-tune ===
+pruned e1: CO2=4.083e-05 kg  E=611.0 J  lat=5.16s Tout=138 acc=P (ok)
+pruned e2: CO2=3.473e-05 kg  E=519.7 J  lat=4.19s Tout=138 acc=P (ok)
+pruned e3: CO2=3.482e-05 kg  E=521.0 J  lat=4.12s Tout=138 acc=P (ok)
+pruned e4: CO2=3.510e-05 kg  E=525.2 J  lat=4.23s Tout=138 acc=P (ok)
+pruned e5: CO2=3.454e-05 kg  E=516.8 J  lat=4.20s Tout=138 acc=P (ok)
+pruned: size=2944.5 MB nonzero=1020M/1544M held-out 27/33
+
+=== 4. Distilled student (0.5B) ===
+distilled e1: CO2=2.924e-05 kg  E=437.5 J  lat=3.82s Tout=151 acc=P (ok)
+distilled e2: CO2=2.913e-05 kg  E=435.9 J  lat=3.82s Tout=151 acc=P (ok)
+distilled e3: CO2=2.905e-05 kg  E=434.7 J  lat=3.85s Tout=151 acc=P (ok)
+distilled e4: CO2=2.893e-05 kg  E=432.9 J  lat=3.88s Tout=151 acc=P (ok)
+distilled e5: CO2=2.868e-05 kg  E=429.2 J  lat=3.85s Tout=151 acc=P (ok)
+Traceback (most recent call last):
+  File "/workspace/a2/evaluate.py", line 98, in <module>
+    main()
+  File "/workspace/a2/evaluate.py", line 82, in main
+    held_pass = sum(check_generic(o, it)[0] for o, it in zip(held_out, held))
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/a2/evaluate.py", line 82, in <genexpr>
+    held_pass = sum(check_generic(o, it)[0] for o, it in zip(held_out, held))
+                    ^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/a2/humaneval_data.py", line 125, in check_generic
+    test = doctest.DocTestParser().get_doctest(doc, dict(ns), item["entry_point"], None, 0)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/venv/main/lib/python3.12/doctest.py", line 684, in get_doctest
+    return DocTest(self.get_examples(string, name), globs,
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/venv/main/lib/python3.12/doctest.py", line 698, in get_examples
+    return [x for x in self.parse(string, name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/venv/main/lib/python3.12/doctest.py", line 660, in parse
+    self._parse_example(m, name, lineno)
+  File "/venv/main/lib/python3.12/doctest.py", line 729, in _parse_example
+    self._check_prefix(want_lines, ' '*indent, name,
+  File "/venv/main/lib/python3.12/doctest.py", line 814, in _check_prefix
+    raise ValueError('line %r of the docstring for %s has '
+ValueError: line 13 of the docstring for remove_vowels has inconsistent leading whitespace: 'ghijklm")'

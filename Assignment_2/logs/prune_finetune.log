@@ -1,0 +1,30 @@
+after pruning: 40.00% of transformer Linear weights zero (33.95% of all params)
+[W1028 18:51:55.050213604 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 2340421632 bytes (free: 1847853056, total: 50897289216).
+epoch 1 step 10/224 loss=0.1494 ce=0.1494
+[W1028 18:52:03.650884854 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 2569011200 bytes (free: 2426667008, total: 50897289216).
+epoch 1 step 20/224 loss=0.1114 ce=0.1114
+[W1028 18:52:12.961988282 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 2816475136 bytes (free: 1470365696, total: 50897289216).
+epoch 1 step 30/224 loss=0.1016 ce=0.1016
+epoch 1 step 40/224 loss=0.0688 ce=0.0688
+epoch 1 step 50/224 loss=0.0633 ce=0.0633
+epoch 1 step 60/224 loss=0.1193 ce=0.1193
+[W1028 18:52:53.769561116 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 3063939072 bytes (free: 2007236608, total: 50897289216).
+epoch 1 step 70/224 loss=0.0904 ce=0.0904
+epoch 1 step 80/224 loss=0.1262 ce=0.1262
+[W1028 18:53:16.502738453 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 4110417920 bytes (free: 1495531520, total: 50897289216).
+epoch 1 step 90/224 loss=0.1153 ce=0.1153
+epoch 1 step 100/224 loss=0.0755 ce=0.0755
+epoch 1 step 110/224 loss=0.0751 ce=0.0751
+epoch 2 step 120/224 loss=0.0488 ce=0.0488
+epoch 2 step 130/224 loss=0.0384 ce=0.0384
+epoch 2 step 140/224 loss=0.0298 ce=0.0298
+epoch 2 step 150/224 loss=0.0323 ce=0.0323
+epoch 2 step 160/224 loss=0.0480 ce=0.0480
+epoch 2 step 170/224 loss=0.0348 ce=0.0348
+epoch 2 step 180/224 loss=0.0406 ce=0.0406
+epoch 2 step 190/224 loss=0.0329 ce=0.0329
+epoch 2 step 200/224 loss=0.0235 ce=0.0235
+epoch 2 step 210/224 loss=0.0187 ce=0.0187
+epoch 2 step 220/224 loss=0.0379 ce=0.0379
+epoch 2 step 224/224 loss=0.0334 ce=0.0334
+after fine-tune: 40.00% Linear sparsity (33.95% of all params)
