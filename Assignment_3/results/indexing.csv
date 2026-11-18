@@ -1,0 +1,3 @@
+config,embedding_model,embedding_params,embedding_dim,max_seq_length,chunk_size,chunk_size_effective,chunk_overlap,n_chunks,tokens_embedded,mean_chunk_tokens,index_bytes,index_build_s,gpu_energy_nvml_j,co2e_mg,energy_j,cpu_energy_kwh,gpu_energy_kwh,ram_energy_kwh,model_revision
+baseline,sentence-transformers/all-MiniLM-L6-v2,22713216,384,256,256,254,50,85,21259,250.10588235294117,130560,0.6311303302645683,73.794,6.9404537359508405,85.91885782370669,1.5304422589144792e-06,2.057251649034697e-05,1.763390646212631e-06,
+optimized,BAAI/bge-small-en-v1.5,33360000,384,512,512,510,50,38,18909,497.60526315789474,58368,0.17034450639039278,35.875,3.1605355032234166,39.12562649061845,4.1237048151936845e-07,9.96528575569755e-06,4.90573343510429e-07,

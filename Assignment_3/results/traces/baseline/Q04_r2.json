@@ -1,0 +1,181 @@
+{
+  "run_id": "20261118-015420_main",
+  "timestamp": "2026-11-18T01:56:44.021+00:00",
+  "config": {
+    "name": "baseline",
+    "label": "A. Baseline (high context / low-quality retrieval)",
+    "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+    "chunk_size": 256,
+    "chunk_overlap": 50,
+    "top_k": 8,
+    "query_prefix": ""
+  },
+  "question": {
+    "id": "Q04",
+    "question": "In the LISA development case study, how many small hyperparameter grid searches were performed and how many training jobs did they produce in total?",
+    "reference_answer": "123 grid searches, producing 4,789 jobs in total (over 172 days).",
+    "doc_id": "strubell2019",
+    "evidence": "123 small hyperparameter grid searches were performed, resulting in 4789 jobs in total",
+    "keywords": [
+      [
+        "123"
+      ],
+      [
+        "4789",
+        "4,789"
+      ]
+    ],
+    "evidence_page": 4
+  },
+  "repeat": 2,
+  "retrieval": {
+    "query": "In the LISA development case study, how many small hyperparameter grid searches were performed and how many training jobs did they produce in total?",
+    "query_embed_tokens": 30,
+    "encode_ms": 5.640177987515926,
+    "search_ms": 0.04562735557556152,
+    "retrieval_ms": 5.685805343091488
+  },
+  "retrieved_chunks": [
+    {
+      "rank": 1,
+      "chunk_id": "baseline-strubell2019-0019",
+      "score": 0.36667972803115845,
+      "doc_id": "strubell2019",
+      "page_start": 4,
+      "page_end": 5,
+      "embed_tokens": 254,
+      "text": "s. This will enable direct comparison across models, allowing subsequent consumers of these models to accurately assess whether the required computational resources 9Based on average U.S cost of electricity of $0.12/kWh. are compatible with their setting. More explicit characterization of tuning time could also reveal inconsistencies in time spent tuning baseline models compared to proposed contributions. Realizing this will require: (1) a standard, hardwareindependent measurement of training time, such as gigaflops required to convergence, and (2) a standard measurement of model sensitivity to data and hyperparameters, such as variance with respect to hyperparameters searched. Academic researchers need equitable access to computation resources. Recent advances in available compute come at a high price not attainable to all who desire access. Most of the models studied in this paper were developed outside academia; recent improvements in state-of-the-art accuracy are possible thanks to industry access to large-scale compute. Limiting this style of research to industry labs hurts the NLP research community in many ways. First, it stifles creativity. Researchers with good ideas but without access to large-scale compute will simply not be able to execute their ideas, instead constrained to focus on different"
+    },
+    {
+      "rank": 2,
+      "chunk_id": "baseline-strubell2019-0018",
+      "score": 0.3603619337081909,
+      "doc_id": "strubell2019",
+      "page_start": 4,
+      "page_end": 5,
+      "embed_tokens": 254,
+      "text": "tune and (3) all models trained during R&D. about 60 GPUs running constantly throughout the 6 month duration of the project. Table 4 lists upper and lower bounds of the estimated cost in terms of Google Cloud compute and raw electricity required to develop and deploy this model.9 We see that while training a single model is relatively inexpensive, the cost of tuning a model for a new dataset, which we estimate here to require 24 jobs, or performing the full R&D required to develop this model, quickly becomes extremely expensive. 5 Conclusions Authors should report training time and sensitivity to hyperparameters. Our experiments suggest that it would be beneficial to directly compare different models to perform a cost-benefit (accuracy) analysis. To address this, when proposing a model that is meant to be re-trained for downstream use, such as retraining on a new domain or fine-tuning on a new task, authors should report training time and computational resources required, as well as model sensitivity to hyperparameters. This will enable direct comparison across models, allowing subsequent consumers of these models to accurately assess whether the required computational resources 9Based on average U.S cost of electricity of $0.12/kWh. are compatible with their setting."
+    },
+    {
+      "rank": 3,
+      "chunk_id": "baseline-strubell2019-0013",
+      "score": 0.3599334955215454,
+      "doc_id": "strubell2019",
+      "page_start": 3,
+      "page_end": 3,
+      "embed_tokens": 254,
+      "text": "different neural network layer types. Canziani et al. (2016) assess image classification model accuracy as a function of model size and gigaflops required during inference. They also measure average power draw required during inference on GPUs as a function of batch size. Neither work analyzes the recurrent and self-attention models that have become commonplace in NLP, nor do they extrapolate power to estimates of carbon and dollar cost of training. Analysis of hyperparameter tuning has been performed in the context of improved algorithms for hyperparameter search (Bergstra et al., 2011; Bergstra and Bengio, 2012; Snoek et al., 2012). To our knowledge there exists to date no analysis of the computation required for R&D and hyperparameter tuning of neural network models in NLP. 6Via the authors on Reddit. 7GPU lower bound computed using pre-emptible P100/V100 U.S. resources priced at $0.43–$0.74/hr, upper bound uses on-demand U.S. resources priced at $1.46– $2.48/hr. We similarly use pre-emptible ($1.46/hr–$"
+    },
+    {
+      "rank": 4,
+      "chunk_id": "baseline-treviso2023-0055",
+      "score": 0.359158456325531,
+      "doc_id": "treviso2023",
+      "page_start": 12,
+      "page_end": 13,
+      "embed_tokens": 254,
+      "text": "et al., 2012; Feurer et al., 2015) and graph-based semi-supervised learning (Zhang and Duh, 2020) use surrogate models to search efficiently for optimal hyperparameters, avoiding inefficient grid search or manual tuning. Complementary approaches are successive halving (SHA; Jamieson and Talwalkar, 2016) and its massively parallel variant, asynchronous SHA (ASHA; Li et al., 2020b), which test multiple hyperparameter settings in parallel for a fixed number of training iterations, then discard the half of the settings with the worst validation set performance. The SMAC3 library (Lindauer et al., 2022) implements several BO strategies, including a budget-limited variant for expensive deep learning tasks, and is integrated into auto-sklearn (Feurer et al., 2022) and auto-pytorch (Zimmer et al., 2021). However, with limited computational budgets, both BO and ASHA may fail to identify good settings (Liu and Wang, 2021). It is unclear whether these methods can be used to choose random initial weights or to order training samples, which also affect model performance (Dodge et"
+    },
+    {
+      "rank": 5,
+      "chunk_id": "baseline-strubell2019-0022",
+      "score": 0.3518536686897278,
+      "doc_id": "strubell2019",
+      "page_start": 5,
+      "page_end": 5,
+      "embed_tokens": 254,
+      "text": "An additional avenue through which NLP and machine learning software developers could aid in reducing the energy associated with model tuning is by providing easyto-use APIs implementing more efficient alternatives to brute-force grid search for hyperparameter tuning, e.g. random or Bayesian hyperparameter search techniques (Bergstra et al., 2011; Bergstra and Bengio, 2012; Snoek et al., 2012). While software packages implementing these techniques do exist,10 they are rarely employed in practice for tuning NLP models. This is likely because their interoperability with popular deep learning frameworks such as PyTorch and TensorFlow is not optimized, i.e. there are not simple examples of how to tune TensorFlow Estimators using Bayesian search. Integrating these tools into the workflows with which NLP researchers and practitioners are already familiar could have notable impact on the cost of developing and tuning in NLP. Acknowledgements We are grateful to Sherief Farouk and the anonymous reviewers for helpful feedback on earlier drafts. This work was supported in part by the Centers for Data Science and Intelligent Information Retrieval, the Chan Zuckerberg Initiative under the Scientific Knowledge Base Construction project, the IBM Cognitive Horizons Network agreement no"
+    },
+    {
+      "rank": 6,
+      "chunk_id": "baseline-strubell2019-0017",
+      "score": 0.34852299094200134,
+      "doc_id": "strubell2019",
+      "page_start": 4,
+      "page_end": 4,
+      "embed_tokens": 254,
+      "text": "associated with the project spanned a period of 172 days (approx. 6 months). During that time 123 small hyperparameter grid searches were performed, resulting in 4789 jobs in total. Jobs varied in length ranging from a minimum of 3 minutes, indicating a crash, to a maximum of 9 days, with an average job length of 52 hours. All training was done on a combination of NVIDIA Titan X (72%) and M40 (28%) GPUs.8 The sum GPU time required for the project totaled 9998 days (27 years). This averages to 8We approximate cloud compute cost using P100 pricing. Estimated cost (USD) Models Hours Cloud Electric 1 120 $52–$175 $5 24 2880 $1238–$4205 $118 4789 239,942 $103k–$350k $9870 Table 4: Estimated cost in terms of cloud compute and electricity for training: (1) a single model (2) a single tune and (3) all models trained during R&D. about 60 GPUs running constantly throughout the 6 month duration of the project. Table 4 lists upper and lower bounds of the estimated cost in terms of Google Cloud compute and raw electricity required to"
+    },
+    {
+      "rank": 7,
+      "chunk_id": "baseline-treviso2023-0015",
+      "score": 0.34840163588523865,
+      "doc_id": "treviso2023",
+      "page_start": 4,
+      "page_end": 4,
+      "embed_tokens": 254,
+      "text": "form attention-based methods on all tasks of the Long Range Arena benchmark (Tay et al., 2021), while increasing training speed by approximately 5x and reducing memory cost by about 15% when compared to a standard transformer. This success is attributed to their convolutional structure, which emphasizes nearby tokens and has a parameter count that grows sub-linearly with sequence length (Li et al., 2022b). 3.2 Sparse Modeling To leverage sparsity for efficiency, many models follow the mixture-of-experts (MoE) concept (Jacobs et al., 1991; Shazeer et al., 2017; Fedus et al., 2022a), which routes computation through small subnetworks instead of passing the input through the entire model. Relevant works on this line include GShard (Lepikhin et al., 2021), Switch Transformer (Fedus et al., 2022b), and ST-MoE (Zoph et al., 2022), which replace the feed-forward layers in transformers with MoE layers. More recently, Rajbhandari et al. (2022) scaled transformers up by compressing and optimizing the usage of"
+    },
+    {
+      "rank": 8,
+      "chunk_id": "baseline-treviso2023-0056",
+      "score": 0.3414042592048645,
+      "doc_id": "treviso2023",
+      "page_start": 13,
+      "page_end": 13,
+      "embed_tokens": 254,
+      "text": "limited computational budgets, both BO and ASHA may fail to identify good settings (Liu and Wang, 2021). It is unclear whether these methods can be used to choose random initial weights or to order training samples, which also affect model performance (Dodge et al., 2020). 9.2 Hyperparameter Transfer To minimize the number of trials needed to find optimal hyperparameter settings, one can transfer knowledge from other datasets or tasks— similar to how an ML engineer might select reasonable settings by hand. Transferring hyperparameters can be especially beneficial during expensive stages in the NLP pipeline, such as pre-training. Transfer neural processes (Wei et al., 2021) provide a way to transfer observations, parameters, and configurations from previous tasks using Bayesian optimization with a neural process as the surrogate model. This can lead to more accurate models with fewer trials than conventional BO approaches, but has yet to be tested for large NLP models. Finally, the cost of training can be reduced using μTransfer (Yang et al., 2021), which tunes a small model, then transfers the hyperparameters to a larger model. 9.3 Model Selection Considerations While identifying an optimal model is crucial in deployment, it raises several challenges"
+    }
+  ],
+  "prompt": {
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful research assistant. Answer the question using only the provided context. If the context does not contain the answer, reply exactly: \"The context does not contain the answer.\" Keep the answer short and factual."
+      },
+      {
+        "role": "user",
+        "content": "Context:\n[1] (source: strubell2019, page 4)\ns. This will enable direct comparison across models, allowing subsequent consumers of these models to accurately assess whether the required computational resources 9Based on average U.S cost of electricity of $0.12/kWh. are compatible with their setting. More explicit characterization of tuning time could also reveal inconsistencies in time spent tuning baseline models compared to proposed contributions. Realizing this will require: (1) a standard, hardwareindependent measurement of training time, such as gigaflops required to convergence, and (2) a standard measurement of model sensitivity to data and hyperparameters, such as variance with respect to hyperparameters searched. Academic researchers need equitable access to computation resources. Recent advances in available compute come at a high price not attainable to all who desire access. Most of the models studied in this paper were developed outside academia; recent improvements in state-of-the-art accuracy are possible thanks to industry access to large-scale compute. Limiting this style of research to industry labs hurts the NLP research community in many ways. First, it stifles creativity. Researchers with good ideas but without access to large-scale compute will simply not be able to execute their ideas, instead constrained to focus on different\n\n[2] (source: strubell2019, page 4)\ntune and (3) all models trained during R&D. about 60 GPUs running constantly throughout the 6 month duration of the project. Table 4 lists upper and lower bounds of the estimated cost in terms of Google Cloud compute and raw electricity required to develop and deploy this model.9 We see that while training a single model is relatively inexpensive, the cost of tuning a model for a new dataset, which we estimate here to require 24 jobs, or performing the full R&D required to develop this model, quickly becomes extremely expensive. 5 Conclusions Authors should report training time and sensitivity to hyperparameters. Our experiments suggest that it would be beneficial to directly compare different models to perform a cost-benefit (accuracy) analysis. To address this, when proposing a model that is meant to be re-trained for downstream use, such as retraining on a new domain or fine-tuning on a new task, authors should report training time and computational resources required, as well as model sensitivity to hyperparameters. This will enable direct comparison across models, allowing subsequent consumers of these models to accurately assess whether the required computational resources 9Based on average U.S cost of electricity of $0.12/kWh. are compatible with their setting.\n\n[3] (source: strubell2019, page 3)\ndifferent neural network layer types. Canziani et al. (2016) assess image classification model accuracy as a function of model size and gigaflops required during inference. They also measure average power draw required during inference on GPUs as a function of batch size. Neither work analyzes the recurrent and self-attention models that have become commonplace in NLP, nor do they extrapolate power to estimates of carbon and dollar cost of training. Analysis of hyperparameter tuning has been performed in the context of improved algorithms for hyperparameter search (Bergstra et al., 2011; Bergstra and Bengio, 2012; Snoek et al., 2012). To our knowledge there exists to date no analysis of the computation required for R&D and hyperparameter tuning of neural network models in NLP. 6Via the authors on Reddit. 7GPU lower bound computed using pre-emptible P100/V100 U.S. resources priced at $0.43–$0.74/hr, upper bound uses on-demand U.S. resources priced at $1.46– $2.48/hr. We similarly use pre-emptible ($1.46/hr–$\n\n[4] (source: treviso2023, page 12)\net al., 2012; Feurer et al., 2015) and graph-based semi-supervised learning (Zhang and Duh, 2020) use surrogate models to search efficiently for optimal hyperparameters, avoiding inefficient grid search or manual tuning. Complementary approaches are successive halving (SHA; Jamieson and Talwalkar, 2016) and its massively parallel variant, asynchronous SHA (ASHA; Li et al., 2020b), which test multiple hyperparameter settings in parallel for a fixed number of training iterations, then discard the half of the settings with the worst validation set performance. The SMAC3 library (Lindauer et al., 2022) implements several BO strategies, including a budget-limited variant for expensive deep learning tasks, and is integrated into auto-sklearn (Feurer et al., 2022) and auto-pytorch (Zimmer et al., 2021). However, with limited computational budgets, both BO and ASHA may fail to identify good settings (Liu and Wang, 2021). It is unclear whether these methods can be used to choose random initial weights or to order training samples, which also affect model performance (Dodge et\n\n[5] (source: strubell2019, page 5)\nAn additional avenue through which NLP and machine learning software developers could aid in reducing the energy associated with model tuning is by providing easyto-use APIs implementing more efficient alternatives to brute-force grid search for hyperparameter tuning, e.g. random or Bayesian hyperparameter search techniques (Bergstra et al., 2011; Bergstra and Bengio, 2012; Snoek et al., 2012). While software packages implementing these techniques do exist,10 they are rarely employed in practice for tuning NLP models. This is likely because their interoperability with popular deep learning frameworks such as PyTorch and TensorFlow is not optimized, i.e. there are not simple examples of how to tune TensorFlow Estimators using Bayesian search. Integrating these tools into the workflows with which NLP researchers and practitioners are already familiar could have notable impact on the cost of developing and tuning in NLP. Acknowledgements We are grateful to Sherief Farouk and the anonymous reviewers for helpful feedback on earlier drafts. This work was supported in part by the Centers for Data Science and Intelligent Information Retrieval, the Chan Zuckerberg Initiative under the Scientific Knowledge Base Construction project, the IBM Cognitive Horizons Network agreement no\n\n[6] (source: strubell2019, page 4)\nassociated with the project spanned a period of 172 days (approx. 6 months). During that time 123 small hyperparameter grid searches were performed, resulting in 4789 jobs in total. Jobs varied in length ranging from a minimum of 3 minutes, indicating a crash, to a maximum of 9 days, with an average job length of 52 hours. All training was done on a combination of NVIDIA Titan X (72%) and M40 (28%) GPUs.8 The sum GPU time required for the project totaled 9998 days (27 years). This averages to 8We approximate cloud compute cost using P100 pricing. Estimated cost (USD) Models Hours Cloud Electric 1 120 $52–$175 $5 24 2880 $1238–$4205 $118 4789 239,942 $103k–$350k $9870 Table 4: Estimated cost in terms of cloud compute and electricity for training: (1) a single model (2) a single tune and (3) all models trained during R&D. about 60 GPUs running constantly throughout the 6 month duration of the project. Table 4 lists upper and lower bounds of the estimated cost in terms of Google Cloud compute and raw electricity required to\n\n[7] (source: treviso2023, page 4)\nform attention-based methods on all tasks of the Long Range Arena benchmark (Tay et al., 2021), while increasing training speed by approximately 5x and reducing memory cost by about 15% when compared to a standard transformer. This success is attributed to their convolutional structure, which emphasizes nearby tokens and has a parameter count that grows sub-linearly with sequence length (Li et al., 2022b). 3.2 Sparse Modeling To leverage sparsity for efficiency, many models follow the mixture-of-experts (MoE) concept (Jacobs et al., 1991; Shazeer et al., 2017; Fedus et al., 2022a), which routes computation through small subnetworks instead of passing the input through the entire model. Relevant works on this line include GShard (Lepikhin et al., 2021), Switch Transformer (Fedus et al., 2022b), and ST-MoE (Zoph et al., 2022), which replace the feed-forward layers in transformers with MoE layers. More recently, Rajbhandari et al. (2022) scaled transformers up by compressing and optimizing the usage of\n\n[8] (source: treviso2023, page 13)\nlimited computational budgets, both BO and ASHA may fail to identify good settings (Liu and Wang, 2021). It is unclear whether these methods can be used to choose random initial weights or to order training samples, which also affect model performance (Dodge et al., 2020). 9.2 Hyperparameter Transfer To minimize the number of trials needed to find optimal hyperparameter settings, one can transfer knowledge from other datasets or tasks— similar to how an ML engineer might select reasonable settings by hand. Transferring hyperparameters can be especially beneficial during expensive stages in the NLP pipeline, such as pre-training. Transfer neural processes (Wei et al., 2021) provide a way to transfer observations, parameters, and configurations from previous tasks using Bayesian optimization with a neural process as the surrogate model. This can lead to more accurate models with fewer trials than conventional BO approaches, but has yet to be tested for large NLP models. Finally, the cost of training can be reduced using μTransfer (Yang et al., 2021), which tunes a small model, then transfers the hyperparameters to a larger model. 9.3 Model Selection Considerations While identifying an optimal model is crucial in deployment, it raises several challenges\n\nQuestion: In the LISA development case study, how many small hyperparameter grid searches were performed and how many training jobs did they produce in total?\nAnswer:"
+      }
+    ],
+    "rendered": "<|im_start|>system\nYou are a careful research assistant. Answer the question using only the provided context. If the context does not contain the answer, reply exactly: \"The context does not contain the answer.\" Keep the answer short and factual.<|im_end|>\n<|im_start|>user\nContext:\n[1] (source: strubell2019, page 4)\ns. This will enable direct comparison across models, allowing subsequent consumers of these models to accurately assess whether the required computational resources 9Based on average U.S cost of electricity of $0.12/kWh. are compatible with their setting. More explicit characterization of tuning time could also reveal inconsistencies in time spent tuning baseline models compared to proposed contributions. Realizing this will require: (1) a standard, hardwareindependent measurement of training time, such as gigaflops required to convergence, and (2) a standard measurement of model sensitivity to data and hyperparameters, such as variance with respect to hyperparameters searched. Academic researchers need equitable access to computation resources. Recent advances in available compute come at a high price not attainable to all who desire access. Most of the models studied in this paper were developed outside academia; recent improvements in state-of-the-art accuracy are possible thanks to industry access to large-scale compute. Limiting this style of research to industry labs hurts the NLP research community in many ways. First, it stifles creativity. Researchers with good ideas but without access to large-scale compute will simply not be able to execute their ideas, instead constrained to focus on different\n\n[2] (source: strubell2019, page 4)\ntune and (3) all models trained during R&D. about 60 GPUs running constantly throughout the 6 month duration of the project. Table 4 lists upper and lower bounds of the estimated cost in terms of Google Cloud compute and raw electricity required to develop and deploy this model.9 We see that while training a single model is relatively inexpensive, the cost of tuning a model for a new dataset, which we estimate here to require 24 jobs, or performing the full R&D required to develop this model, quickly becomes extremely expensive. 5 Conclusions Authors should report training time and sensitivity to hyperparameters. Our experiments suggest that it would be beneficial to directly compare different models to perform a cost-benefit (accuracy) analysis. To address this, when proposing a model that is meant to be re-trained for downstream use, such as retraining on a new domain or fine-tuning on a new task, authors should report training time and computational resources required, as well as model sensitivity to hyperparameters. This will enable direct comparison across models, allowing subsequent consumers of these models to accurately assess whether the required computational resources 9Based on average U.S cost of electricity of $0.12/kWh. are compatible with their setting.\n\n[3] (source: strubell2019, page 3)\ndifferent neural network layer types. Canziani et al. (2016) assess image classification model accuracy as a function of model size and gigaflops required during inference. They also measure average power draw required during inference on GPUs as a function of batch size. Neither work analyzes the recurrent and self-attention models that have become commonplace in NLP, nor do they extrapolate power to estimates of carbon and dollar cost of training. Analysis of hyperparameter tuning has been performed in the context of improved algorithms for hyperparameter search (Bergstra et al., 2011; Bergstra and Bengio, 2012; Snoek et al., 2012). To our knowledge there exists to date no analysis of the computation required for R&D and hyperparameter tuning of neural network models in NLP. 6Via the authors on Reddit. 7GPU lower bound computed using pre-emptible P100/V100 U.S. resources priced at $0.43–$0.74/hr, upper bound uses on-demand U.S. resources priced at $1.46– $2.48/hr. We similarly use pre-emptible ($1.46/hr–$\n\n[4] (source: treviso2023, page 12)\net al., 2012; Feurer et al., 2015) and graph-based semi-supervised learning (Zhang and Duh, 2020) use surrogate models to search efficiently for optimal hyperparameters, avoiding inefficient grid search or manual tuning. Complementary approaches are successive halving (SHA; Jamieson and Talwalkar, 2016) and its massively parallel variant, asynchronous SHA (ASHA; Li et al., 2020b), which test multiple hyperparameter settings in parallel for a fixed number of training iterations, then discard the half of the settings with the worst validation set performance. The SMAC3 library (Lindauer et al., 2022) implements several BO strategies, including a budget-limited variant for expensive deep learning tasks, and is integrated into auto-sklearn (Feurer et al., 2022) and auto-pytorch (Zimmer et al., 2021). However, with limited computational budgets, both BO and ASHA may fail to identify good settings (Liu and Wang, 2021). It is unclear whether these methods can be used to choose random initial weights or to order training samples, which also affect model performance (Dodge et\n\n[5] (source: strubell2019, page 5)\nAn additional avenue through which NLP and machine learning software developers could aid in reducing the energy associated with model tuning is by providing easyto-use APIs implementing more efficient alternatives to brute-force grid search for hyperparameter tuning, e.g. random or Bayesian hyperparameter search techniques (Bergstra et al., 2011; Bergstra and Bengio, 2012; Snoek et al., 2012). While software packages implementing these techniques do exist,10 they are rarely employed in practice for tuning NLP models. This is likely because their interoperability with popular deep learning frameworks such as PyTorch and TensorFlow is not optimized, i.e. there are not simple examples of how to tune TensorFlow Estimators using Bayesian search. Integrating these tools into the workflows with which NLP researchers and practitioners are already familiar could have notable impact on the cost of developing and tuning in NLP. Acknowledgements We are grateful to Sherief Farouk and the anonymous reviewers for helpful feedback on earlier drafts. This work was supported in part by the Centers for Data Science and Intelligent Information Retrieval, the Chan Zuckerberg Initiative under the Scientific Knowledge Base Construction project, the IBM Cognitive Horizons Network agreement no\n\n[6] (source: strubell2019, page 4)\nassociated with the project spanned a period of 172 days (approx. 6 months). During that time 123 small hyperparameter grid searches were performed, resulting in 4789 jobs in total. Jobs varied in length ranging from a minimum of 3 minutes, indicating a crash, to a maximum of 9 days, with an average job length of 52 hours. All training was done on a combination of NVIDIA Titan X (72%) and M40 (28%) GPUs.8 The sum GPU time required for the project totaled 9998 days (27 years). This averages to 8We approximate cloud compute cost using P100 pricing. Estimated cost (USD) Models Hours Cloud Electric 1 120 $52–$175 $5 24 2880 $1238–$4205 $118 4789 239,942 $103k–$350k $9870 Table 4: Estimated cost in terms of cloud compute and electricity for training: (1) a single model (2) a single tune and (3) all models trained during R&D. about 60 GPUs running constantly throughout the 6 month duration of the project. Table 4 lists upper and lower bounds of the estimated cost in terms of Google Cloud compute and raw electricity required to\n\n[7] (source: treviso2023, page 4)\nform attention-based methods on all tasks of the Long Range Arena benchmark (Tay et al., 2021), while increasing training speed by approximately 5x and reducing memory cost by about 15% when compared to a standard transformer. This success is attributed to their convolutional structure, which emphasizes nearby tokens and has a parameter count that grows sub-linearly with sequence length (Li et al., 2022b). 3.2 Sparse Modeling To leverage sparsity for efficiency, many models follow the mixture-of-experts (MoE) concept (Jacobs et al., 1991; Shazeer et al., 2017; Fedus et al., 2022a), which routes computation through small subnetworks instead of passing the input through the entire model. Relevant works on this line include GShard (Lepikhin et al., 2021), Switch Transformer (Fedus et al., 2022b), and ST-MoE (Zoph et al., 2022), which replace the feed-forward layers in transformers with MoE layers. More recently, Rajbhandari et al. (2022) scaled transformers up by compressing and optimizing the usage of\n\n[8] (source: treviso2023, page 13)\nlimited computational budgets, both BO and ASHA may fail to identify good settings (Liu and Wang, 2021). It is unclear whether these methods can be used to choose random initial weights or to order training samples, which also affect model performance (Dodge et al., 2020). 9.2 Hyperparameter Transfer To minimize the number of trials needed to find optimal hyperparameter settings, one can transfer knowledge from other datasets or tasks— similar to how an ML engineer might select reasonable settings by hand. Transferring hyperparameters can be especially beneficial during expensive stages in the NLP pipeline, such as pre-training. Transfer neural processes (Wei et al., 2021) provide a way to transfer observations, parameters, and configurations from previous tasks using Bayesian optimization with a neural process as the surrogate model. This can lead to more accurate models with fewer trials than conventional BO approaches, but has yet to be tested for large NLP models. Finally, the cost of training can be reduced using μTransfer (Yang et al., 2021), which tunes a small model, then transfers the hyperparameters to a larger model. 9.3 Model Selection Considerations While identifying an optimal model is crucial in deployment, it raises several challenges\n\nQuestion: In the LISA development case study, how many small hyperparameter grid searches were performed and how many training jobs did they produce in total?\nAnswer:<|im_end|>\n<|im_start|>assistant\n",
+    "token_breakdown": {
+      "query_tokens": 28,
+      "context_tokens": 2233,
+      "chunk_tokens": [
+        238,
+        252,
+        256,
+        266,
+        247,
+        302,
+        265,
+        259
+      ]
+    }
+  },
+  "generation": {
+    "t_in": 2325,
+    "t_out": 32,
+    "generation_ms": 1342.5926147028804,
+    "prefill_ms": 596.0913328453898,
+    "decode_ms": 746.5012818574905,
+    "decode_tokens_per_s": 41.527055282294874,
+    "hit_max_new_tokens": false,
+    "answer": "In the LISA development case study, 123 small hyperparameter grid searches were performed, resulting in 4789 jobs in total."
+  },
+  "energy": {
+    "codecarbon": {
+      "co2_kg": 2.835218878292193e-05,
+      "energy_kwh": 9.749553406207572e-05,
+      "cpu_energy_kwh": 3.330407071169052e-06,
+      "gpu_energy_kwh": 9.0382572324188e-05,
+      "ram_energy_kwh": 3.782554666718675e-06,
+      "cc_duration_s": 4.536455443128943,
+      "cpu_power_w": 5.832997645785926,
+      "gpu_power_w": 164.5643420288537,
+      "ram_power_w": 10.0,
+      "country": "Ireland",
+      "region": "leinster",
+      "carbon_intensity_g_per_kwh": 290.80500000000006
+    },
+    "gpu_nvml_retrieval_j": 0.0,
+    "gpu_nvml_generation_j": 325.377,
+    "gpu_peak_mem_mb": 15241.06201171875
+  },
+  "grading": {
+    "suggested_grade": "P",
+    "suggestion_reason": "all key facts present; evidence passage was retrieved",
+    "evidence_retrieved_at_rank": 6
+  }
+}

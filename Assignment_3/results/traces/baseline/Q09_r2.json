@@ -1,0 +1,179 @@
+{
+  "run_id": "20261118-015420_main",
+  "timestamp": "2026-11-18T01:57:26.375+00:00",
+  "config": {
+    "name": "baseline",
+    "label": "A. Baseline (high context / low-quality retrieval)",
+    "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+    "chunk_size": 256,
+    "chunk_overlap": 50,
+    "top_k": 8,
+    "query_prefix": ""
+  },
+  "question": {
+    "id": "Q09",
+    "question": "Using adversarial filtering, what fraction of the SNLI data did Mishra and Sachdeva find was enough for performance comparable to the full corpus?",
+    "reference_answer": "Only about 2% of the SNLI data.",
+    "doc_id": "treviso2023",
+    "evidence": "a subset of only ∼2% of the SNLI data",
+    "keywords": [
+      [
+        "2%",
+        "2 %",
+        "two percent"
+      ]
+    ],
+    "evidence_page": 2
+  },
+  "repeat": 2,
+  "retrieval": {
+    "query": "Using adversarial filtering, what fraction of the SNLI data did Mishra and Sachdeva find was enough for performance comparable to the full corpus?",
+    "query_embed_tokens": 35,
+    "encode_ms": 6.089327856898308,
+    "search_ms": 0.04335213452577591,
+    "retrieval_ms": 6.132679991424084
+  },
+  "retrieved_chunks": [
+    {
+      "rank": 1,
+      "chunk_id": "baseline-treviso2023-0006",
+      "score": 0.5685555338859558,
+      "doc_id": "treviso2023",
+      "page_start": 2,
+      "page_end": 2,
+      "embed_tokens": 254,
+      "text": "et al., 2022). 2.1 Filtering Improving data quality can boost performance while reducing training costs during pre-training and fine-tuning. For instance, Lee et al. (2022b) showed that removing duplicates in pre-training increases training efficiency, giving equal or even better model performance compared to using all data. Zhang et al. (2022) used MinhashLSH (Leskovec et al., 2020) to remove duplicates while developing OPT. De-duplication can lead to substantially reduced computation cost, especially in cases with abundant pre-training data but limited compute budget (Hoffmann et al., 2022). Similar observations have been made for finetuning. For instance, Mishra and Sachdeva (2020) found—via adversarial filtering (Zellers et al., 2018)—a subset of only ∼2% of the SNLI data (Bowman et al., 2015) that leads to performance comparable to using the full corpus. While such filtering approaches are useful for mitigating biases (Le Bras et al., 2020), they may not always serve as tools to filter existing datasets, as these often suffer from insufficient training data. 2"
+    },
+    {
+      "rank": 2,
+      "chunk_id": "baseline-strubell2019-0000",
+      "score": 0.4189175069332123,
+      "doc_id": "strubell2019",
+      "page_start": 1,
+      "page_end": 1,
+      "embed_tokens": 254,
+      "text": "Proceedings of the 57th Annual Meeting of the Association for Computational Linguistics, pages 3645–3650 Florence, Italy, July 28 - August 2, 2019. c©2019 Association for Computational Linguistics 3645 Energy and Policy Considerations for Deep Learning in NLP Emma Strubell Ananya Ganesh Andrew McCallum College of Information and Computer Sciences University of Massachusetts Amherst {strubell, aganesh, mccallum}@cs.umass.edu Abstract Recent progress in hardware and methodology for training neural networks has ushered in a new generation of large networks trained on abundant data. These models have obtained notable gains in accuracy across many NLP tasks. However, these accuracy improvements depend on the availability of exceptionally large computational resources that necessitate similarly substantial energy consumption. As a result these models are costly to train and develop, both financially, due to the cost of hardware and electricity or cloud compute time, and environmentally, due to the carbon footprint required to fuel modern tensor processing hardware. In this paper we bring this issue to the attention of NLP researchers by quantifying the approximate financial and environmental costs of training a variety of recently successful neural network models for NLP. Based on these findings, we propose actionable recommendations to reduce costs and improve equity in NL"
+    },
+    {
+      "rank": 3,
+      "chunk_id": "baseline-treviso2023-0059",
+      "score": 0.3936195969581604,
+      "doc_id": "treviso2023",
+      "page_start": 13,
+      "page_end": 13,
+      "embed_tokens": 254,
+      "text": "accelerate advances in this important area of research with great potential for impact both within our field and for society as a whole. Acknowledgments This work was initiated at and benefited substantially from the Dagstuhl Seminar 22232: Efficient and Equitable Natural Language Processing in the Age of Deep Learning. We further thank Yuki Arase, Jonathan Frankle, Alexander Koller, Alexander L ̈oser, Alexandra Sasha Luccioni, Haritz Puerto, Nils Reimers, Leonardo Riberio, Anna Rogers, Andreas R ̈uckl ́e, Noah A. Smith, and Thomas Wolf for a fruitful discussion and helpful feedback at the seminar. M.T. and A.M. acknowledge the European Research Council (ERC StG DeepSPIN 758969), EU’s Horizon Europe Research and Innovation Actions (UTTER, contract 101070631), and Fundac ̧ ̃ao para a Ciˆencia e Tecnologia through contract UIDB/ 50008/2020. L.D. acknowledges support of the Independent Research Fund Denmark under project 9131-00131B, Verif-AI, and the Novo Nordisk Foundation project ClinRead, NNF19OC0059138. Finally,"
+    },
+    {
+      "rank": 4,
+      "chunk_id": "baseline-treviso2023-0023",
+      "score": 0.38683199882507324,
+      "doc_id": "treviso2023",
+      "page_start": 6,
+      "page_end": 6,
+      "embed_tokens": 254,
+      "text": "al., 2019) uses a masked language model (MLM) task, which involves filling randomly masked tokens. To make better use of available data, various masking strategies have been investigated. Masking objects and content words only rather than random tokens (Bitton et al., 2021), or masking more tokens (Wettig et al., 2022), has led to higher task performance and more efficient use of the available data. ELECTRA (Clark et al., 2020) and DeBERTa (He et al., 2023) tried replaced token detection (RTD), an objective that uses a small generator model to replace input tokens, and converges more quickly to better performance. A limitation of the MLM and RTD objectives is that they work with single token replacements. T5 (Raffel et al., 2020) and BART (Lewis et al., 2020a) overcome this by adopting a denoising sequence-to-sequence objective to pre-train an encoder-decoder model, allowing the decoder to predict a span of tokens for masked positions. In practice, this allows training on shorter sequences without losing task performance, which helps to reduce training costs"
+    },
+    {
+      "rank": 5,
+      "chunk_id": "baseline-strubell2019-0013",
+      "score": 0.38213416934013367,
+      "doc_id": "strubell2019",
+      "page_start": 3,
+      "page_end": 3,
+      "embed_tokens": 254,
+      "text": "different neural network layer types. Canziani et al. (2016) assess image classification model accuracy as a function of model size and gigaflops required during inference. They also measure average power draw required during inference on GPUs as a function of batch size. Neither work analyzes the recurrent and self-attention models that have become commonplace in NLP, nor do they extrapolate power to estimates of carbon and dollar cost of training. Analysis of hyperparameter tuning has been performed in the context of improved algorithms for hyperparameter search (Bergstra et al., 2011; Bergstra and Bengio, 2012; Snoek et al., 2012). To our knowledge there exists to date no analysis of the computation required for R&D and hyperparameter tuning of neural network models in NLP. 6Via the authors on Reddit. 7GPU lower bound computed using pre-emptible P100/V100 U.S. resources priced at $0.43–$0.74/hr, upper bound uses on-demand U.S. resources priced at $1.46– $2.48/hr. We similarly use pre-emptible ($1.46/hr–$"
+    },
+    {
+      "rank": 6,
+      "chunk_id": "baseline-treviso2023-0005",
+      "score": 0.3819299042224884,
+      "doc_id": "treviso2023",
+      "page_start": 2,
+      "page_end": 2,
+      "embed_tokens": 254,
+      "text": "growth in the number of parameters in pre-trained language models. Adapted from Lakim et al. (2022). for the two typical training setups in modern NLP: pre-training (Section 4) and fine-tuning (Section 5). We then discuss methods for making inference more efficient (Section 6). While we mainly focus on algorithmic approaches, we provide appropriate pointers regarding hardware that are connected to the scale at which we expect to deploy a model (Section 7). We then discuss how to quantify efficiency and what factors to consider during evaluation (Section 8), and, finally, how to efficiently decide upon the best suited model (Section 9). To guide the reader, Figure 3 presents a typology of efficient NLP methods considered in this survey. 2Data Data efficiency is improved by using fewer training instances, or by making better use of available instances. Fixed compute budgets motivate balancing model size and training data size, especially during pre-training (Hoffmann et al., 2022). 2.1 Filtering Improving data quality can boost performance while reducing training costs during pre-training and fine-tuning. For instance, Lee et al. (2022b) showed that removing duplicates in pre"
+    },
+    {
+      "rank": 7,
+      "chunk_id": "baseline-strubell2019-0001",
+      "score": 0.37075740098953247,
+      "doc_id": "strubell2019",
+      "page_start": 1,
+      "page_end": 1,
+      "embed_tokens": 254,
+      "text": "issue to the attention of NLP researchers by quantifying the approximate financial and environmental costs of training a variety of recently successful neural network models for NLP. Based on these findings, we propose actionable recommendations to reduce costs and improve equity in NLP research and practice. 1 Introduction Advances in techniques and hardware for training deep neural networks have recently enabled impressive accuracy improvements across many fundamental NLP tasks (Bahdanau et al., 2015; Luong et al., 2015; Dozat and Manning, 2017; Vaswani et al., 2017), with the most computationally-hungry models obtaining the highest scores (Peters et al., 2018; Devlin et al., 2019; Radford et al., 2019; So et al., 2019). As a result, training a state-of-the-art model now requires substantial computational resources which demand considerable energy, along with the associated financial and environmental costs. Research and development of new models multiplies these costs by thousands of times by requiring retraining to experiment with model architectures and hyperparameters. Whereas a decade ago most Consumption CO2e (lbs) Air travel, 1 person, NY↔SF 1984 Human life, avg, 1"
+    },
+    {
+      "rank": 8,
+      "chunk_id": "baseline-strubell2019-0010",
+      "score": 0.36386048793792725,
+      "doc_id": "strubell2019",
+      "page_start": 3,
+      "page_end": 3,
+      "embed_tokens": 254,
+      "text": "Tbig ; 213M parameters) was trained for 3.5 days (84 hours; 300k steps). This model is also the basis for recent work on neural architecture search (NAS) for machine translation and language modeling (So et al., 2019), and the NLP pipeline that we study in more detail in §4.2 (Strubell et al., 2018). So et al. (2019) report that their full architecture search ran for a total of 979M training steps, and that their base model requires 10 hours to train for 300k steps on one TPUv2 core. This equates to 32,623 hours of TPU or 274,120 hours on 8 P100 GPUs. ELMo. The ELMo model (Peters et al., 2018) is based on stacked LSTMs and provides rich word representations in context by pre-training on a large amount of data using a language modeling objective. Replacing context-independent pretrained word embeddings with ELMo has been shown to increase performance on downstream tasks such as named entity recognition, semantic role labeling, and coreference. Peters et al. (2018) report that ELMo was trained on 3 NVIDIA"
+    }
+  ],
+  "prompt": {
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful research assistant. Answer the question using only the provided context. If the context does not contain the answer, reply exactly: \"The context does not contain the answer.\" Keep the answer short and factual."
+      },
+      {
+        "role": "user",
+        "content": "Context:\n[1] (source: treviso2023, page 2)\net al., 2022). 2.1 Filtering Improving data quality can boost performance while reducing training costs during pre-training and fine-tuning. For instance, Lee et al. (2022b) showed that removing duplicates in pre-training increases training efficiency, giving equal or even better model performance compared to using all data. Zhang et al. (2022) used MinhashLSH (Leskovec et al., 2020) to remove duplicates while developing OPT. De-duplication can lead to substantially reduced computation cost, especially in cases with abundant pre-training data but limited compute budget (Hoffmann et al., 2022). Similar observations have been made for finetuning. For instance, Mishra and Sachdeva (2020) found—via adversarial filtering (Zellers et al., 2018)—a subset of only ∼2% of the SNLI data (Bowman et al., 2015) that leads to performance comparable to using the full corpus. While such filtering approaches are useful for mitigating biases (Le Bras et al., 2020), they may not always serve as tools to filter existing datasets, as these often suffer from insufficient training data. 2\n\n[2] (source: strubell2019, page 1)\nProceedings of the 57th Annual Meeting of the Association for Computational Linguistics, pages 3645–3650 Florence, Italy, July 28 - August 2, 2019. c©2019 Association for Computational Linguistics 3645 Energy and Policy Considerations for Deep Learning in NLP Emma Strubell Ananya Ganesh Andrew McCallum College of Information and Computer Sciences University of Massachusetts Amherst {strubell, aganesh, mccallum}@cs.umass.edu Abstract Recent progress in hardware and methodology for training neural networks has ushered in a new generation of large networks trained on abundant data. These models have obtained notable gains in accuracy across many NLP tasks. However, these accuracy improvements depend on the availability of exceptionally large computational resources that necessitate similarly substantial energy consumption. As a result these models are costly to train and develop, both financially, due to the cost of hardware and electricity or cloud compute time, and environmentally, due to the carbon footprint required to fuel modern tensor processing hardware. In this paper we bring this issue to the attention of NLP researchers by quantifying the approximate financial and environmental costs of training a variety of recently successful neural network models for NLP. Based on these findings, we propose actionable recommendations to reduce costs and improve equity in NL\n\n[3] (source: treviso2023, page 13)\naccelerate advances in this important area of research with great potential for impact both within our field and for society as a whole. Acknowledgments This work was initiated at and benefited substantially from the Dagstuhl Seminar 22232: Efficient and Equitable Natural Language Processing in the Age of Deep Learning. We further thank Yuki Arase, Jonathan Frankle, Alexander Koller, Alexander L ̈oser, Alexandra Sasha Luccioni, Haritz Puerto, Nils Reimers, Leonardo Riberio, Anna Rogers, Andreas R ̈uckl ́e, Noah A. Smith, and Thomas Wolf for a fruitful discussion and helpful feedback at the seminar. M.T. and A.M. acknowledge the European Research Council (ERC StG DeepSPIN 758969), EU’s Horizon Europe Research and Innovation Actions (UTTER, contract 101070631), and Fundac ̧ ̃ao para a Ciˆencia e Tecnologia through contract UIDB/ 50008/2020. L.D. acknowledges support of the Independent Research Fund Denmark under project 9131-00131B, Verif-AI, and the Novo Nordisk Foundation project ClinRead, NNF19OC0059138. Finally,\n\n[4] (source: treviso2023, page 6)\nal., 2019) uses a masked language model (MLM) task, which involves filling randomly masked tokens. To make better use of available data, various masking strategies have been investigated. Masking objects and content words only rather than random tokens (Bitton et al., 2021), or masking more tokens (Wettig et al., 2022), has led to higher task performance and more efficient use of the available data. ELECTRA (Clark et al., 2020) and DeBERTa (He et al., 2023) tried replaced token detection (RTD), an objective that uses a small generator model to replace input tokens, and converges more quickly to better performance. A limitation of the MLM and RTD objectives is that they work with single token replacements. T5 (Raffel et al., 2020) and BART (Lewis et al., 2020a) overcome this by adopting a denoising sequence-to-sequence objective to pre-train an encoder-decoder model, allowing the decoder to predict a span of tokens for masked positions. In practice, this allows training on shorter sequences without losing task performance, which helps to reduce training costs\n\n[5] (source: strubell2019, page 3)\ndifferent neural network layer types. Canziani et al. (2016) assess image classification model accuracy as a function of model size and gigaflops required during inference. They also measure average power draw required during inference on GPUs as a function of batch size. Neither work analyzes the recurrent and self-attention models that have become commonplace in NLP, nor do they extrapolate power to estimates of carbon and dollar cost of training. Analysis of hyperparameter tuning has been performed in the context of improved algorithms for hyperparameter search (Bergstra et al., 2011; Bergstra and Bengio, 2012; Snoek et al., 2012). To our knowledge there exists to date no analysis of the computation required for R&D and hyperparameter tuning of neural network models in NLP. 6Via the authors on Reddit. 7GPU lower bound computed using pre-emptible P100/V100 U.S. resources priced at $0.43–$0.74/hr, upper bound uses on-demand U.S. resources priced at $1.46– $2.48/hr. We similarly use pre-emptible ($1.46/hr–$\n\n[6] (source: treviso2023, page 2)\ngrowth in the number of parameters in pre-trained language models. Adapted from Lakim et al. (2022). for the two typical training setups in modern NLP: pre-training (Section 4) and fine-tuning (Section 5). We then discuss methods for making inference more efficient (Section 6). While we mainly focus on algorithmic approaches, we provide appropriate pointers regarding hardware that are connected to the scale at which we expect to deploy a model (Section 7). We then discuss how to quantify efficiency and what factors to consider during evaluation (Section 8), and, finally, how to efficiently decide upon the best suited model (Section 9). To guide the reader, Figure 3 presents a typology of efficient NLP methods considered in this survey. 2Data Data efficiency is improved by using fewer training instances, or by making better use of available instances. Fixed compute budgets motivate balancing model size and training data size, especially during pre-training (Hoffmann et al., 2022). 2.1 Filtering Improving data quality can boost performance while reducing training costs during pre-training and fine-tuning. For instance, Lee et al. (2022b) showed that removing duplicates in pre\n\n[7] (source: strubell2019, page 1)\nissue to the attention of NLP researchers by quantifying the approximate financial and environmental costs of training a variety of recently successful neural network models for NLP. Based on these findings, we propose actionable recommendations to reduce costs and improve equity in NLP research and practice. 1 Introduction Advances in techniques and hardware for training deep neural networks have recently enabled impressive accuracy improvements across many fundamental NLP tasks (Bahdanau et al., 2015; Luong et al., 2015; Dozat and Manning, 2017; Vaswani et al., 2017), with the most computationally-hungry models obtaining the highest scores (Peters et al., 2018; Devlin et al., 2019; Radford et al., 2019; So et al., 2019). As a result, training a state-of-the-art model now requires substantial computational resources which demand considerable energy, along with the associated financial and environmental costs. Research and development of new models multiplies these costs by thousands of times by requiring retraining to experiment with model architectures and hyperparameters. Whereas a decade ago most Consumption CO2e (lbs) Air travel, 1 person, NY↔SF 1984 Human life, avg, 1\n\n[8] (source: strubell2019, page 3)\nTbig ; 213M parameters) was trained for 3.5 days (84 hours; 300k steps). This model is also the basis for recent work on neural architecture search (NAS) for machine translation and language modeling (So et al., 2019), and the NLP pipeline that we study in more detail in §4.2 (Strubell et al., 2018). So et al. (2019) report that their full architecture search ran for a total of 979M training steps, and that their base model requires 10 hours to train for 300k steps on one TPUv2 core. This equates to 32,623 hours of TPU or 274,120 hours on 8 P100 GPUs. ELMo. The ELMo model (Peters et al., 2018) is based on stacked LSTMs and provides rich word representations in context by pre-training on a large amount of data using a language modeling objective. Replacing context-independent pretrained word embeddings with ELMo has been shown to increase performance on downstream tasks such as named entity recognition, semantic role labeling, and coreference. Peters et al. (2018) report that ELMo was trained on 3 NVIDIA\n\nQuestion: Using adversarial filtering, what fraction of the SNLI data did Mishra and Sachdeva find was enough for performance comparable to the full corpus?\nAnswer:"
+      }
+    ],
+    "rendered": "<|im_start|>system\nYou are a careful research assistant. Answer the question using only the provided context. If the context does not contain the answer, reply exactly: \"The context does not contain the answer.\" Keep the answer short and factual.<|im_end|>\n<|im_start|>user\nContext:\n[1] (source: treviso2023, page 2)\net al., 2022). 2.1 Filtering Improving data quality can boost performance while reducing training costs during pre-training and fine-tuning. For instance, Lee et al. (2022b) showed that removing duplicates in pre-training increases training efficiency, giving equal or even better model performance compared to using all data. Zhang et al. (2022) used MinhashLSH (Leskovec et al., 2020) to remove duplicates while developing OPT. De-duplication can lead to substantially reduced computation cost, especially in cases with abundant pre-training data but limited compute budget (Hoffmann et al., 2022). Similar observations have been made for finetuning. For instance, Mishra and Sachdeva (2020) found—via adversarial filtering (Zellers et al., 2018)—a subset of only ∼2% of the SNLI data (Bowman et al., 2015) that leads to performance comparable to using the full corpus. While such filtering approaches are useful for mitigating biases (Le Bras et al., 2020), they may not always serve as tools to filter existing datasets, as these often suffer from insufficient training data. 2\n\n[2] (source: strubell2019, page 1)\nProceedings of the 57th Annual Meeting of the Association for Computational Linguistics, pages 3645–3650 Florence, Italy, July 28 - August 2, 2019. c©2019 Association for Computational Linguistics 3645 Energy and Policy Considerations for Deep Learning in NLP Emma Strubell Ananya Ganesh Andrew McCallum College of Information and Computer Sciences University of Massachusetts Amherst {strubell, aganesh, mccallum}@cs.umass.edu Abstract Recent progress in hardware and methodology for training neural networks has ushered in a new generation of large networks trained on abundant data. These models have obtained notable gains in accuracy across many NLP tasks. However, these accuracy improvements depend on the availability of exceptionally large computational resources that necessitate similarly substantial energy consumption. As a result these models are costly to train and develop, both financially, due to the cost of hardware and electricity or cloud compute time, and environmentally, due to the carbon footprint required to fuel modern tensor processing hardware. In this paper we bring this issue to the attention of NLP researchers by quantifying the approximate financial and environmental costs of training a variety of recently successful neural network models for NLP. Based on these findings, we propose actionable recommendations to reduce costs and improve equity in NL\n\n[3] (source: treviso2023, page 13)\naccelerate advances in this important area of research with great potential for impact both within our field and for society as a whole. Acknowledgments This work was initiated at and benefited substantially from the Dagstuhl Seminar 22232: Efficient and Equitable Natural Language Processing in the Age of Deep Learning. We further thank Yuki Arase, Jonathan Frankle, Alexander Koller, Alexander L ̈oser, Alexandra Sasha Luccioni, Haritz Puerto, Nils Reimers, Leonardo Riberio, Anna Rogers, Andreas R ̈uckl ́e, Noah A. Smith, and Thomas Wolf for a fruitful discussion and helpful feedback at the seminar. M.T. and A.M. acknowledge the European Research Council (ERC StG DeepSPIN 758969), EU’s Horizon Europe Research and Innovation Actions (UTTER, contract 101070631), and Fundac ̧ ̃ao para a Ciˆencia e Tecnologia through contract UIDB/ 50008/2020. L.D. acknowledges support of the Independent Research Fund Denmark under project 9131-00131B, Verif-AI, and the Novo Nordisk Foundation project ClinRead, NNF19OC0059138. Finally,\n\n[4] (source: treviso2023, page 6)\nal., 2019) uses a masked language model (MLM) task, which involves filling randomly masked tokens. To make better use of available data, various masking strategies have been investigated. Masking objects and content words only rather than random tokens (Bitton et al., 2021), or masking more tokens (Wettig et al., 2022), has led to higher task performance and more efficient use of the available data. ELECTRA (Clark et al., 2020) and DeBERTa (He et al., 2023) tried replaced token detection (RTD), an objective that uses a small generator model to replace input tokens, and converges more quickly to better performance. A limitation of the MLM and RTD objectives is that they work with single token replacements. T5 (Raffel et al., 2020) and BART (Lewis et al., 2020a) overcome this by adopting a denoising sequence-to-sequence objective to pre-train an encoder-decoder model, allowing the decoder to predict a span of tokens for masked positions. In practice, this allows training on shorter sequences without losing task performance, which helps to reduce training costs\n\n[5] (source: strubell2019, page 3)\ndifferent neural network layer types. Canziani et al. (2016) assess image classification model accuracy as a function of model size and gigaflops required during inference. They also measure average power draw required during inference on GPUs as a function of batch size. Neither work analyzes the recurrent and self-attention models that have become commonplace in NLP, nor do they extrapolate power to estimates of carbon and dollar cost of training. Analysis of hyperparameter tuning has been performed in the context of improved algorithms for hyperparameter search (Bergstra et al., 2011; Bergstra and Bengio, 2012; Snoek et al., 2012). To our knowledge there exists to date no analysis of the computation required for R&D and hyperparameter tuning of neural network models in NLP. 6Via the authors on Reddit. 7GPU lower bound computed using pre-emptible P100/V100 U.S. resources priced at $0.43–$0.74/hr, upper bound uses on-demand U.S. resources priced at $1.46– $2.48/hr. We similarly use pre-emptible ($1.46/hr–$\n\n[6] (source: treviso2023, page 2)\ngrowth in the number of parameters in pre-trained language models. Adapted from Lakim et al. (2022). for the two typical training setups in modern NLP: pre-training (Section 4) and fine-tuning (Section 5). We then discuss methods for making inference more efficient (Section 6). While we mainly focus on algorithmic approaches, we provide appropriate pointers regarding hardware that are connected to the scale at which we expect to deploy a model (Section 7). We then discuss how to quantify efficiency and what factors to consider during evaluation (Section 8), and, finally, how to efficiently decide upon the best suited model (Section 9). To guide the reader, Figure 3 presents a typology of efficient NLP methods considered in this survey. 2Data Data efficiency is improved by using fewer training instances, or by making better use of available instances. Fixed compute budgets motivate balancing model size and training data size, especially during pre-training (Hoffmann et al., 2022). 2.1 Filtering Improving data quality can boost performance while reducing training costs during pre-training and fine-tuning. For instance, Lee et al. (2022b) showed that removing duplicates in pre\n\n[7] (source: strubell2019, page 1)\nissue to the attention of NLP researchers by quantifying the approximate financial and environmental costs of training a variety of recently successful neural network models for NLP. Based on these findings, we propose actionable recommendations to reduce costs and improve equity in NLP research and practice. 1 Introduction Advances in techniques and hardware for training deep neural networks have recently enabled impressive accuracy improvements across many fundamental NLP tasks (Bahdanau et al., 2015; Luong et al., 2015; Dozat and Manning, 2017; Vaswani et al., 2017), with the most computationally-hungry models obtaining the highest scores (Peters et al., 2018; Devlin et al., 2019; Radford et al., 2019; So et al., 2019). As a result, training a state-of-the-art model now requires substantial computational resources which demand considerable energy, along with the associated financial and environmental costs. Research and development of new models multiplies these costs by thousands of times by requiring retraining to experiment with model architectures and hyperparameters. Whereas a decade ago most Consumption CO2e (lbs) Air travel, 1 person, NY↔SF 1984 Human life, avg, 1\n\n[8] (source: strubell2019, page 3)\nTbig ; 213M parameters) was trained for 3.5 days (84 hours; 300k steps). This model is also the basis for recent work on neural architecture search (NAS) for machine translation and language modeling (So et al., 2019), and the NLP pipeline that we study in more detail in §4.2 (Strubell et al., 2018). So et al. (2019) report that their full architecture search ran for a total of 979M training steps, and that their base model requires 10 hours to train for 300k steps on one TPUv2 core. This equates to 32,623 hours of TPU or 274,120 hours on 8 P100 GPUs. ELMo. The ELMo model (Peters et al., 2018) is based on stacked LSTMs and provides rich word representations in context by pre-training on a large amount of data using a language modeling objective. Replacing context-independent pretrained word embeddings with ELMo has been shown to increase performance on downstream tasks such as named entity recognition, semantic role labeling, and coreference. Peters et al. (2018) report that ELMo was trained on 3 NVIDIA\n\nQuestion: Using adversarial filtering, what fraction of the SNLI data did Mishra and Sachdeva find was enough for performance comparable to the full corpus?\nAnswer:<|im_end|>\n<|im_start|>assistant\n",
+    "token_breakdown": {
+      "query_tokens": 30,
+      "context_tokens": 2302,
+      "chunk_tokens": [
+        268,
+        276,
+        282,
+        258,
+        256,
+        255,
+        274,
+        287
+      ]
+    }
+  },
+  "generation": {
+    "t_in": 2396,
+    "t_out": 33,
+    "generation_ms": 1371.967668645084,
+    "prefill_ms": 601.5336345881224,
+    "decode_ms": 770.4340340569615,
+    "decode_tokens_per_s": 41.53502906860693,
+    "hit_max_new_tokens": false,
+    "answer": "Mishra and Sachdeva found that a subset of only ∼2% of the SNLI data was enough for performance comparable to the full corpus."
+  },
+  "energy": {
+    "codecarbon": {
+      "co2_kg": 2.7980563330038134e-05,
+      "energy_kwh": 9.621761431212713e-05,
+      "cpu_energy_kwh": 3.4186555720126582e-06,
+      "gpu_energy_kwh": 8.893368223539255e-05,
+      "ram_energy_kwh": 3.865276504721906e-06,
+      "cc_duration_s": 4.5804456220939755,
+      "cpu_power_w": 5.8552304879894566,
+      "gpu_power_w": 156.9923331699592,
+      "ram_power_w": 10.0,
+      "country": "Ireland",
+      "region": "leinster",
+      "carbon_intensity_g_per_kwh": 290.80500000000006
+    },
+    "gpu_nvml_retrieval_j": 0.0,
+    "gpu_nvml_generation_j": 320.092,
+    "gpu_peak_mem_mb": 15253.40234375
+  },
+  "grading": {
+    "suggested_grade": "P",
+    "suggestion_reason": "all key facts present; evidence passage was retrieved",
+    "evidence_retrieved_at_rank": 1
+  }
+}

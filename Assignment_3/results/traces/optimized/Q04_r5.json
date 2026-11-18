@@ -1,0 +1,126 @@
+{
+  "run_id": "20261118-015420_main",
+  "timestamp": "2026-11-18T02:01:03.590+00:00",
+  "config": {
+    "name": "optimized",
+    "label": "B. Optimized (low context / high-quality retrieval)",
+    "embedding_model": "BAAI/bge-small-en-v1.5",
+    "chunk_size": 512,
+    "chunk_overlap": 50,
+    "top_k": 3,
+    "query_prefix": "Represent this sentence for searching relevant passages: "
+  },
+  "question": {
+    "id": "Q04",
+    "question": "In the LISA development case study, how many small hyperparameter grid searches were performed and how many training jobs did they produce in total?",
+    "reference_answer": "123 grid searches, producing 4,789 jobs in total (over 172 days).",
+    "doc_id": "strubell2019",
+    "evidence": "123 small hyperparameter grid searches were performed, resulting in 4789 jobs in total",
+    "keywords": [
+      [
+        "123"
+      ],
+      [
+        "4789",
+        "4,789"
+      ]
+    ],
+    "evidence_page": 4
+  },
+  "repeat": 5,
+  "retrieval": {
+    "query": "Represent this sentence for searching relevant passages: In the LISA development case study, how many small hyperparameter grid searches were performed and how many training jobs did they produce in total?",
+    "query_embed_tokens": 38,
+    "encode_ms": 8.967041037976742,
+    "search_ms": 0.03988482058048248,
+    "retrieval_ms": 9.006925858557224
+  },
+  "retrieved_chunks": [
+    {
+      "rank": 1,
+      "chunk_id": "optimized-strubell2019-0008",
+      "score": 0.6604722738265991,
+      "doc_id": "strubell2019",
+      "page_start": 4,
+      "page_end": 5,
+      "embed_tokens": 510,
+      "text": "during R&D. about 60 GPUs running constantly throughout the 6 month duration of the project. Table 4 lists upper and lower bounds of the estimated cost in terms of Google Cloud compute and raw electricity required to develop and deploy this model.9 We see that while training a single model is relatively inexpensive, the cost of tuning a model for a new dataset, which we estimate here to require 24 jobs, or performing the full R&D required to develop this model, quickly becomes extremely expensive. 5 Conclusions Authors should report training time and sensitivity to hyperparameters. Our experiments suggest that it would be beneficial to directly compare different models to perform a cost-benefit (accuracy) analysis. To address this, when proposing a model that is meant to be re-trained for downstream use, such as retraining on a new domain or fine-tuning on a new task, authors should report training time and computational resources required, as well as model sensitivity to hyperparameters. This will enable direct comparison across models, allowing subsequent consumers of these models to accurately assess whether the required computational resources 9Based on average U.S cost of electricity of $0.12/kWh. are compatible with their setting. More explicit characterization of tuning time could also reveal inconsistencies in time spent tuning baseline models compared to proposed contributions. Realizing this will require: (1) a standard, hardwareindependent measurement of training time, such as gigaflops required to convergence, and (2) a standard measurement of model sensitivity to data and hyperparameters, such as variance with respect to hyperparameters searched. Academic researchers need equitable access to computation resources. Recent advances in available compute come at a high price not attainable to all who desire access. Most of the models studied in this paper were developed outside academia; recent improvements in state-of-the-art accuracy are possible thanks to industry access to large-scale compute. Limiting this style of research to industry labs hurts the NLP research community in many ways. First, it stifles creativity. Researchers with good ideas but without access to large-scale compute will simply not be able to execute their ideas, instead constrained to focus on different problems. Second, it prohibits certain types of research on the basis of access to financial resources. This even more deeply promotes the already problematic “rich get richer” cycle of research funding, where groups that are already successful and thus well-funded tend to receive more funding due to their existing accomplishments. Third"
+    },
+    {
+      "rank": 2,
+      "chunk_id": "optimized-strubell2019-0002",
+      "score": 0.6487050652503967,
+      "doc_id": "strubell2019",
+      "page_start": 2,
+      "page_end": 2,
+      "embed_tokens": 510,
+      "text": "be converted to approximate carbon emissions and electricity costs. To estimate the even greater resources required to transfer an existing model to a new task or develop new models, we perform a case study of the full computational resources required for the development and tuning of a recent state-of-the-art NLP pipeline (Strubell et al., 2018). We conclude with recommendations to the community based on our findings, namely: (1) Time to retrain and sensitivity to hyperparameters should be reported for NLP machine learning models; (2) academic researchers need equitable access to computational resources; and (3) researchers should prioritize developing efficient models and hardware. 2 Methods To quantify the computational and environmental cost of training deep neural network models for NLP, we perform an analysis of the energy required to train a variety of popular offthe-shelf NLP models, as well as a case study of the complete sum of resources required to develop LISA (Strubell et al., 2018), a state-of-the-art NLP model from EMNLP 2018, including all tuning and experimentation. We measure energy use as follows. We train the models described in §2.1 using the default settings provided, and sample GPU and CPU power consumption during training. Each model was trained for a maximum of 1 day. We train all models on a single NVIDIA Titan X GPU, with the exception of ELMo which was trained on 3 NVIDIA GTX 1080 Ti GPUs. While training, we repeatedly query the NVIDIA System Management Interface2 to sample the GPU power consumption and report the average over all samples. To sample CPU power consumption, we use Intel’s Running Average Power Limit interface.3 2nvidia-smi: https://bit.ly/30sGEbi 3RAPL power meter: https://bit.ly/2LObQhV Consumer Renew. Gas Coal Nuc. China 22% 3% 65% 4% Germany 40% 7% 38% 13% United States 17% 35% 27% 19% Amazon-AWS 17% 24% 30% 26% Google 56% 14% 15% 10% Microsoft 32% 23% 31% 10% Table 2: Percent energy sourced from: Renewable (e.g. hydro, solar, wind), natural gas, coal and nuclear for the top 3 cloud compute providers (Cook et al., 2017), compared"
+    },
+    {
+      "rank": 3,
+      "chunk_id": "optimized-strubell2019-0010",
+      "score": 0.6381673812866211,
+      "doc_id": "strubell2019",
+      "page_start": 5,
+      "page_end": 5,
+      "embed_tokens": 201,
+      "text": "because their interoperability with popular deep learning frameworks such as PyTorch and TensorFlow is not optimized, i.e. there are not simple examples of how to tune TensorFlow Estimators using Bayesian search. Integrating these tools into the workflows with which NLP researchers and practitioners are already familiar could have notable impact on the cost of developing and tuning in NLP. Acknowledgements We are grateful to Sherief Farouk and the anonymous reviewers for helpful feedback on earlier drafts. This work was supported in part by the Centers for Data Science and Intelligent Information Retrieval, the Chan Zuckerberg Initiative under the Scientific Knowledge Base Construction project, the IBM Cognitive Horizons Network agreement no. W1668553, and National Science Foundation grant no. IIS-1514053. Any opinions, findings and conclusions or recommendations expressed in this material are those of the authors and do not necessarily reflect those of the sponsor. 10For example, the Hyperopt Python library."
+    }
+  ],
+  "prompt": {
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful research assistant. Answer the question using only the provided context. If the context does not contain the answer, reply exactly: \"The context does not contain the answer.\" Keep the answer short and factual."
+      },
+      {
+        "role": "user",
+        "content": "Context:\n[1] (source: strubell2019, page 4)\nduring R&D. about 60 GPUs running constantly throughout the 6 month duration of the project. Table 4 lists upper and lower bounds of the estimated cost in terms of Google Cloud compute and raw electricity required to develop and deploy this model.9 We see that while training a single model is relatively inexpensive, the cost of tuning a model for a new dataset, which we estimate here to require 24 jobs, or performing the full R&D required to develop this model, quickly becomes extremely expensive. 5 Conclusions Authors should report training time and sensitivity to hyperparameters. Our experiments suggest that it would be beneficial to directly compare different models to perform a cost-benefit (accuracy) analysis. To address this, when proposing a model that is meant to be re-trained for downstream use, such as retraining on a new domain or fine-tuning on a new task, authors should report training time and computational resources required, as well as model sensitivity to hyperparameters. This will enable direct comparison across models, allowing subsequent consumers of these models to accurately assess whether the required computational resources 9Based on average U.S cost of electricity of $0.12/kWh. are compatible with their setting. More explicit characterization of tuning time could also reveal inconsistencies in time spent tuning baseline models compared to proposed contributions. Realizing this will require: (1) a standard, hardwareindependent measurement of training time, such as gigaflops required to convergence, and (2) a standard measurement of model sensitivity to data and hyperparameters, such as variance with respect to hyperparameters searched. Academic researchers need equitable access to computation resources. Recent advances in available compute come at a high price not attainable to all who desire access. Most of the models studied in this paper were developed outside academia; recent improvements in state-of-the-art accuracy are possible thanks to industry access to large-scale compute. Limiting this style of research to industry labs hurts the NLP research community in many ways. First, it stifles creativity. Researchers with good ideas but without access to large-scale compute will simply not be able to execute their ideas, instead constrained to focus on different problems. Second, it prohibits certain types of research on the basis of access to financial resources. This even more deeply promotes the already problematic “rich get richer” cycle of research funding, where groups that are already successful and thus well-funded tend to receive more funding due to their existing accomplishments. Third\n\n[2] (source: strubell2019, page 2)\nbe converted to approximate carbon emissions and electricity costs. To estimate the even greater resources required to transfer an existing model to a new task or develop new models, we perform a case study of the full computational resources required for the development and tuning of a recent state-of-the-art NLP pipeline (Strubell et al., 2018). We conclude with recommendations to the community based on our findings, namely: (1) Time to retrain and sensitivity to hyperparameters should be reported for NLP machine learning models; (2) academic researchers need equitable access to computational resources; and (3) researchers should prioritize developing efficient models and hardware. 2 Methods To quantify the computational and environmental cost of training deep neural network models for NLP, we perform an analysis of the energy required to train a variety of popular offthe-shelf NLP models, as well as a case study of the complete sum of resources required to develop LISA (Strubell et al., 2018), a state-of-the-art NLP model from EMNLP 2018, including all tuning and experimentation. We measure energy use as follows. We train the models described in §2.1 using the default settings provided, and sample GPU and CPU power consumption during training. Each model was trained for a maximum of 1 day. We train all models on a single NVIDIA Titan X GPU, with the exception of ELMo which was trained on 3 NVIDIA GTX 1080 Ti GPUs. While training, we repeatedly query the NVIDIA System Management Interface2 to sample the GPU power consumption and report the average over all samples. To sample CPU power consumption, we use Intel’s Running Average Power Limit interface.3 2nvidia-smi: https://bit.ly/30sGEbi 3RAPL power meter: https://bit.ly/2LObQhV Consumer Renew. Gas Coal Nuc. China 22% 3% 65% 4% Germany 40% 7% 38% 13% United States 17% 35% 27% 19% Amazon-AWS 17% 24% 30% 26% Google 56% 14% 15% 10% Microsoft 32% 23% 31% 10% Table 2: Percent energy sourced from: Renewable (e.g. hydro, solar, wind), natural gas, coal and nuclear for the top 3 cloud compute providers (Cook et al., 2017), compared\n\n[3] (source: strubell2019, page 5)\nbecause their interoperability with popular deep learning frameworks such as PyTorch and TensorFlow is not optimized, i.e. there are not simple examples of how to tune TensorFlow Estimators using Bayesian search. Integrating these tools into the workflows with which NLP researchers and practitioners are already familiar could have notable impact on the cost of developing and tuning in NLP. Acknowledgements We are grateful to Sherief Farouk and the anonymous reviewers for helpful feedback on earlier drafts. This work was supported in part by the Centers for Data Science and Intelligent Information Retrieval, the Chan Zuckerberg Initiative under the Scientific Knowledge Base Construction project, the IBM Cognitive Horizons Network agreement no. W1668553, and National Science Foundation grant no. IIS-1514053. Any opinions, findings and conclusions or recommendations expressed in this material are those of the authors and do not necessarily reflect those of the sponsor. 10For example, the Hyperopt Python library.\n\nQuestion: In the LISA development case study, how many small hyperparameter grid searches were performed and how many training jobs did they produce in total?\nAnswer:"
+      }
+    ],
+    "rendered": "<|im_start|>system\nYou are a careful research assistant. Answer the question using only the provided context. If the context does not contain the answer, reply exactly: \"The context does not contain the answer.\" Keep the answer short and factual.<|im_end|>\n<|im_start|>user\nContext:\n[1] (source: strubell2019, page 4)\nduring R&D. about 60 GPUs running constantly throughout the 6 month duration of the project. Table 4 lists upper and lower bounds of the estimated cost in terms of Google Cloud compute and raw electricity required to develop and deploy this model.9 We see that while training a single model is relatively inexpensive, the cost of tuning a model for a new dataset, which we estimate here to require 24 jobs, or performing the full R&D required to develop this model, quickly becomes extremely expensive. 5 Conclusions Authors should report training time and sensitivity to hyperparameters. Our experiments suggest that it would be beneficial to directly compare different models to perform a cost-benefit (accuracy) analysis. To address this, when proposing a model that is meant to be re-trained for downstream use, such as retraining on a new domain or fine-tuning on a new task, authors should report training time and computational resources required, as well as model sensitivity to hyperparameters. This will enable direct comparison across models, allowing subsequent consumers of these models to accurately assess whether the required computational resources 9Based on average U.S cost of electricity of $0.12/kWh. are compatible with their setting. More explicit characterization of tuning time could also reveal inconsistencies in time spent tuning baseline models compared to proposed contributions. Realizing this will require: (1) a standard, hardwareindependent measurement of training time, such as gigaflops required to convergence, and (2) a standard measurement of model sensitivity to data and hyperparameters, such as variance with respect to hyperparameters searched. Academic researchers need equitable access to computation resources. Recent advances in available compute come at a high price not attainable to all who desire access. Most of the models studied in this paper were developed outside academia; recent improvements in state-of-the-art accuracy are possible thanks to industry access to large-scale compute. Limiting this style of research to industry labs hurts the NLP research community in many ways. First, it stifles creativity. Researchers with good ideas but without access to large-scale compute will simply not be able to execute their ideas, instead constrained to focus on different problems. Second, it prohibits certain types of research on the basis of access to financial resources. This even more deeply promotes the already problematic “rich get richer” cycle of research funding, where groups that are already successful and thus well-funded tend to receive more funding due to their existing accomplishments. Third\n\n[2] (source: strubell2019, page 2)\nbe converted to approximate carbon emissions and electricity costs. To estimate the even greater resources required to transfer an existing model to a new task or develop new models, we perform a case study of the full computational resources required for the development and tuning of a recent state-of-the-art NLP pipeline (Strubell et al., 2018). We conclude with recommendations to the community based on our findings, namely: (1) Time to retrain and sensitivity to hyperparameters should be reported for NLP machine learning models; (2) academic researchers need equitable access to computational resources; and (3) researchers should prioritize developing efficient models and hardware. 2 Methods To quantify the computational and environmental cost of training deep neural network models for NLP, we perform an analysis of the energy required to train a variety of popular offthe-shelf NLP models, as well as a case study of the complete sum of resources required to develop LISA (Strubell et al., 2018), a state-of-the-art NLP model from EMNLP 2018, including all tuning and experimentation. We measure energy use as follows. We train the models described in §2.1 using the default settings provided, and sample GPU and CPU power consumption during training. Each model was trained for a maximum of 1 day. We train all models on a single NVIDIA Titan X GPU, with the exception of ELMo which was trained on 3 NVIDIA GTX 1080 Ti GPUs. While training, we repeatedly query the NVIDIA System Management Interface2 to sample the GPU power consumption and report the average over all samples. To sample CPU power consumption, we use Intel’s Running Average Power Limit interface.3 2nvidia-smi: https://bit.ly/30sGEbi 3RAPL power meter: https://bit.ly/2LObQhV Consumer Renew. Gas Coal Nuc. China 22% 3% 65% 4% Germany 40% 7% 38% 13% United States 17% 35% 27% 19% Amazon-AWS 17% 24% 30% 26% Google 56% 14% 15% 10% Microsoft 32% 23% 31% 10% Table 2: Percent energy sourced from: Renewable (e.g. hydro, solar, wind), natural gas, coal and nuclear for the top 3 cloud compute providers (Cook et al., 2017), compared\n\n[3] (source: strubell2019, page 5)\nbecause their interoperability with popular deep learning frameworks such as PyTorch and TensorFlow is not optimized, i.e. there are not simple examples of how to tune TensorFlow Estimators using Bayesian search. Integrating these tools into the workflows with which NLP researchers and practitioners are already familiar could have notable impact on the cost of developing and tuning in NLP. Acknowledgements We are grateful to Sherief Farouk and the anonymous reviewers for helpful feedback on earlier drafts. This work was supported in part by the Centers for Data Science and Intelligent Information Retrieval, the Chan Zuckerberg Initiative under the Scientific Knowledge Base Construction project, the IBM Cognitive Horizons Network agreement no. W1668553, and National Science Foundation grant no. IIS-1514053. Any opinions, findings and conclusions or recommendations expressed in this material are those of the authors and do not necessarily reflect those of the sponsor. 10For example, the Hyperopt Python library.\n\nQuestion: In the LISA development case study, how many small hyperparameter grid searches were performed and how many training jobs did they produce in total?\nAnswer:<|im_end|>\n<|im_start|>assistant\n",
+    "token_breakdown": {
+      "query_tokens": 28,
+      "context_tokens": 1287,
+      "chunk_tokens": [
+        491,
+        541,
+        199
+      ]
+    }
+  },
+  "generation": {
+    "t_in": 1378,
+    "t_out": 9,
+    "generation_ms": 522.955022752285,
+    "prefill_ms": 335.52667032927275,
+    "decode_ms": 187.42835242301226,
+    "decode_tokens_per_s": 42.6829767032502,
+    "hit_max_new_tokens": false,
+    "answer": "The context does not contain the answer."
+  },
+  "energy": {
+    "codecarbon": {
+      "co2_kg": 9.803264213240475e-06,
+      "energy_kwh": 3.3710782872510695e-05,
+      "cpu_energy_kwh": 1.3359659874689115e-06,
+      "gpu_energy_kwh": 3.086252468165185e-05,
+      "ram_energy_kwh": 1.512292203389936e-06,
+      "cc_duration_s": 3.7159344851970673,
+      "cpu_power_w": 4.414376129012596,
+      "gpu_power_w": 102.21020784312809,
+      "ram_power_w": 10.0,
+      "country": "Ireland",
+      "region": "leinster",
+      "carbon_intensity_g_per_kwh": 290.80500000000006
+    },
+    "gpu_nvml_retrieval_j": 0.0,
+    "gpu_nvml_generation_j": 111.105,
+    "gpu_peak_mem_mb": 15065.9580078125
+  },
+  "grading": {
+    "suggested_grade": "F",
+    "suggestion_reason": "model said the context does not contain the answer",
+    "evidence_retrieved_at_rank": null
+  }
+}

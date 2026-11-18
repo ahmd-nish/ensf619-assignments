@@ -1,0 +1,177 @@
+{
+  "run_id": "20261118-015420_main",
+  "timestamp": "2026-11-18T01:59:07.844+00:00",
+  "config": {
+    "name": "baseline",
+    "label": "A. Baseline (high context / low-quality retrieval)",
+    "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+    "chunk_size": 256,
+    "chunk_overlap": 50,
+    "top_k": 8,
+    "query_prefix": ""
+  },
+  "question": {
+    "id": "Q01",
+    "question": "What Power Usage Effectiveness (PUE) coefficient do Strubell et al. use in their energy estimates, and what does that value represent?",
+    "reference_answer": "1.58, the 2018 global average PUE for data centers.",
+    "doc_id": "strubell2019",
+    "evidence": "We use a PUE coefficient of 1.58, the 2018 global average for data centers",
+    "keywords": [
+      [
+        "1.58"
+      ]
+    ],
+    "evidence_page": 2
+  },
+  "repeat": 4,
+  "retrieval": {
+    "query": "What Power Usage Effectiveness (PUE) coefficient do Strubell et al. use in their energy estimates, and what does that value represent?",
+    "query_embed_tokens": 31,
+    "encode_ms": 4.903903231024742,
+    "search_ms": 0.042018480598926544,
+    "retrieval_ms": 4.945921711623669
+  },
+  "retrieved_chunks": [
+    {
+      "rank": 1,
+      "chunk_id": "baseline-strubell2019-0007",
+      "score": 0.5624908208847046,
+      "doc_id": "strubell2019",
+      "page_start": 2,
+      "page_end": 2,
+      "embed_tokens": 254,
+      "text": ", compared to the United States,4 China5 and Germany (Burger, 2019). We estimate the total time expected for models to train to completion using training times and hardware reported in the original papers. We then calculate the power consumption in kilowatt-hours (kWh) as follows. Let pc be the average power draw (in watts) from all CPU sockets during training, let pr be the average power draw from all DRAM (main memory) sockets, let pg be the average power draw of a GPU during training, and let g be the number of GPUs used to train. We estimate total power consumption as combined GPU, CPU and DRAM consumption, then multiply this by Power Usage Effectiveness (PUE), which accounts for the additional energy required to support the compute infrastructure (mainly cooling). We use a PUE coefficient of 1.58, the 2018 global average for data centers (Ascierto, 2018). Then the total power pt required at a given instance during training is given by: pt = 1.58t(pc + pr + gpg) 1000 (1) The U.S. Environmental Protection Agency (EPA) provides average CO2 produced (in pounds per kilowatt-hour)"
+    },
+    {
+      "rank": 2,
+      "chunk_id": "baseline-treviso2023-0050",
+      "score": 0.5497898459434509,
+      "doc_id": "treviso2023",
+      "page_start": 11,
+      "page_end": 12,
+      "embed_tokens": 254,
+      "text": "PU power consumption are not available. Carbon Emissions Carbon emissions are usually computed using the power consumption and the carbon intensity of the marginal energy generation used to run the program. Thus, low-energy does not mean low-carbon, and high-energy models can—in the right region and with some care—be zero-carbon in terms of point energy consumption impact, if executed at the right time (i.e., when the energy mix is low-carbon intensity; Dodge et al., 2022). For estimating the CO2 emissions from a specific program execution, APIs such as ElectricityMap2 provide real-time access to carbon intensity for many regions. However, as carbon intensity varies and is affected by other factors like the power usage efficiency in a data center, it is often a poor basis for comparison; in fact, Henderson et al. (2020) recommended using multiple runs for a stable estimate. Furthermore, one needs to consider that zero-carbon program executions still consume energy, and that efficiency does not intrinsically guarantee a reduction in overall resource consumption, as the resulting cost reduction may lead to an increase 2https://electricitymap.org. in demand counteracting any gains, an effect known as Je"
+    },
+    {
+      "rank": 3,
+      "chunk_id": "baseline-treviso2023-0049",
+      "score": 0.48797404766082764,
+      "doc_id": "treviso2023",
+      "page_start": 11,
+      "page_end": 11,
+      "embed_tokens": 254,
+      "text": "tools even provide a real-time breakdown of the power consumption of different components within a machine (Henderson et al., 2020) or local machine APIreported figures to stop training early if prudent (Anthony et al., 2020). Finally, Hershcovich et al. (2022) introduced a model card for NLP systems that encourages researchers to document efficiency in a consistent manner. Measuring power consumption programmatically comes with a number of caveats. First, sampling frequency is often restricted at various levels of the stack and may result in a lag in measurement start. Consequently, shorter experiments may log an energy use of zero, and there will almost always be energy demand that is missed. Second, inefficiencies such as heat loss are not reported by current APIs and hence do not cover cooling and other system management activities. Third, not all architectures and operating systems are supported. For instance, power consumption under macOS is difficult to manage, and direct figures for TPU power consumption are not available. Carbon Emissions Carbon emissions are usually computed using the power consumption and the carbon intensity of the marginal energy generation used to run the program. Thus, low-energy does not mean low-carbon, and high-energy models"
+    },
+    {
+      "rank": 4,
+      "chunk_id": "baseline-strubell2019-0006",
+      "score": 0.47498568892478943,
+      "doc_id": "strubell2019",
+      "page_start": 2,
+      "page_end": 2,
+      "embed_tokens": 254,
+      "text": "X 1080 Ti GPUs. While training, we repeatedly query the NVIDIA System Management Interface2 to sample the GPU power consumption and report the average over all samples. To sample CPU power consumption, we use Intel’s Running Average Power Limit interface.3 2nvidia-smi: https://bit.ly/30sGEbi 3RAPL power meter: https://bit.ly/2LObQhV Consumer Renew. Gas Coal Nuc. China 22% 3% 65% 4% Germany 40% 7% 38% 13% United States 17% 35% 27% 19% Amazon-AWS 17% 24% 30% 26% Google 56% 14% 15% 10% Microsoft 32% 23% 31% 10% Table 2: Percent energy sourced from: Renewable (e.g. hydro, solar, wind), natural gas, coal and nuclear for the top 3 cloud compute providers (Cook et al., 2017), compared to the United States,4 China5 and Germany (Burger, 2019). We estimate the total time expected for models to train to completion using training times and hardware reported in the original papers. We then calculate the power consumption in kilow"
+    },
+    {
+      "rank": 5,
+      "chunk_id": "baseline-strubell2019-0008",
+      "score": 0.4669342637062073,
+      "doc_id": "strubell2019",
+      "page_start": 2,
+      "page_end": 3,
+      "embed_tokens": 254,
+      "text": "during training is given by: pt = 1.58t(pc + pr + gpg) 1000 (1) The U.S. Environmental Protection Agency (EPA) provides average CO2 produced (in pounds per kilowatt-hour) for power consumed in the U.S. (EPA, 2018), which we use to convert power to estimated CO2 emissions: CO2e = 0.954pt (2) This conversion takes into account the relative proportions of different energy sources (primarily natural gas, coal, nuclear and renewable) consumed to produce energy in the United States. Table 2 lists the relative energy sources for China, Germany and the United States compared to the top 5U.S. Dept. of Energy: https://bit.ly/2JTbGnI 5China Electricity Council; trans. China Energy Portal: https://bit.ly/2QHE5O3 three cloud service providers. The U.S. breakdown of energy is comparable to that of the most popular cloud compute service, Amazon Web Services, so we believe this conversion to provide a reasonable estimate of CO2 emissions per kilowatt hour of compute energy used. 2.1 Models We analyze four models, the"
+    },
+    {
+      "rank": 6,
+      "chunk_id": "baseline-treviso2023-0048",
+      "score": 0.42484942078590393,
+      "doc_id": "treviso2023",
+      "page_start": 11,
+      "page_end": 11,
+      "embed_tokens": 254,
+      "text": "does, there is some variation at multiple stages of the stack, adding uncertainty. For example, different operations may count as a FLOP on different hardware; non-floating-point operations are not considered; and hardware is rarely 100% utilized and achieving this productively is a challenge, so theoretical FLOP/s performance cannot be multiplied with time elapsed to yield the amount of computing performed. Still, FLOP/s per unit power can indicate which hardware choices have the potential to offer Pareto-efficient trade-offs (Hsu et al., 2005). Power Consumption There exist various ways to measure power consumption, for instance, by using specific hardware such as an electricity meter. While this can provide precise figures with a high temporal accuracy, it cannot provide a fine-grained estimate for individual computers in a network. Moreover, it does not cover external energy costs such as cooling or networking. Another way is to use software tools such as MLCO2 (Luccioni et al., 2019). Some tools even provide a real-time breakdown of the power consumption of different components within a machine (Henderson et al., 2020) or local machine APIreported figures to stop training early if prudent (Anthony et al., 2020)"
+    },
+    {
+      "rank": 7,
+      "chunk_id": "baseline-strubell2019-0014",
+      "score": 0.37290576100349426,
+      "doc_id": "strubell2019",
+      "page_start": 3,
+      "page_end": 4,
+      "embed_tokens": 254,
+      "text": "–$0.74/hr, upper bound uses on-demand U.S. resources priced at $1.46– $2.48/hr. We similarly use pre-emptible ($1.46/hr–$2.40/hr) and on-demand ($4.50/hr–$8/hr) pricing as lower and upper bounds for TPU v2/3; cheaper bulk contracts are available. Model Hardware Power (W) Hours kWh·PUE CO2e Cloud compute cost T2Tbase P100x8 1415.78 12 27 26 $41–$140 T2Tbig P100x8 1515.43 84 201 192 $289–$981 ELMo P100x3 517.66 336 275 262 $433–$1472 BERTbase V100x64 12,041.51 79 1507 1438 $3751–$12,571 BERTbase TPUv2x16 — 96 — — $2074–$6912 NAS P100x8 1515.43 274,120 656,347 626,155 $942,973–$3,201,722 NAS"
+    },
+    {
+      "rank": 8,
+      "chunk_id": "baseline-strubell2019-0002",
+      "score": 0.3685634434223175,
+      "doc_id": "strubell2019",
+      "page_start": 1,
+      "page_end": 1,
+      "embed_tokens": 254,
+      "text": "by thousands of times by requiring retraining to experiment with model architectures and hyperparameters. Whereas a decade ago most Consumption CO2e (lbs) Air travel, 1 person, NY↔SF 1984 Human life, avg, 1 year 11,023 American life, avg, 1 year 36,156 Car, avg incl. fuel, 1 lifetime 126,000 Training one model (GPU) NLP pipeline (parsing, SRL) 39 w/ tuning & experiments 78,468 Transformer (big) 192 w/ neural arch. search 626,155 Table 1: Estimated CO2 emissions from training common NLP models, compared to familiar consumption.1 NLP models could be trained and developed on a commodity laptop or server, many now require multiple instances of specialized hardware such as GPUs or TPUs, therefore limiting access to these highly accurate models on the basis of finances. Even when these expensive computational resources are available, model training also incurs a substantial cost to the environment due to the energy required to power this hardware for weeks or months at a time. Though some of this energy may come from renewable or carbon credit-offset resources, the high energy demands of these models are still a concern since ("
+    }
+  ],
+  "prompt": {
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful research assistant. Answer the question using only the provided context. If the context does not contain the answer, reply exactly: \"The context does not contain the answer.\" Keep the answer short and factual."
+      },
+      {
+        "role": "user",
+        "content": "Context:\n[1] (source: strubell2019, page 2)\n, compared to the United States,4 China5 and Germany (Burger, 2019). We estimate the total time expected for models to train to completion using training times and hardware reported in the original papers. We then calculate the power consumption in kilowatt-hours (kWh) as follows. Let pc be the average power draw (in watts) from all CPU sockets during training, let pr be the average power draw from all DRAM (main memory) sockets, let pg be the average power draw of a GPU during training, and let g be the number of GPUs used to train. We estimate total power consumption as combined GPU, CPU and DRAM consumption, then multiply this by Power Usage Effectiveness (PUE), which accounts for the additional energy required to support the compute infrastructure (mainly cooling). We use a PUE coefficient of 1.58, the 2018 global average for data centers (Ascierto, 2018). Then the total power pt required at a given instance during training is given by: pt = 1.58t(pc + pr + gpg) 1000 (1) The U.S. Environmental Protection Agency (EPA) provides average CO2 produced (in pounds per kilowatt-hour)\n\n[2] (source: treviso2023, page 11)\nPU power consumption are not available. Carbon Emissions Carbon emissions are usually computed using the power consumption and the carbon intensity of the marginal energy generation used to run the program. Thus, low-energy does not mean low-carbon, and high-energy models can—in the right region and with some care—be zero-carbon in terms of point energy consumption impact, if executed at the right time (i.e., when the energy mix is low-carbon intensity; Dodge et al., 2022). For estimating the CO2 emissions from a specific program execution, APIs such as ElectricityMap2 provide real-time access to carbon intensity for many regions. However, as carbon intensity varies and is affected by other factors like the power usage efficiency in a data center, it is often a poor basis for comparison; in fact, Henderson et al. (2020) recommended using multiple runs for a stable estimate. Furthermore, one needs to consider that zero-carbon program executions still consume energy, and that efficiency does not intrinsically guarantee a reduction in overall resource consumption, as the resulting cost reduction may lead to an increase 2https://electricitymap.org. in demand counteracting any gains, an effect known as Je\n\n[3] (source: treviso2023, page 11)\ntools even provide a real-time breakdown of the power consumption of different components within a machine (Henderson et al., 2020) or local machine APIreported figures to stop training early if prudent (Anthony et al., 2020). Finally, Hershcovich et al. (2022) introduced a model card for NLP systems that encourages researchers to document efficiency in a consistent manner. Measuring power consumption programmatically comes with a number of caveats. First, sampling frequency is often restricted at various levels of the stack and may result in a lag in measurement start. Consequently, shorter experiments may log an energy use of zero, and there will almost always be energy demand that is missed. Second, inefficiencies such as heat loss are not reported by current APIs and hence do not cover cooling and other system management activities. Third, not all architectures and operating systems are supported. For instance, power consumption under macOS is difficult to manage, and direct figures for TPU power consumption are not available. Carbon Emissions Carbon emissions are usually computed using the power consumption and the carbon intensity of the marginal energy generation used to run the program. Thus, low-energy does not mean low-carbon, and high-energy models\n\n[4] (source: strubell2019, page 2)\nX 1080 Ti GPUs. While training, we repeatedly query the NVIDIA System Management Interface2 to sample the GPU power consumption and report the average over all samples. To sample CPU power consumption, we use Intel’s Running Average Power Limit interface.3 2nvidia-smi: https://bit.ly/30sGEbi 3RAPL power meter: https://bit.ly/2LObQhV Consumer Renew. Gas Coal Nuc. China 22% 3% 65% 4% Germany 40% 7% 38% 13% United States 17% 35% 27% 19% Amazon-AWS 17% 24% 30% 26% Google 56% 14% 15% 10% Microsoft 32% 23% 31% 10% Table 2: Percent energy sourced from: Renewable (e.g. hydro, solar, wind), natural gas, coal and nuclear for the top 3 cloud compute providers (Cook et al., 2017), compared to the United States,4 China5 and Germany (Burger, 2019). We estimate the total time expected for models to train to completion using training times and hardware reported in the original papers. We then calculate the power consumption in kilow\n\n[5] (source: strubell2019, page 2)\nduring training is given by: pt = 1.58t(pc + pr + gpg) 1000 (1) The U.S. Environmental Protection Agency (EPA) provides average CO2 produced (in pounds per kilowatt-hour) for power consumed in the U.S. (EPA, 2018), which we use to convert power to estimated CO2 emissions: CO2e = 0.954pt (2) This conversion takes into account the relative proportions of different energy sources (primarily natural gas, coal, nuclear and renewable) consumed to produce energy in the United States. Table 2 lists the relative energy sources for China, Germany and the United States compared to the top 5U.S. Dept. of Energy: https://bit.ly/2JTbGnI 5China Electricity Council; trans. China Energy Portal: https://bit.ly/2QHE5O3 three cloud service providers. The U.S. breakdown of energy is comparable to that of the most popular cloud compute service, Amazon Web Services, so we believe this conversion to provide a reasonable estimate of CO2 emissions per kilowatt hour of compute energy used. 2.1 Models We analyze four models, the\n\n[6] (source: treviso2023, page 11)\ndoes, there is some variation at multiple stages of the stack, adding uncertainty. For example, different operations may count as a FLOP on different hardware; non-floating-point operations are not considered; and hardware is rarely 100% utilized and achieving this productively is a challenge, so theoretical FLOP/s performance cannot be multiplied with time elapsed to yield the amount of computing performed. Still, FLOP/s per unit power can indicate which hardware choices have the potential to offer Pareto-efficient trade-offs (Hsu et al., 2005). Power Consumption There exist various ways to measure power consumption, for instance, by using specific hardware such as an electricity meter. While this can provide precise figures with a high temporal accuracy, it cannot provide a fine-grained estimate for individual computers in a network. Moreover, it does not cover external energy costs such as cooling or networking. Another way is to use software tools such as MLCO2 (Luccioni et al., 2019). Some tools even provide a real-time breakdown of the power consumption of different components within a machine (Henderson et al., 2020) or local machine APIreported figures to stop training early if prudent (Anthony et al., 2020)\n\n[7] (source: strubell2019, page 3)\n–$0.74/hr, upper bound uses on-demand U.S. resources priced at $1.46– $2.48/hr. We similarly use pre-emptible ($1.46/hr–$2.40/hr) and on-demand ($4.50/hr–$8/hr) pricing as lower and upper bounds for TPU v2/3; cheaper bulk contracts are available. Model Hardware Power (W) Hours kWh·PUE CO2e Cloud compute cost T2Tbase P100x8 1415.78 12 27 26 $41–$140 T2Tbig P100x8 1515.43 84 201 192 $289–$981 ELMo P100x3 517.66 336 275 262 $433–$1472 BERTbase V100x64 12,041.51 79 1507 1438 $3751–$12,571 BERTbase TPUv2x16 — 96 — — $2074–$6912 NAS P100x8 1515.43 274,120 656,347 626,155 $942,973–$3,201,722 NAS\n\n[8] (source: strubell2019, page 1)\nby thousands of times by requiring retraining to experiment with model architectures and hyperparameters. Whereas a decade ago most Consumption CO2e (lbs) Air travel, 1 person, NY↔SF 1984 Human life, avg, 1 year 11,023 American life, avg, 1 year 36,156 Car, avg incl. fuel, 1 lifetime 126,000 Training one model (GPU) NLP pipeline (parsing, SRL) 39 w/ tuning & experiments 78,468 Transformer (big) 192 w/ neural arch. search 626,155 Table 1: Estimated CO2 emissions from training common NLP models, compared to familiar consumption.1 NLP models could be trained and developed on a commodity laptop or server, many now require multiple instances of specialized hardware such as GPUs or TPUs, therefore limiting access to these highly accurate models on the basis of finances. Even when these expensive computational resources are available, model training also incurs a substantial cost to the environment due to the energy required to power this hardware for weeks or months at a time. Though some of this energy may come from renewable or carbon credit-offset resources, the high energy demands of these models are still a concern since (\n\nQuestion: What Power Usage Effectiveness (PUE) coefficient do Strubell et al. use in their energy estimates, and what does that value represent?\nAnswer:"
+      }
+    ],
+    "rendered": "<|im_start|>system\nYou are a careful research assistant. Answer the question using only the provided context. If the context does not contain the answer, reply exactly: \"The context does not contain the answer.\" Keep the answer short and factual.<|im_end|>\n<|im_start|>user\nContext:\n[1] (source: strubell2019, page 2)\n, compared to the United States,4 China5 and Germany (Burger, 2019). We estimate the total time expected for models to train to completion using training times and hardware reported in the original papers. We then calculate the power consumption in kilowatt-hours (kWh) as follows. Let pc be the average power draw (in watts) from all CPU sockets during training, let pr be the average power draw from all DRAM (main memory) sockets, let pg be the average power draw of a GPU during training, and let g be the number of GPUs used to train. We estimate total power consumption as combined GPU, CPU and DRAM consumption, then multiply this by Power Usage Effectiveness (PUE), which accounts for the additional energy required to support the compute infrastructure (mainly cooling). We use a PUE coefficient of 1.58, the 2018 global average for data centers (Ascierto, 2018). Then the total power pt required at a given instance during training is given by: pt = 1.58t(pc + pr + gpg) 1000 (1) The U.S. Environmental Protection Agency (EPA) provides average CO2 produced (in pounds per kilowatt-hour)\n\n[2] (source: treviso2023, page 11)\nPU power consumption are not available. Carbon Emissions Carbon emissions are usually computed using the power consumption and the carbon intensity of the marginal energy generation used to run the program. Thus, low-energy does not mean low-carbon, and high-energy models can—in the right region and with some care—be zero-carbon in terms of point energy consumption impact, if executed at the right time (i.e., when the energy mix is low-carbon intensity; Dodge et al., 2022). For estimating the CO2 emissions from a specific program execution, APIs such as ElectricityMap2 provide real-time access to carbon intensity for many regions. However, as carbon intensity varies and is affected by other factors like the power usage efficiency in a data center, it is often a poor basis for comparison; in fact, Henderson et al. (2020) recommended using multiple runs for a stable estimate. Furthermore, one needs to consider that zero-carbon program executions still consume energy, and that efficiency does not intrinsically guarantee a reduction in overall resource consumption, as the resulting cost reduction may lead to an increase 2https://electricitymap.org. in demand counteracting any gains, an effect known as Je\n\n[3] (source: treviso2023, page 11)\ntools even provide a real-time breakdown of the power consumption of different components within a machine (Henderson et al., 2020) or local machine APIreported figures to stop training early if prudent (Anthony et al., 2020). Finally, Hershcovich et al. (2022) introduced a model card for NLP systems that encourages researchers to document efficiency in a consistent manner. Measuring power consumption programmatically comes with a number of caveats. First, sampling frequency is often restricted at various levels of the stack and may result in a lag in measurement start. Consequently, shorter experiments may log an energy use of zero, and there will almost always be energy demand that is missed. Second, inefficiencies such as heat loss are not reported by current APIs and hence do not cover cooling and other system management activities. Third, not all architectures and operating systems are supported. For instance, power consumption under macOS is difficult to manage, and direct figures for TPU power consumption are not available. Carbon Emissions Carbon emissions are usually computed using the power consumption and the carbon intensity of the marginal energy generation used to run the program. Thus, low-energy does not mean low-carbon, and high-energy models\n\n[4] (source: strubell2019, page 2)\nX 1080 Ti GPUs. While training, we repeatedly query the NVIDIA System Management Interface2 to sample the GPU power consumption and report the average over all samples. To sample CPU power consumption, we use Intel’s Running Average Power Limit interface.3 2nvidia-smi: https://bit.ly/30sGEbi 3RAPL power meter: https://bit.ly/2LObQhV Consumer Renew. Gas Coal Nuc. China 22% 3% 65% 4% Germany 40% 7% 38% 13% United States 17% 35% 27% 19% Amazon-AWS 17% 24% 30% 26% Google 56% 14% 15% 10% Microsoft 32% 23% 31% 10% Table 2: Percent energy sourced from: Renewable (e.g. hydro, solar, wind), natural gas, coal and nuclear for the top 3 cloud compute providers (Cook et al., 2017), compared to the United States,4 China5 and Germany (Burger, 2019). We estimate the total time expected for models to train to completion using training times and hardware reported in the original papers. We then calculate the power consumption in kilow\n\n[5] (source: strubell2019, page 2)\nduring training is given by: pt = 1.58t(pc + pr + gpg) 1000 (1) The U.S. Environmental Protection Agency (EPA) provides average CO2 produced (in pounds per kilowatt-hour) for power consumed in the U.S. (EPA, 2018), which we use to convert power to estimated CO2 emissions: CO2e = 0.954pt (2) This conversion takes into account the relative proportions of different energy sources (primarily natural gas, coal, nuclear and renewable) consumed to produce energy in the United States. Table 2 lists the relative energy sources for China, Germany and the United States compared to the top 5U.S. Dept. of Energy: https://bit.ly/2JTbGnI 5China Electricity Council; trans. China Energy Portal: https://bit.ly/2QHE5O3 three cloud service providers. The U.S. breakdown of energy is comparable to that of the most popular cloud compute service, Amazon Web Services, so we believe this conversion to provide a reasonable estimate of CO2 emissions per kilowatt hour of compute energy used. 2.1 Models We analyze four models, the\n\n[6] (source: treviso2023, page 11)\ndoes, there is some variation at multiple stages of the stack, adding uncertainty. For example, different operations may count as a FLOP on different hardware; non-floating-point operations are not considered; and hardware is rarely 100% utilized and achieving this productively is a challenge, so theoretical FLOP/s performance cannot be multiplied with time elapsed to yield the amount of computing performed. Still, FLOP/s per unit power can indicate which hardware choices have the potential to offer Pareto-efficient trade-offs (Hsu et al., 2005). Power Consumption There exist various ways to measure power consumption, for instance, by using specific hardware such as an electricity meter. While this can provide precise figures with a high temporal accuracy, it cannot provide a fine-grained estimate for individual computers in a network. Moreover, it does not cover external energy costs such as cooling or networking. Another way is to use software tools such as MLCO2 (Luccioni et al., 2019). Some tools even provide a real-time breakdown of the power consumption of different components within a machine (Henderson et al., 2020) or local machine APIreported figures to stop training early if prudent (Anthony et al., 2020)\n\n[7] (source: strubell2019, page 3)\n–$0.74/hr, upper bound uses on-demand U.S. resources priced at $1.46– $2.48/hr. We similarly use pre-emptible ($1.46/hr–$2.40/hr) and on-demand ($4.50/hr–$8/hr) pricing as lower and upper bounds for TPU v2/3; cheaper bulk contracts are available. Model Hardware Power (W) Hours kWh·PUE CO2e Cloud compute cost T2Tbase P100x8 1415.78 12 27 26 $41–$140 T2Tbig P100x8 1515.43 84 201 192 $289–$981 ELMo P100x3 517.66 336 275 262 $433–$1472 BERTbase V100x64 12,041.51 79 1507 1438 $3751–$12,571 BERTbase TPUv2x16 — 96 — — $2074–$6912 NAS P100x8 1515.43 274,120 656,347 626,155 $942,973–$3,201,722 NAS\n\n[8] (source: strubell2019, page 1)\nby thousands of times by requiring retraining to experiment with model architectures and hyperparameters. Whereas a decade ago most Consumption CO2e (lbs) Air travel, 1 person, NY↔SF 1984 Human life, avg, 1 year 11,023 American life, avg, 1 year 36,156 Car, avg incl. fuel, 1 lifetime 126,000 Training one model (GPU) NLP pipeline (parsing, SRL) 39 w/ tuning & experiments 78,468 Transformer (big) 192 w/ neural arch. search 626,155 Table 1: Estimated CO2 emissions from training common NLP models, compared to familiar consumption.1 NLP models could be trained and developed on a commodity laptop or server, many now require multiple instances of specialized hardware such as GPUs or TPUs, therefore limiting access to these highly accurate models on the basis of finances. Even when these expensive computational resources are available, model training also incurs a substantial cost to the environment due to the energy required to power this hardware for weeks or months at a time. Though some of this energy may come from renewable or carbon credit-offset resources, the high energy demands of these models are still a concern since (\n\nQuestion: What Power Usage Effectiveness (PUE) coefficient do Strubell et al. use in their energy estimates, and what does that value represent?\nAnswer:<|im_end|>\n<|im_start|>assistant\n",
+    "token_breakdown": {
+      "query_tokens": 30,
+      "context_tokens": 2347,
+      "chunk_tokens": [
+        266,
+        246,
+        250,
+        295,
+        258,
+        261,
+        347,
+        275
+      ]
+    }
+  },
+  "generation": {
+    "t_in": 2440,
+    "t_out": 40,
+    "generation_ms": 1554.8111908137798,
+    "prefill_ms": 613.288002088666,
+    "decode_ms": 941.5231887251139,
+    "decode_tokens_per_s": 41.422240542804516,
+    "hit_max_new_tokens": false,
+    "answer": "Strubell et al. use a PUE coefficient of 1.58 in their energy estimates, which accounts for the additional energy required to support the compute infrastructure (mainly cooling)."
+  },
+  "energy": {
+    "codecarbon": {
+      "co2_kg": 3.365743324633952e-05,
+      "energy_kwh": 0.0001157388395878321,
+      "cpu_energy_kwh": 3.864975388751552e-06,
+      "gpu_energy_kwh": 0.00010749841936785742,
+      "ram_energy_kwh": 4.375444831223124e-06,
+      "cc_duration_s": 4.746794923208654,
+      "cpu_power_w": 5.879309238134766,
+      "gpu_power_w": 165.43472283932383,
+      "ram_power_w": 10.0,
+      "country": "Ireland",
+      "region": "leinster",
+      "carbon_intensity_g_per_kwh": 290.80500000000006
+    },
+    "gpu_nvml_retrieval_j": 0.0,
+    "gpu_nvml_generation_j": 386.994,
+    "gpu_peak_mem_mb": 15263.34765625
+  },
+  "grading": {
+    "suggested_grade": "P",
+    "suggestion_reason": "all key facts present; evidence passage was retrieved",
+    "evidence_retrieved_at_rank": 1
+  }
+}

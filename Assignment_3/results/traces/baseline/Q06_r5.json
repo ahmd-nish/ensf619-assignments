@@ -1,0 +1,181 @@
+{
+  "run_id": "20261118-015420_main",
+  "timestamp": "2026-11-18T02:01:15.676+00:00",
+  "config": {
+    "name": "baseline",
+    "label": "A. Baseline (high context / low-quality retrieval)",
+    "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+    "chunk_size": 256,
+    "chunk_overlap": 50,
+    "top_k": 8,
+    "query_prefix": ""
+  },
+  "question": {
+    "id": "Q06",
+    "question": "According to the efficiency survey, RETRO matched the performance of models how many times larger, and how large was the database it retrieved from?",
+    "reference_answer": "Models 25 times larger, by retrieving chunks from a 2 trillion token database.",
+    "doc_id": "treviso2023",
+    "evidence": "RETRO (Borgeaud et al., 2022) matched the performance of models 25 times larger by retrieving chunks of tokens from a 2 trillion token database",
+    "keywords": [
+      [
+        "25"
+      ],
+      [
+        "2 trillion",
+        "two trillion"
+      ]
+    ],
+    "evidence_page": 5
+  },
+  "repeat": 5,
+  "retrieval": {
+    "query": "According to the efficiency survey, RETRO matched the performance of models how many times larger, and how large was the database it retrieved from?",
+    "query_embed_tokens": 29,
+    "encode_ms": 8.262966759502888,
+    "search_ms": 0.04621781408786774,
+    "retrieval_ms": 8.309184573590755
+  },
+  "retrieved_chunks": [
+    {
+      "rank": 1,
+      "chunk_id": "baseline-treviso2023-0018",
+      "score": 0.4677942395210266,
+      "doc_id": "treviso2023",
+      "page_start": 5,
+      "page_end": 5,
+      "embed_tokens": 254,
+      "text": "the size of the embedding layer, which is one of the largest consumers of model parameters. Finally, Reid et al. (2021) studied ways to share weights in transformers, showing that sharing only the middle layers of the model outperforms the alternatives. 3.4 Retrieval-Augmented Models Parametric models can be combined with retrieval mechanisms for text generation, leading to semiparametric models (Gu et al., 2018; Lewis et al., 2020b; Li et al., 2022a). This typically amounts to trading model size with the number of database entries. For instance, RETRO (Borgeaud et al., 2022) matched the performance of models 25 times larger by retrieving chunks of tokens from a 2 trillion token database. At inference time, the model retrieves tokens / phrases / sentences from a database, which are used by the model through a combination of probability distributions (Khandelwal et al., 2020), gating mechanisms (Yogatama et al., 2021), or attention (Borgeaud Borgeaud et al., 2022). These models also have good generalization properties: By retrieving from domain-specific databases, they can be applied to new domains"
+    },
+    {
+      "rank": 2,
+      "chunk_id": "baseline-treviso2023-0047",
+      "score": 0.41159337759017944,
+      "doc_id": "treviso2023",
+      "page_start": 11,
+      "page_end": 11,
+      "embed_tokens": 254,
+      "text": "quality scores. Advancing NLP by pushing Pareto barriers is an established practice (Kim et al., 2019; Bogoychev et al., 2020; Behnke and Heafield, 2021). For instance, the WNGT 2020 MT shared task (Birch et al., 2020) considers the Pareto frontier between real time taken, system or GPU memory usage, and model size, as well as BLEU score. Puvis de Chavannes et al. (2021) included power consumption as a trade-off against perplexity to explore Pareto-efficient hyperparameter combinations for transformer models. Finally, Liu et al. (2022b) examined Pareto efficiency for a number of tasks in an attempt to narrow model selection search space. FLOP/s A frequently reported efficiency measure is the number of floating point operations (FLOPs) and floating points per second (FLOP/s). While these discrete metrics seem well defined in terms of what the hardware does, there is some variation at multiple stages of the stack, adding uncertainty. For example, different operations may count as a FLOP on different hardware; non-floating-point operations are not considered; and hardware is rarely 100% utilized and achieving this"
+    },
+    {
+      "rank": 3,
+      "chunk_id": "baseline-treviso2023-0019",
+      "score": 0.3684575855731964,
+      "doc_id": "treviso2023",
+      "page_start": 5,
+      "page_end": 5,
+      "embed_tokens": 254,
+      "text": "et al., 2021), or attention (Borgeaud Borgeaud et al., 2022). These models also have good generalization properties: By retrieving from domain-specific databases, they can be applied to new domains, reducing the need for domain-specific fine-tuning (Khandelwal et al., 2020, 2021). That is, having an explicit ‘‘memory’’ also allows retrievalaugmented models to be adapted post-training. Although they may yield slow running speeds since the retrieval time grows as the datastore scales, recent work proposed strategies to alleviate this, such as pruning the database (He et al., 2021), having smaller input-dependent databases (Meng et al., 2022), reducing the representation dimension (Martins et al., 2022a), and clustering data points (Wang et al., 2021b; Alon et al., 2022). In particular, Martins et al. (2022c) have shown that carefully constructing a database not only leads to better translations than fine-tuning, but can also reduce the total translation time (inference + online adaptation). 3.5 Model Design Considerations Despite considerable advances, one major"
+    },
+    {
+      "rank": 4,
+      "chunk_id": "baseline-treviso2023-0003",
+      "score": 0.36061403155326843,
+      "doc_id": "treviso2023",
+      "page_start": 1,
+      "page_end": 1,
+      "embed_tokens": 254,
+      "text": "tackle these limitations, there has been renewed focus around research that seeks to improve model efficiency. Definition Efficiency is characterized by the relationship between resources going into a system and its output, with a more efficient system producing the same output with fewer resources. Schwartz et al. (2020a) formalize efficiency as the cost of a model in relation to the results it produces: Cost(R) ∝ E · D · H, i.e., the Cost(·) of producing a certain NLP (R)esult as proportional to three (non-exhaustive) factors: (1) The cost of model execution on a single (E)xample, (2) the size of the (D)ataset, and (3) the number of training runs required for (H)yperparameter tuning. Here we take a different approach, and consider the role that efficiency plays across the different steps in the NLP pipeline, by providing a detailed overview of efficiency methods specific to NLP (Figure 2). Scope of this Survey We address this work to two groups of readers: (1) Researchers from all fields of NLP working with limited resources; and (2) Researchers interested in improving the state of the art of efficient methods"
+    },
+    {
+      "rank": 5,
+      "chunk_id": "baseline-treviso2023-0034",
+      "score": 0.35593751072883606,
+      "doc_id": "treviso2023",
+      "page_start": 8,
+      "page_end": 8,
+      "embed_tokens": 254,
+      "text": "al., 2020) or dynamically during inference (Fan et al., 2020). Pruning was initially introduced at the individual weight level (unstructured pruning), but more recent approaches prune larger components of the network (structured pruning). Examples of the latter include removing attention heads (Voita et al., 2019; Michel et al., 2019), weak attention values (Ji et al., 2021; Qu et al., 2022), and even entire hidden layers (Dong et al., 2017; Sajjad et al., 2023). In particular, Xia et al. (2022) found that pruning all these components yields more accurate and efficient models. When comparing the two pruning approaches, unstructured pruning is often found to better preserve a model’s performance (Gale et al., 2019; Ahia et al., 2021), but existing hardware often cannot exploit the resulting sparsity. In contrast, structured pruning methods often lead to a higher improvement in terms of inference speed (Hoefler et al., 2021). The increasing popularity of pruning methods has further raised the question of how to"
+    },
+    {
+      "rank": 6,
+      "chunk_id": "baseline-treviso2023-0057",
+      "score": 0.35283374786376953,
+      "doc_id": "treviso2023",
+      "page_start": 13,
+      "page_end": 13,
+      "embed_tokens": 254,
+      "text": "Transfer (Yang et al., 2021), which tunes a small model, then transfers the hyperparameters to a larger model. 9.3 Model Selection Considerations While identifying an optimal model is crucial in deployment, it raises several challenges around reporting practices (Reimers and Gurevych, 2017; Agarwal et al., 2021) and hyperparameter tuning (Bouthillier and Varoquaux, 2020; Gundersen et al., 2022).3 A first step towards improved comparability could be to fix the hyperparameter tuning budget (Dodge et al., 2019; Hoffmann et al., 2022), or consider the full search space (Bell et al., 2022). 10 Conclusion This survey provides a broad overview of considerations for increasing efficiency in modern NLP models, identifying both immediate successes and remaining challenges. Most progress so far has been in model design, typically targeted at a specific computational budget and hard3For example, when considering compute budget variation when comparing new model development to baselines. ware paradigm. Key challenges include better understanding and modeling trade-offs between end-task performance and resource consumption, and the dependency between hardware choices and software implementations. Furthermore, we note that"
+    },
+    {
+      "rank": 7,
+      "chunk_id": "baseline-treviso2023-0021",
+      "score": 0.337615430355072,
+      "doc_id": "treviso2023",
+      "page_start": 5,
+      "page_end": 6,
+      "embed_tokens": 254,
+      "text": "modeling approaches like MoE can substantially reduce inference and training costs, they require additional model parameters for retraining specialized modules and have instability issues during training (Zoph et al., 2022). Models that rely on built-in sparse transformations, such as entmax (Peters et al., 2019), have achieved strong results without stability issues, but have not yet fully realized competitive efficiency gains. Combining MoE with built-in sparse functions may be a promising research direction, e.g., by using entmax in the routing layer. In retrieval-augmented models, the quality of the retrieval component is critical to performance, and the tradeoff between storing information in model parameters vs. external resources needs to be better understood, especially when deploying models in low-resource settings like edge devices. Finally, while new model designs improve efficiency through different means, further improvements can emerge from combining approaches, such as making MoE more efficient using quantization (Section 6.3) and using parameter-efficient models for distillation (Section 6.2). 4 Pre-training Modern transfer learning approaches in NLP typically involve pre-training a model in a selfsupervised fashion on large amounts of text before fine-tuning it on"
+    },
+    {
+      "rank": 8,
+      "chunk_id": "baseline-treviso2023-0002",
+      "score": 0.323920875787735,
+      "doc_id": "treviso2023",
+      "page_start": 1,
+      "page_end": 1,
+      "embed_tokens": 254,
+      "text": "in efficient NLP. We aim to provide both guidance for conducting NLP under limited resources, and point towards promising research directions for developing more efficient methods. 1 Introduction Scaling has become a key ingredient in achieving state-of-the-art performance in NLP (Figure 1), as recent research suggests that some capabilities only emerge once models grow beyond a certain size (Wei et al., 2022b). However, despite the merits of scaling, it poses key challenges to making these breakthroughs accessible in resourceconstrained environments (Ahmed and Wahed, 2020), in having a non-negligible environmental impact (Strubell et al., 2019; Schwartz et al., 2020a; Derczynski, 2020; Patterson et al., 2021; Wu et al., 2022a), and in complying with hardware constraints (Thompson et al., 2020). To ∗Equal contribution. marcos.treviso@tecnico.pt. tackle these limitations, there has been renewed focus around research that seeks to improve model efficiency. Definition Efficiency is characterized by the relationship between resources going into a system and its output, with a more efficient system producing the same output with fewer resources. Schwartz et"
+    }
+  ],
+  "prompt": {
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful research assistant. Answer the question using only the provided context. If the context does not contain the answer, reply exactly: \"The context does not contain the answer.\" Keep the answer short and factual."
+      },
+      {
+        "role": "user",
+        "content": "Context:\n[1] (source: treviso2023, page 5)\nthe size of the embedding layer, which is one of the largest consumers of model parameters. Finally, Reid et al. (2021) studied ways to share weights in transformers, showing that sharing only the middle layers of the model outperforms the alternatives. 3.4 Retrieval-Augmented Models Parametric models can be combined with retrieval mechanisms for text generation, leading to semiparametric models (Gu et al., 2018; Lewis et al., 2020b; Li et al., 2022a). This typically amounts to trading model size with the number of database entries. For instance, RETRO (Borgeaud et al., 2022) matched the performance of models 25 times larger by retrieving chunks of tokens from a 2 trillion token database. At inference time, the model retrieves tokens / phrases / sentences from a database, which are used by the model through a combination of probability distributions (Khandelwal et al., 2020), gating mechanisms (Yogatama et al., 2021), or attention (Borgeaud Borgeaud et al., 2022). These models also have good generalization properties: By retrieving from domain-specific databases, they can be applied to new domains\n\n[2] (source: treviso2023, page 11)\nquality scores. Advancing NLP by pushing Pareto barriers is an established practice (Kim et al., 2019; Bogoychev et al., 2020; Behnke and Heafield, 2021). For instance, the WNGT 2020 MT shared task (Birch et al., 2020) considers the Pareto frontier between real time taken, system or GPU memory usage, and model size, as well as BLEU score. Puvis de Chavannes et al. (2021) included power consumption as a trade-off against perplexity to explore Pareto-efficient hyperparameter combinations for transformer models. Finally, Liu et al. (2022b) examined Pareto efficiency for a number of tasks in an attempt to narrow model selection search space. FLOP/s A frequently reported efficiency measure is the number of floating point operations (FLOPs) and floating points per second (FLOP/s). While these discrete metrics seem well defined in terms of what the hardware does, there is some variation at multiple stages of the stack, adding uncertainty. For example, different operations may count as a FLOP on different hardware; non-floating-point operations are not considered; and hardware is rarely 100% utilized and achieving this\n\n[3] (source: treviso2023, page 5)\net al., 2021), or attention (Borgeaud Borgeaud et al., 2022). These models also have good generalization properties: By retrieving from domain-specific databases, they can be applied to new domains, reducing the need for domain-specific fine-tuning (Khandelwal et al., 2020, 2021). That is, having an explicit ‘‘memory’’ also allows retrievalaugmented models to be adapted post-training. Although they may yield slow running speeds since the retrieval time grows as the datastore scales, recent work proposed strategies to alleviate this, such as pruning the database (He et al., 2021), having smaller input-dependent databases (Meng et al., 2022), reducing the representation dimension (Martins et al., 2022a), and clustering data points (Wang et al., 2021b; Alon et al., 2022). In particular, Martins et al. (2022c) have shown that carefully constructing a database not only leads to better translations than fine-tuning, but can also reduce the total translation time (inference + online adaptation). 3.5 Model Design Considerations Despite considerable advances, one major\n\n[4] (source: treviso2023, page 1)\ntackle these limitations, there has been renewed focus around research that seeks to improve model efficiency. Definition Efficiency is characterized by the relationship between resources going into a system and its output, with a more efficient system producing the same output with fewer resources. Schwartz et al. (2020a) formalize efficiency as the cost of a model in relation to the results it produces: Cost(R) ∝ E · D · H, i.e., the Cost(·) of producing a certain NLP (R)esult as proportional to three (non-exhaustive) factors: (1) The cost of model execution on a single (E)xample, (2) the size of the (D)ataset, and (3) the number of training runs required for (H)yperparameter tuning. Here we take a different approach, and consider the role that efficiency plays across the different steps in the NLP pipeline, by providing a detailed overview of efficiency methods specific to NLP (Figure 2). Scope of this Survey We address this work to two groups of readers: (1) Researchers from all fields of NLP working with limited resources; and (2) Researchers interested in improving the state of the art of efficient methods\n\n[5] (source: treviso2023, page 8)\nal., 2020) or dynamically during inference (Fan et al., 2020). Pruning was initially introduced at the individual weight level (unstructured pruning), but more recent approaches prune larger components of the network (structured pruning). Examples of the latter include removing attention heads (Voita et al., 2019; Michel et al., 2019), weak attention values (Ji et al., 2021; Qu et al., 2022), and even entire hidden layers (Dong et al., 2017; Sajjad et al., 2023). In particular, Xia et al. (2022) found that pruning all these components yields more accurate and efficient models. When comparing the two pruning approaches, unstructured pruning is often found to better preserve a model’s performance (Gale et al., 2019; Ahia et al., 2021), but existing hardware often cannot exploit the resulting sparsity. In contrast, structured pruning methods often lead to a higher improvement in terms of inference speed (Hoefler et al., 2021). The increasing popularity of pruning methods has further raised the question of how to\n\n[6] (source: treviso2023, page 13)\nTransfer (Yang et al., 2021), which tunes a small model, then transfers the hyperparameters to a larger model. 9.3 Model Selection Considerations While identifying an optimal model is crucial in deployment, it raises several challenges around reporting practices (Reimers and Gurevych, 2017; Agarwal et al., 2021) and hyperparameter tuning (Bouthillier and Varoquaux, 2020; Gundersen et al., 2022).3 A first step towards improved comparability could be to fix the hyperparameter tuning budget (Dodge et al., 2019; Hoffmann et al., 2022), or consider the full search space (Bell et al., 2022). 10 Conclusion This survey provides a broad overview of considerations for increasing efficiency in modern NLP models, identifying both immediate successes and remaining challenges. Most progress so far has been in model design, typically targeted at a specific computational budget and hard3For example, when considering compute budget variation when comparing new model development to baselines. ware paradigm. Key challenges include better understanding and modeling trade-offs between end-task performance and resource consumption, and the dependency between hardware choices and software implementations. Furthermore, we note that\n\n[7] (source: treviso2023, page 5)\nmodeling approaches like MoE can substantially reduce inference and training costs, they require additional model parameters for retraining specialized modules and have instability issues during training (Zoph et al., 2022). Models that rely on built-in sparse transformations, such as entmax (Peters et al., 2019), have achieved strong results without stability issues, but have not yet fully realized competitive efficiency gains. Combining MoE with built-in sparse functions may be a promising research direction, e.g., by using entmax in the routing layer. In retrieval-augmented models, the quality of the retrieval component is critical to performance, and the tradeoff between storing information in model parameters vs. external resources needs to be better understood, especially when deploying models in low-resource settings like edge devices. Finally, while new model designs improve efficiency through different means, further improvements can emerge from combining approaches, such as making MoE more efficient using quantization (Section 6.3) and using parameter-efficient models for distillation (Section 6.2). 4 Pre-training Modern transfer learning approaches in NLP typically involve pre-training a model in a selfsupervised fashion on large amounts of text before fine-tuning it on\n\n[8] (source: treviso2023, page 1)\nin efficient NLP. We aim to provide both guidance for conducting NLP under limited resources, and point towards promising research directions for developing more efficient methods. 1 Introduction Scaling has become a key ingredient in achieving state-of-the-art performance in NLP (Figure 1), as recent research suggests that some capabilities only emerge once models grow beyond a certain size (Wei et al., 2022b). However, despite the merits of scaling, it poses key challenges to making these breakthroughs accessible in resourceconstrained environments (Ahmed and Wahed, 2020), in having a non-negligible environmental impact (Strubell et al., 2019; Schwartz et al., 2020a; Derczynski, 2020; Patterson et al., 2021; Wu et al., 2022a), and in complying with hardware constraints (Thompson et al., 2020). To ∗Equal contribution. marcos.treviso@tecnico.pt. tackle these limitations, there has been renewed focus around research that seeks to improve model efficiency. Definition Efficiency is characterized by the relationship between resources going into a system and its output, with a more efficient system producing the same output with fewer resources. Schwartz et\n\nQuestion: According to the efficiency survey, RETRO matched the performance of models how many times larger, and how large was the database it retrieved from?\nAnswer:"
+      }
+    ],
+    "rendered": "<|im_start|>system\nYou are a careful research assistant. Answer the question using only the provided context. If the context does not contain the answer, reply exactly: \"The context does not contain the answer.\" Keep the answer short and factual.<|im_end|>\n<|im_start|>user\nContext:\n[1] (source: treviso2023, page 5)\nthe size of the embedding layer, which is one of the largest consumers of model parameters. Finally, Reid et al. (2021) studied ways to share weights in transformers, showing that sharing only the middle layers of the model outperforms the alternatives. 3.4 Retrieval-Augmented Models Parametric models can be combined with retrieval mechanisms for text generation, leading to semiparametric models (Gu et al., 2018; Lewis et al., 2020b; Li et al., 2022a). This typically amounts to trading model size with the number of database entries. For instance, RETRO (Borgeaud et al., 2022) matched the performance of models 25 times larger by retrieving chunks of tokens from a 2 trillion token database. At inference time, the model retrieves tokens / phrases / sentences from a database, which are used by the model through a combination of probability distributions (Khandelwal et al., 2020), gating mechanisms (Yogatama et al., 2021), or attention (Borgeaud Borgeaud et al., 2022). These models also have good generalization properties: By retrieving from domain-specific databases, they can be applied to new domains\n\n[2] (source: treviso2023, page 11)\nquality scores. Advancing NLP by pushing Pareto barriers is an established practice (Kim et al., 2019; Bogoychev et al., 2020; Behnke and Heafield, 2021). For instance, the WNGT 2020 MT shared task (Birch et al., 2020) considers the Pareto frontier between real time taken, system or GPU memory usage, and model size, as well as BLEU score. Puvis de Chavannes et al. (2021) included power consumption as a trade-off against perplexity to explore Pareto-efficient hyperparameter combinations for transformer models. Finally, Liu et al. (2022b) examined Pareto efficiency for a number of tasks in an attempt to narrow model selection search space. FLOP/s A frequently reported efficiency measure is the number of floating point operations (FLOPs) and floating points per second (FLOP/s). While these discrete metrics seem well defined in terms of what the hardware does, there is some variation at multiple stages of the stack, adding uncertainty. For example, different operations may count as a FLOP on different hardware; non-floating-point operations are not considered; and hardware is rarely 100% utilized and achieving this\n\n[3] (source: treviso2023, page 5)\net al., 2021), or attention (Borgeaud Borgeaud et al., 2022). These models also have good generalization properties: By retrieving from domain-specific databases, they can be applied to new domains, reducing the need for domain-specific fine-tuning (Khandelwal et al., 2020, 2021). That is, having an explicit ‘‘memory’’ also allows retrievalaugmented models to be adapted post-training. Although they may yield slow running speeds since the retrieval time grows as the datastore scales, recent work proposed strategies to alleviate this, such as pruning the database (He et al., 2021), having smaller input-dependent databases (Meng et al., 2022), reducing the representation dimension (Martins et al., 2022a), and clustering data points (Wang et al., 2021b; Alon et al., 2022). In particular, Martins et al. (2022c) have shown that carefully constructing a database not only leads to better translations than fine-tuning, but can also reduce the total translation time (inference + online adaptation). 3.5 Model Design Considerations Despite considerable advances, one major\n\n[4] (source: treviso2023, page 1)\ntackle these limitations, there has been renewed focus around research that seeks to improve model efficiency. Definition Efficiency is characterized by the relationship between resources going into a system and its output, with a more efficient system producing the same output with fewer resources. Schwartz et al. (2020a) formalize efficiency as the cost of a model in relation to the results it produces: Cost(R) ∝ E · D · H, i.e., the Cost(·) of producing a certain NLP (R)esult as proportional to three (non-exhaustive) factors: (1) The cost of model execution on a single (E)xample, (2) the size of the (D)ataset, and (3) the number of training runs required for (H)yperparameter tuning. Here we take a different approach, and consider the role that efficiency plays across the different steps in the NLP pipeline, by providing a detailed overview of efficiency methods specific to NLP (Figure 2). Scope of this Survey We address this work to two groups of readers: (1) Researchers from all fields of NLP working with limited resources; and (2) Researchers interested in improving the state of the art of efficient methods\n\n[5] (source: treviso2023, page 8)\nal., 2020) or dynamically during inference (Fan et al., 2020). Pruning was initially introduced at the individual weight level (unstructured pruning), but more recent approaches prune larger components of the network (structured pruning). Examples of the latter include removing attention heads (Voita et al., 2019; Michel et al., 2019), weak attention values (Ji et al., 2021; Qu et al., 2022), and even entire hidden layers (Dong et al., 2017; Sajjad et al., 2023). In particular, Xia et al. (2022) found that pruning all these components yields more accurate and efficient models. When comparing the two pruning approaches, unstructured pruning is often found to better preserve a model’s performance (Gale et al., 2019; Ahia et al., 2021), but existing hardware often cannot exploit the resulting sparsity. In contrast, structured pruning methods often lead to a higher improvement in terms of inference speed (Hoefler et al., 2021). The increasing popularity of pruning methods has further raised the question of how to\n\n[6] (source: treviso2023, page 13)\nTransfer (Yang et al., 2021), which tunes a small model, then transfers the hyperparameters to a larger model. 9.3 Model Selection Considerations While identifying an optimal model is crucial in deployment, it raises several challenges around reporting practices (Reimers and Gurevych, 2017; Agarwal et al., 2021) and hyperparameter tuning (Bouthillier and Varoquaux, 2020; Gundersen et al., 2022).3 A first step towards improved comparability could be to fix the hyperparameter tuning budget (Dodge et al., 2019; Hoffmann et al., 2022), or consider the full search space (Bell et al., 2022). 10 Conclusion This survey provides a broad overview of considerations for increasing efficiency in modern NLP models, identifying both immediate successes and remaining challenges. Most progress so far has been in model design, typically targeted at a specific computational budget and hard3For example, when considering compute budget variation when comparing new model development to baselines. ware paradigm. Key challenges include better understanding and modeling trade-offs between end-task performance and resource consumption, and the dependency between hardware choices and software implementations. Furthermore, we note that\n\n[7] (source: treviso2023, page 5)\nmodeling approaches like MoE can substantially reduce inference and training costs, they require additional model parameters for retraining specialized modules and have instability issues during training (Zoph et al., 2022). Models that rely on built-in sparse transformations, such as entmax (Peters et al., 2019), have achieved strong results without stability issues, but have not yet fully realized competitive efficiency gains. Combining MoE with built-in sparse functions may be a promising research direction, e.g., by using entmax in the routing layer. In retrieval-augmented models, the quality of the retrieval component is critical to performance, and the tradeoff between storing information in model parameters vs. external resources needs to be better understood, especially when deploying models in low-resource settings like edge devices. Finally, while new model designs improve efficiency through different means, further improvements can emerge from combining approaches, such as making MoE more efficient using quantization (Section 6.3) and using parameter-efficient models for distillation (Section 6.2). 4 Pre-training Modern transfer learning approaches in NLP typically involve pre-training a model in a selfsupervised fashion on large amounts of text before fine-tuning it on\n\n[8] (source: treviso2023, page 1)\nin efficient NLP. We aim to provide both guidance for conducting NLP under limited resources, and point towards promising research directions for developing more efficient methods. 1 Introduction Scaling has become a key ingredient in achieving state-of-the-art performance in NLP (Figure 1), as recent research suggests that some capabilities only emerge once models grow beyond a certain size (Wei et al., 2022b). However, despite the merits of scaling, it poses key challenges to making these breakthroughs accessible in resourceconstrained environments (Ahmed and Wahed, 2020), in having a non-negligible environmental impact (Strubell et al., 2019; Schwartz et al., 2020a; Derczynski, 2020; Patterson et al., 2021; Wu et al., 2022a), and in complying with hardware constraints (Thompson et al., 2020). To ∗Equal contribution. marcos.treviso@tecnico.pt. tackle these limitations, there has been renewed focus around research that seeks to improve model efficiency. Definition Efficiency is characterized by the relationship between resources going into a system and its output, with a more efficient system producing the same output with fewer resources. Schwartz et\n\nQuestion: According to the efficiency survey, RETRO matched the performance of models how many times larger, and how large was the database it retrieved from?\nAnswer:<|im_end|>\n<|im_start|>assistant\n",
+    "token_breakdown": {
+      "query_tokens": 28,
+      "context_tokens": 2260,
+      "chunk_tokens": [
+        270,
+        276,
+        267,
+        251,
+        260,
+        271,
+        249,
+        271
+      ]
+    }
+  },
+  "generation": {
+    "t_in": 2352,
+    "t_out": 26,
+    "generation_ms": 1199.2704467847943,
+    "prefill_ms": 591.9555015861988,
+    "decode_ms": 607.3149451985955,
+    "decode_tokens_per_s": 41.16480287147364,
+    "hit_max_new_tokens": false,
+    "answer": "RETRO matched the performance of models 25 times larger by retrieving chunks of tokens from a 2 trillion token database."
+  },
+  "energy": {
+    "codecarbon": {
+      "co2_kg": 2.4446897734867333e-05,
+      "energy_kwh": 8.406629093333103e-05,
+      "cpu_energy_kwh": 2.988911443150264e-06,
+      "gpu_energy_kwh": 7.768561769694315e-05,
+      "ram_energy_kwh": 3.3917617932375937e-06,
+      "cc_duration_s": 4.4012073166668415,
+      "cpu_power_w": 5.8216469864348275,
+      "gpu_power_w": 147.58664549522777,
+      "ram_power_w": 10.0,
+      "country": "Ireland",
+      "region": "leinster",
+      "carbon_intensity_g_per_kwh": 290.80500000000006
+    },
+    "gpu_nvml_retrieval_j": 0.0,
+    "gpu_nvml_generation_j": 279.668,
+    "gpu_peak_mem_mb": 15245.55859375
+  },
+  "grading": {
+    "suggested_grade": "P",
+    "suggestion_reason": "all key facts present; evidence passage was retrieved",
+    "evidence_retrieved_at_rank": 1
+  }
+}

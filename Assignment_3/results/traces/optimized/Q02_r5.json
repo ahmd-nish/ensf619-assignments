@@ -1,0 +1,127 @@
+{
+  "run_id": "20261118-015420_main",
+  "timestamp": "2026-11-18T02:00:47.250+00:00",
+  "config": {
+    "name": "optimized",
+    "label": "B. Optimized (low context / high-quality retrieval)",
+    "embedding_model": "BAAI/bge-small-en-v1.5",
+    "chunk_size": 512,
+    "chunk_overlap": 50,
+    "top_k": 3,
+    "query_prefix": "Represent this sentence for searching relevant passages: "
+  },
+  "question": {
+    "id": "Q02",
+    "question": "What factor do Strubell et al. use to convert kilowatt-hours into pounds of CO2e, and which organisation provides it?",
+    "reference_answer": "0.954 pounds of CO2 per kWh, the U.S. Environmental Protection Agency (EPA) average.",
+    "doc_id": "strubell2019",
+    "evidence": "CO2e = 0 .954pt",
+    "keywords": [
+      [
+        "0.954",
+        ".954"
+      ],
+      [
+        "EPA",
+        "Environmental Protection Agency"
+      ]
+    ],
+    "evidence_page": 2
+  },
+  "repeat": 5,
+  "retrieval": {
+    "query": "Represent this sentence for searching relevant passages: What factor do Strubell et al. use to convert kilowatt-hours into pounds of CO2e, and which organisation provides it?",
+    "query_embed_tokens": 40,
+    "encode_ms": 8.942585438489914,
+    "search_ms": 0.038973987102508545,
+    "retrieval_ms": 8.981559425592422
+  },
+  "retrieved_chunks": [
+    {
+      "rank": 1,
+      "chunk_id": "optimized-strubell2019-0003",
+      "score": 0.6474381685256958,
+      "doc_id": "strubell2019",
+      "page_start": 2,
+      "page_end": 3,
+      "embed_tokens": 510,
+      "text": "23% 31% 10% Table 2: Percent energy sourced from: Renewable (e.g. hydro, solar, wind), natural gas, coal and nuclear for the top 3 cloud compute providers (Cook et al., 2017), compared to the United States,4 China5 and Germany (Burger, 2019). We estimate the total time expected for models to train to completion using training times and hardware reported in the original papers. We then calculate the power consumption in kilowatt-hours (kWh) as follows. Let pc be the average power draw (in watts) from all CPU sockets during training, let pr be the average power draw from all DRAM (main memory) sockets, let pg be the average power draw of a GPU during training, and let g be the number of GPUs used to train. We estimate total power consumption as combined GPU, CPU and DRAM consumption, then multiply this by Power Usage Effectiveness (PUE), which accounts for the additional energy required to support the compute infrastructure (mainly cooling). We use a PUE coefficient of 1.58, the 2018 global average for data centers (Ascierto, 2018). Then the total power pt required at a given instance during training is given by: pt = 1.58t(pc + pr + gpg) 1000 (1) The U.S. Environmental Protection Agency (EPA) provides average CO2 produced (in pounds per kilowatt-hour) for power consumed in the U.S. (EPA, 2018), which we use to convert power to estimated CO2 emissions: CO2e = 0.954pt (2) This conversion takes into account the relative proportions of different energy sources (primarily natural gas, coal, nuclear and renewable) consumed to produce energy in the United States. Table 2 lists the relative energy sources for China, Germany and the United States compared to the top 5U.S. Dept. of Energy: https://bit.ly/2JTbGnI 5China Electricity Council; trans. China Energy Portal: https://bit.ly/2QHE5O3 three cloud service providers. The U.S. breakdown of energy is comparable to that of the most popular cloud compute service, Amazon Web Services, so we believe this conversion to provide a reasonable estimate of CO2 emissions per kilowatt hour of compute energy used. 2.1 Models We analyze four models, the computational requirements of which"
+    },
+    {
+      "rank": 2,
+      "chunk_id": "optimized-strubell2019-0004",
+      "score": 0.6222677230834961,
+      "doc_id": "strubell2019",
+      "page_start": 3,
+      "page_end": 3,
+      "embed_tokens": 510,
+      "text": "of the most popular cloud compute service, Amazon Web Services, so we believe this conversion to provide a reasonable estimate of CO2 emissions per kilowatt hour of compute energy used. 2.1 Models We analyze four models, the computational requirements of which we describe below. All models have code freely available online, which we used out-of-the-box. For more details on the models themselves, please refer to the original papers. Transformer. The Transformer (T2T) model (Vaswani et al., 2017) is an encoder-decoder architecture primarily recognized for efficient and accurate machine translation. The encoder and decoder each consist of 6 stacked layers of multi-head selfattention. Vaswani et al. (2017) report that the Transformer base model (T2Tbase; 65M parameters) was trained on 8 NVIDIA P100 GPUs for 12 hours, and the Transformer big model (T2Tbig ; 213M parameters) was trained for 3.5 days (84 hours; 300k steps). This model is also the basis for recent work on neural architecture search (NAS) for machine translation and language modeling (So et al., 2019), and the NLP pipeline that we study in more detail in §4.2 (Strubell et al., 2018). So et al. (2019) report that their full architecture search ran for a total of 979M training steps, and that their base model requires 10 hours to train for 300k steps on one TPUv2 core. This equates to 32,623 hours of TPU or 274,120 hours on 8 P100 GPUs. ELMo. The ELMo model (Peters et al., 2018) is based on stacked LSTMs and provides rich word representations in context by pre-training on a large amount of data using a language modeling objective. Replacing context-independent pretrained word embeddings with ELMo has been shown to increase performance on downstream tasks such as named entity recognition, semantic role labeling, and coreference. Peters et al. (2018) report that ELMo was trained on 3 NVIDIA GTX 1080 GPUs for 2 weeks (336 hours). BERT. The BERT model (Devlin et al., 2019) provides a Transformer-based architecture for building contextual representations similar to ELMo, but trained with a different language modeling objective. BERT substantially improves"
+    },
+    {
+      "rank": 3,
+      "chunk_id": "optimized-treviso2023-0022",
+      "score": 0.6163907647132874,
+      "doc_id": "treviso2023",
+      "page_start": 11,
+      "page_end": 12,
+      "embed_tokens": 510,
+      "text": "may log an energy use of zero, and there will almost always be energy demand that is missed. Second, inefficiencies such as heat loss are not reported by current APIs and hence do not cover cooling and other system management activities. Third, not all architectures and operating systems are supported. For instance, power consumption under macOS is difficult to manage, and direct figures for TPU power consumption are not available. Carbon Emissions Carbon emissions are usually computed using the power consumption and the carbon intensity of the marginal energy generation used to run the program. Thus, low-energy does not mean low-carbon, and high-energy models can—in the right region and with some care—be zero-carbon in terms of point energy consumption impact, if executed at the right time (i.e., when the energy mix is low-carbon intensity; Dodge et al., 2022). For estimating the CO2 emissions from a specific program execution, APIs such as ElectricityMap2 provide real-time access to carbon intensity for many regions. However, as carbon intensity varies and is affected by other factors like the power usage efficiency in a data center, it is often a poor basis for comparison; in fact, Henderson et al. (2020) recommended using multiple runs for a stable estimate. Furthermore, one needs to consider that zero-carbon program executions still consume energy, and that efficiency does not intrinsically guarantee a reduction in overall resource consumption, as the resulting cost reduction may lead to an increase 2https://electricitymap.org. in demand counteracting any gains, an effect known as Jevons’ paradox (Jevons, 1866). 8.2 Open Challenges in Measuring Efficiency Hardware choice can lead to pronounced differences in certain efficiency measurements such as latency and thoroughput (Lee-Thorp et al., 2022). Properly measuring efficiency remains a major challenge (Cao et al., 2020). Separating Different Stages It is important to characterize efficiency of pre-training and finetuning stages separately (Sections 4 and 5). Models may present different memory requirements during training yet result in trained models with comparable inference memory consumption. This is because training often involves design choices that increase the memory overhead of backward propagation. Further, some optimizers may require substantially more memory than others. Similarly, parameter sharing techniques may show few benefits during training but show memory improvements at inference (Dehghani et al., 2022). Finally, while"
+    }
+  ],
+  "prompt": {
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful research assistant. Answer the question using only the provided context. If the context does not contain the answer, reply exactly: \"The context does not contain the answer.\" Keep the answer short and factual."
+      },
+      {
+        "role": "user",
+        "content": "Context:\n[1] (source: strubell2019, page 2)\n23% 31% 10% Table 2: Percent energy sourced from: Renewable (e.g. hydro, solar, wind), natural gas, coal and nuclear for the top 3 cloud compute providers (Cook et al., 2017), compared to the United States,4 China5 and Germany (Burger, 2019). We estimate the total time expected for models to train to completion using training times and hardware reported in the original papers. We then calculate the power consumption in kilowatt-hours (kWh) as follows. Let pc be the average power draw (in watts) from all CPU sockets during training, let pr be the average power draw from all DRAM (main memory) sockets, let pg be the average power draw of a GPU during training, and let g be the number of GPUs used to train. We estimate total power consumption as combined GPU, CPU and DRAM consumption, then multiply this by Power Usage Effectiveness (PUE), which accounts for the additional energy required to support the compute infrastructure (mainly cooling). We use a PUE coefficient of 1.58, the 2018 global average for data centers (Ascierto, 2018). Then the total power pt required at a given instance during training is given by: pt = 1.58t(pc + pr + gpg) 1000 (1) The U.S. Environmental Protection Agency (EPA) provides average CO2 produced (in pounds per kilowatt-hour) for power consumed in the U.S. (EPA, 2018), which we use to convert power to estimated CO2 emissions: CO2e = 0.954pt (2) This conversion takes into account the relative proportions of different energy sources (primarily natural gas, coal, nuclear and renewable) consumed to produce energy in the United States. Table 2 lists the relative energy sources for China, Germany and the United States compared to the top 5U.S. Dept. of Energy: https://bit.ly/2JTbGnI 5China Electricity Council; trans. China Energy Portal: https://bit.ly/2QHE5O3 three cloud service providers. The U.S. breakdown of energy is comparable to that of the most popular cloud compute service, Amazon Web Services, so we believe this conversion to provide a reasonable estimate of CO2 emissions per kilowatt hour of compute energy used. 2.1 Models We analyze four models, the computational requirements of which\n\n[2] (source: strubell2019, page 3)\nof the most popular cloud compute service, Amazon Web Services, so we believe this conversion to provide a reasonable estimate of CO2 emissions per kilowatt hour of compute energy used. 2.1 Models We analyze four models, the computational requirements of which we describe below. All models have code freely available online, which we used out-of-the-box. For more details on the models themselves, please refer to the original papers. Transformer. The Transformer (T2T) model (Vaswani et al., 2017) is an encoder-decoder architecture primarily recognized for efficient and accurate machine translation. The encoder and decoder each consist of 6 stacked layers of multi-head selfattention. Vaswani et al. (2017) report that the Transformer base model (T2Tbase; 65M parameters) was trained on 8 NVIDIA P100 GPUs for 12 hours, and the Transformer big model (T2Tbig ; 213M parameters) was trained for 3.5 days (84 hours; 300k steps). This model is also the basis for recent work on neural architecture search (NAS) for machine translation and language modeling (So et al., 2019), and the NLP pipeline that we study in more detail in §4.2 (Strubell et al., 2018). So et al. (2019) report that their full architecture search ran for a total of 979M training steps, and that their base model requires 10 hours to train for 300k steps on one TPUv2 core. This equates to 32,623 hours of TPU or 274,120 hours on 8 P100 GPUs. ELMo. The ELMo model (Peters et al., 2018) is based on stacked LSTMs and provides rich word representations in context by pre-training on a large amount of data using a language modeling objective. Replacing context-independent pretrained word embeddings with ELMo has been shown to increase performance on downstream tasks such as named entity recognition, semantic role labeling, and coreference. Peters et al. (2018) report that ELMo was trained on 3 NVIDIA GTX 1080 GPUs for 2 weeks (336 hours). BERT. The BERT model (Devlin et al., 2019) provides a Transformer-based architecture for building contextual representations similar to ELMo, but trained with a different language modeling objective. BERT substantially improves\n\n[3] (source: treviso2023, page 11)\nmay log an energy use of zero, and there will almost always be energy demand that is missed. Second, inefficiencies such as heat loss are not reported by current APIs and hence do not cover cooling and other system management activities. Third, not all architectures and operating systems are supported. For instance, power consumption under macOS is difficult to manage, and direct figures for TPU power consumption are not available. Carbon Emissions Carbon emissions are usually computed using the power consumption and the carbon intensity of the marginal energy generation used to run the program. Thus, low-energy does not mean low-carbon, and high-energy models can—in the right region and with some care—be zero-carbon in terms of point energy consumption impact, if executed at the right time (i.e., when the energy mix is low-carbon intensity; Dodge et al., 2022). For estimating the CO2 emissions from a specific program execution, APIs such as ElectricityMap2 provide real-time access to carbon intensity for many regions. However, as carbon intensity varies and is affected by other factors like the power usage efficiency in a data center, it is often a poor basis for comparison; in fact, Henderson et al. (2020) recommended using multiple runs for a stable estimate. Furthermore, one needs to consider that zero-carbon program executions still consume energy, and that efficiency does not intrinsically guarantee a reduction in overall resource consumption, as the resulting cost reduction may lead to an increase 2https://electricitymap.org. in demand counteracting any gains, an effect known as Jevons’ paradox (Jevons, 1866). 8.2 Open Challenges in Measuring Efficiency Hardware choice can lead to pronounced differences in certain efficiency measurements such as latency and thoroughput (Lee-Thorp et al., 2022). Properly measuring efficiency remains a major challenge (Cao et al., 2020). Separating Different Stages It is important to characterize efficiency of pre-training and finetuning stages separately (Sections 4 and 5). Models may present different memory requirements during training yet result in trained models with comparable inference memory consumption. This is because training often involves design choices that increase the memory overhead of backward propagation. Further, some optimizers may require substantially more memory than others. Similarly, parameter sharing techniques may show few benefits during training but show memory improvements at inference (Dehghani et al., 2022). Finally, while\n\nQuestion: What factor do Strubell et al. use to convert kilowatt-hours into pounds of CO2e, and which organisation provides it?\nAnswer:"
+      }
+    ],
+    "rendered": "<|im_start|>system\nYou are a careful research assistant. Answer the question using only the provided context. If the context does not contain the answer, reply exactly: \"The context does not contain the answer.\" Keep the answer short and factual.<|im_end|>\n<|im_start|>user\nContext:\n[1] (source: strubell2019, page 2)\n23% 31% 10% Table 2: Percent energy sourced from: Renewable (e.g. hydro, solar, wind), natural gas, coal and nuclear for the top 3 cloud compute providers (Cook et al., 2017), compared to the United States,4 China5 and Germany (Burger, 2019). We estimate the total time expected for models to train to completion using training times and hardware reported in the original papers. We then calculate the power consumption in kilowatt-hours (kWh) as follows. Let pc be the average power draw (in watts) from all CPU sockets during training, let pr be the average power draw from all DRAM (main memory) sockets, let pg be the average power draw of a GPU during training, and let g be the number of GPUs used to train. We estimate total power consumption as combined GPU, CPU and DRAM consumption, then multiply this by Power Usage Effectiveness (PUE), which accounts for the additional energy required to support the compute infrastructure (mainly cooling). We use a PUE coefficient of 1.58, the 2018 global average for data centers (Ascierto, 2018). Then the total power pt required at a given instance during training is given by: pt = 1.58t(pc + pr + gpg) 1000 (1) The U.S. Environmental Protection Agency (EPA) provides average CO2 produced (in pounds per kilowatt-hour) for power consumed in the U.S. (EPA, 2018), which we use to convert power to estimated CO2 emissions: CO2e = 0.954pt (2) This conversion takes into account the relative proportions of different energy sources (primarily natural gas, coal, nuclear and renewable) consumed to produce energy in the United States. Table 2 lists the relative energy sources for China, Germany and the United States compared to the top 5U.S. Dept. of Energy: https://bit.ly/2JTbGnI 5China Electricity Council; trans. China Energy Portal: https://bit.ly/2QHE5O3 three cloud service providers. The U.S. breakdown of energy is comparable to that of the most popular cloud compute service, Amazon Web Services, so we believe this conversion to provide a reasonable estimate of CO2 emissions per kilowatt hour of compute energy used. 2.1 Models We analyze four models, the computational requirements of which\n\n[2] (source: strubell2019, page 3)\nof the most popular cloud compute service, Amazon Web Services, so we believe this conversion to provide a reasonable estimate of CO2 emissions per kilowatt hour of compute energy used. 2.1 Models We analyze four models, the computational requirements of which we describe below. All models have code freely available online, which we used out-of-the-box. For more details on the models themselves, please refer to the original papers. Transformer. The Transformer (T2T) model (Vaswani et al., 2017) is an encoder-decoder architecture primarily recognized for efficient and accurate machine translation. The encoder and decoder each consist of 6 stacked layers of multi-head selfattention. Vaswani et al. (2017) report that the Transformer base model (T2Tbase; 65M parameters) was trained on 8 NVIDIA P100 GPUs for 12 hours, and the Transformer big model (T2Tbig ; 213M parameters) was trained for 3.5 days (84 hours; 300k steps). This model is also the basis for recent work on neural architecture search (NAS) for machine translation and language modeling (So et al., 2019), and the NLP pipeline that we study in more detail in §4.2 (Strubell et al., 2018). So et al. (2019) report that their full architecture search ran for a total of 979M training steps, and that their base model requires 10 hours to train for 300k steps on one TPUv2 core. This equates to 32,623 hours of TPU or 274,120 hours on 8 P100 GPUs. ELMo. The ELMo model (Peters et al., 2018) is based on stacked LSTMs and provides rich word representations in context by pre-training on a large amount of data using a language modeling objective. Replacing context-independent pretrained word embeddings with ELMo has been shown to increase performance on downstream tasks such as named entity recognition, semantic role labeling, and coreference. Peters et al. (2018) report that ELMo was trained on 3 NVIDIA GTX 1080 GPUs for 2 weeks (336 hours). BERT. The BERT model (Devlin et al., 2019) provides a Transformer-based architecture for building contextual representations similar to ELMo, but trained with a different language modeling objective. BERT substantially improves\n\n[3] (source: treviso2023, page 11)\nmay log an energy use of zero, and there will almost always be energy demand that is missed. Second, inefficiencies such as heat loss are not reported by current APIs and hence do not cover cooling and other system management activities. Third, not all architectures and operating systems are supported. For instance, power consumption under macOS is difficult to manage, and direct figures for TPU power consumption are not available. Carbon Emissions Carbon emissions are usually computed using the power consumption and the carbon intensity of the marginal energy generation used to run the program. Thus, low-energy does not mean low-carbon, and high-energy models can—in the right region and with some care—be zero-carbon in terms of point energy consumption impact, if executed at the right time (i.e., when the energy mix is low-carbon intensity; Dodge et al., 2022). For estimating the CO2 emissions from a specific program execution, APIs such as ElectricityMap2 provide real-time access to carbon intensity for many regions. However, as carbon intensity varies and is affected by other factors like the power usage efficiency in a data center, it is often a poor basis for comparison; in fact, Henderson et al. (2020) recommended using multiple runs for a stable estimate. Furthermore, one needs to consider that zero-carbon program executions still consume energy, and that efficiency does not intrinsically guarantee a reduction in overall resource consumption, as the resulting cost reduction may lead to an increase 2https://electricitymap.org. in demand counteracting any gains, an effect known as Jevons’ paradox (Jevons, 1866). 8.2 Open Challenges in Measuring Efficiency Hardware choice can lead to pronounced differences in certain efficiency measurements such as latency and thoroughput (Lee-Thorp et al., 2022). Properly measuring efficiency remains a major challenge (Cao et al., 2020). Separating Different Stages It is important to characterize efficiency of pre-training and finetuning stages separately (Sections 4 and 5). Models may present different memory requirements during training yet result in trained models with comparable inference memory consumption. This is because training often involves design choices that increase the memory overhead of backward propagation. Further, some optimizers may require substantially more memory than others. Similarly, parameter sharing techniques may show few benefits during training but show memory improvements at inference (Dehghani et al., 2022). Finally, while\n\nQuestion: What factor do Strubell et al. use to convert kilowatt-hours into pounds of CO2e, and which organisation provides it?\nAnswer:<|im_end|>\n<|im_start|>assistant\n",
+    "token_breakdown": {
+      "query_tokens": 29,
+      "context_tokens": 1639,
+      "chunk_tokens": [
+        529,
+        548,
+        506
+      ]
+    }
+  },
+  "generation": {
+    "t_in": 1732,
+    "t_out": 56,
+    "generation_ms": 1758.3380909636617,
+    "prefill_ms": 447.32570368796587,
+    "decode_ms": 1311.0123872756958,
+    "decode_tokens_per_s": 41.952311460832846,
+    "hit_max_new_tokens": false,
+    "answer": "The U.S. Environmental Protection Agency (EPA) provides the average CO2 produced (in pounds per kilowatt-hour) for power consumed in the U.S., which Strubell et al. use to convert kilowatt-hours into pounds of CO2e."
+  },
+  "energy": {
+    "codecarbon": {
+      "co2_kg": 3.730927871742666e-05,
+      "energy_kwh": 0.00012829655170105967,
+      "cpu_energy_kwh": 4.3755115560865395e-06,
+      "gpu_energy_kwh": 0.00011898009520905362,
+      "ram_energy_kwh": 4.94094493591951e-06,
+      "cc_duration_s": 4.959768976084888,
+      "cpu_power_w": 5.887018813799813,
+      "gpu_power_w": 161.31626139886623,
+      "ram_power_w": 10.0,
+      "country": "Ireland",
+      "region": "leinster",
+      "carbon_intensity_g_per_kwh": 290.80500000000006
+    },
+    "gpu_nvml_retrieval_j": 0.0,
+    "gpu_nvml_generation_j": 428.328,
+    "gpu_peak_mem_mb": 15129.8984375
+  },
+  "grading": {
+    "suggested_grade": "F",
+    "suggestion_reason": "answer is missing: 0.954",
+    "evidence_retrieved_at_rank": 1
+  }
+}

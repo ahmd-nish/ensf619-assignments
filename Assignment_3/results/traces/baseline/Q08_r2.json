@@ -1,0 +1,180 @@
+{
+  "run_id": "20261118-015420_main",
+  "timestamp": "2026-11-18T01:57:17.237+00:00",
+  "config": {
+    "name": "baseline",
+    "label": "A. Baseline (high context / low-quality retrieval)",
+    "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+    "chunk_size": 256,
+    "chunk_overlap": 50,
+    "top_k": 8,
+    "query_prefix": ""
+  },
+  "question": {
+    "id": "Q08",
+    "question": "According to the survey, by how much can mapping to a low-precision data format reduce memory consumption and improve throughput compared with 32-bit floating point?",
+    "reference_answer": "Memory consumption reduced by 4x–24x and throughput improved by 4.5x.",
+    "doc_id": "treviso2023",
+    "evidence": "can reduce memory consumption by 4x–24x and improve the throughput by 4.5x compared to 32-bit floating point format",
+    "keywords": [
+      [
+        "24"
+      ],
+      [
+        "4.5"
+      ]
+    ],
+    "evidence_page": 9
+  },
+  "repeat": 2,
+  "retrieval": {
+    "query": "According to the survey, by how much can mapping to a low-precision data format reduce memory consumption and improve throughput compared with 32-bit floating point?",
+    "query_embed_tokens": 34,
+    "encode_ms": 7.67328217625618,
+    "search_ms": 0.043011270463466644,
+    "retrieval_ms": 7.7162934467196465
+  },
+  "retrieved_chunks": [
+    {
+      "rank": 1,
+      "chunk_id": "baseline-treviso2023-0037",
+      "score": 0.6619186997413635,
+      "doc_id": "treviso2023",
+      "page_start": 8,
+      "page_end": 9,
+      "embed_tokens": 254,
+      "text": "(Stanton et al., 2021). Recently, Zhu et al. (2022) discovered that some performance loss is due to undistillable classes and suggested ways to address this. 6.3 Quantization Mapping high-precision data types to lowprecision ones is referred to as quantization. Quantization can be applied at different stages in the NLP model-building pipeline to reduce training and inference costs. Various research has shown that low-precision data format can reduce memory consumption by 4x–24x and improve the throughput by 4.5x compared to 32-bit floating point format. Various studies targeted specific precision-levels such as integers (Kim et al., 2021), 8-bit (Quinn and Ballesteros, 2018; Zafrir et al., 2019; Bhandare et al., 2019; Prato et al., 2020; Dettmers et al., 2022a), ternary (Zhang et al., 2020; Ji et al., 2021; Zadeh et al., 2022), and even binary representations (Bai et al., 2021). Different components may have different sensitivities regarding their underlying precision, so there is a"
+    },
+    {
+      "rank": 2,
+      "chunk_id": "baseline-treviso2023-0045",
+      "score": 0.41968363523483276,
+      "doc_id": "treviso2023",
+      "page_start": 10,
+      "page_end": 10,
+      "embed_tokens": 254,
+      "text": "local context by convolutions for MT in resourceconstrained settings. Through quantization llama .cpp1 runs a 7B-parameter LLM on recent mobile phone hardware. Finally, ProFormer (Sankar et al., 2021) reduces runtime and memory via locality sensitive hashing and local projection attention layers. 7.5 Hardware Considerations To deliver more computational power, vendors pack denser computational units into domainspecific hardware, such as tensor cores in Intel FPGAs, Xilinx AI Engines, and matrix processors in the Google TPU. However, irregularities in the transformer, like sparsity and mixed data types, restrict the use of these resources. We suggest focusing on adapting efficient transformers to existing specialized hardware platforms, including using hardware-optimized data formats like block floating point, and exploring sparsity on dense tensor units. 8 Evaluating Efficiency Evaluating efficiency requires establishing which computational aspect one aims to minimize. We discuss the two most prominent aspects (FLOP/s and power consumption), and list open challenges. 8.1 Evaluation Measures Pareto Optimality When improving efficiency, multiple factors often need to be traded off. For instance, longer training time can increase task performance, but simultaneously increase 1"
+    },
+    {
+      "rank": 3,
+      "chunk_id": "baseline-treviso2023-0047",
+      "score": 0.38897672295570374,
+      "doc_id": "treviso2023",
+      "page_start": 11,
+      "page_end": 11,
+      "embed_tokens": 254,
+      "text": "quality scores. Advancing NLP by pushing Pareto barriers is an established practice (Kim et al., 2019; Bogoychev et al., 2020; Behnke and Heafield, 2021). For instance, the WNGT 2020 MT shared task (Birch et al., 2020) considers the Pareto frontier between real time taken, system or GPU memory usage, and model size, as well as BLEU score. Puvis de Chavannes et al. (2021) included power consumption as a trade-off against perplexity to explore Pareto-efficient hyperparameter combinations for transformer models. Finally, Liu et al. (2022b) examined Pareto efficiency for a number of tasks in an attempt to narrow model selection search space. FLOP/s A frequently reported efficiency measure is the number of floating point operations (FLOPs) and floating points per second (FLOP/s). While these discrete metrics seem well defined in terms of what the hardware does, there is some variation at multiple stages of the stack, adding uncertainty. For example, different operations may count as a FLOP on different hardware; non-floating-point operations are not considered; and hardware is rarely 100% utilized and achieving this"
+    },
+    {
+      "rank": 4,
+      "chunk_id": "baseline-treviso2023-0052",
+      "score": 0.37490159273147583,
+      "doc_id": "treviso2023",
+      "page_start": 12,
+      "page_end": 12,
+      "embed_tokens": 254,
+      "text": "training but show memory improvements at inference (Dehghani et al., 2022). Finally, while larger models run more slowly than smaller ones, they converge faster and better compress using methods like pruning and quantization (Li et al., 2020c). Disagreement Between Cost Factors As partially discussed in Section 7.2, cost indicators may disagree with each other. For instance, MoEs increase the overall parameter count, but improve the trade-off between quality and FLOPs, as they minimize the per-data cost by routing to subsections of the model (Rajbhandari et al., 2022). Conversely, unstructured sparsity techniques can significantly minimize the overall number of FLOPs, yet in practice, they introduce low-level operations that can lead to far higher memory requirements to store the indices that indicate what part of the matrix is sparse (Qu et al., 2022). Finally, Chen et al. (2022) and Dao et al. (2022a) found specific sparsity patterns that achieve more predictable speedups with current hardware. Trade-offs with Other Desiderata One major, but seldom studied, concern when improving efficiency are trade-offs with other"
+    },
+    {
+      "rank": 5,
+      "chunk_id": "baseline-treviso2023-0058",
+      "score": 0.36254554986953735,
+      "doc_id": "treviso2023",
+      "page_start": 13,
+      "page_end": 13,
+      "embed_tokens": 254,
+      "text": "considering compute budget variation when comparing new model development to baselines. ware paradigm. Key challenges include better understanding and modeling trade-offs between end-task performance and resource consumption, and the dependency between hardware choices and software implementations. Furthermore, we note that efficiency in NLP has many definitions and can be achieved in many different ways, but is also subject to various open challenges, and cannot be measured by a single metric. We outline several promising research directions aligned with overcoming these challenges, ranging from approaches that make better use of available data, strategies for reducing the cost of pre-training and fine-tuning large models, to prioritizing the importance of interactions between algorithms, software, and hardware. Impressive advances in NLP enabled primarily by scaling computation have produced remarkable progress in a short span of time. However, in order to realize the full potential of this technology for a broader swath of society, we must reduce the amount of computation that is required to achieve these remarkable results. We hope that this survey can serve to accelerate advances in this important area of research with great potential for impact both within our field and for society as a whole. Acknowledgments This work was initiated at and benefited substantially from the Dagstuhl Seminar 22232: Efficient and"
+    },
+    {
+      "rank": 6,
+      "chunk_id": "baseline-treviso2023-0042",
+      "score": 0.3623970150947571,
+      "doc_id": "treviso2023",
+      "page_start": 10,
+      "page_end": 10,
+      "embed_tokens": 254,
+      "text": "U communication. 7.2 Specialized Hardware Specialized NLP hardware has been built using Application Specific Integrated Circuits or Field Programmable Gate Arrays, though it is not yet broadly available. These designs use dedicated units for efficient operations like quantization and pruning (Section 6). For example, Zadeh et al. (2020, 2022), Li et al. (2021), and Qu et al. (2022) support ultra-low-bit and mixed precision computation that cannot be done on CPUs/GPUs; Ham et al. (2020, 2021) and Wang et al. (2021a) design hardware that predicts and prunes redundant heads/tokens and weak attention values in transformers. Qu et al. (2022) present a design that balances the workload to alleviate the irregularity in the pruned attention. Others develop new types of processors and memories optimized for transformer components: Lu et al. (2020) and Liu et al. (2021b) implemented dedicated hardware for softmax and layer normalization respectively, and Tambe et al. (2021) used embedded Resistive RAM—a nonvolatile memory with low latency and energy consumption—to store word embed"
+    },
+    {
+      "rank": 7,
+      "chunk_id": "baseline-treviso2023-0038",
+      "score": 0.3175988793373108,
+      "doc_id": "treviso2023",
+      "page_start": 9,
+      "page_end": 9,
+      "embed_tokens": 254,
+      "text": "2020; Ji et al., 2021; Zadeh et al., 2022), and even binary representations (Bai et al., 2021). Different components may have different sensitivities regarding their underlying precision, so there is a body of work on mixed-precision quantization. Shen et al. (2020) showed that embedding layers require more precise parameter representations than the attention layer, while Kim et al. (2021) showed that nonlinear functions require more bits than the general matrix multiplication. Others defined quantization as a constrained optimization problem to automatically identify layers where lower precision is sufficient (Hubara et al., 2021). Finally, several studies proposed quantization during training to make them robust against performance loss after quantization (Zafrir et al., 2019; Kim et al., 2021; Stock et al., 2021). For instance, Bai et al. (2021) and Zhang et al. (2020) proposed using knowledge distillation to maintain the accuracy of binarized and ternarized models. These show that component-customized quantization can preserve accuracy while improving efficiency. To maximize the benefit from quantization, one should also consider the available underlying hardware and associated specialized"
+    },
+    {
+      "rank": 8,
+      "chunk_id": "baseline-treviso2023-0048",
+      "score": 0.3165929317474365,
+      "doc_id": "treviso2023",
+      "page_start": 11,
+      "page_end": 11,
+      "embed_tokens": 254,
+      "text": "does, there is some variation at multiple stages of the stack, adding uncertainty. For example, different operations may count as a FLOP on different hardware; non-floating-point operations are not considered; and hardware is rarely 100% utilized and achieving this productively is a challenge, so theoretical FLOP/s performance cannot be multiplied with time elapsed to yield the amount of computing performed. Still, FLOP/s per unit power can indicate which hardware choices have the potential to offer Pareto-efficient trade-offs (Hsu et al., 2005). Power Consumption There exist various ways to measure power consumption, for instance, by using specific hardware such as an electricity meter. While this can provide precise figures with a high temporal accuracy, it cannot provide a fine-grained estimate for individual computers in a network. Moreover, it does not cover external energy costs such as cooling or networking. Another way is to use software tools such as MLCO2 (Luccioni et al., 2019). Some tools even provide a real-time breakdown of the power consumption of different components within a machine (Henderson et al., 2020) or local machine APIreported figures to stop training early if prudent (Anthony et al., 2020)"
+    }
+  ],
+  "prompt": {
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful research assistant. Answer the question using only the provided context. If the context does not contain the answer, reply exactly: \"The context does not contain the answer.\" Keep the answer short and factual."
+      },
+      {
+        "role": "user",
+        "content": "Context:\n[1] (source: treviso2023, page 8)\n(Stanton et al., 2021). Recently, Zhu et al. (2022) discovered that some performance loss is due to undistillable classes and suggested ways to address this. 6.3 Quantization Mapping high-precision data types to lowprecision ones is referred to as quantization. Quantization can be applied at different stages in the NLP model-building pipeline to reduce training and inference costs. Various research has shown that low-precision data format can reduce memory consumption by 4x–24x and improve the throughput by 4.5x compared to 32-bit floating point format. Various studies targeted specific precision-levels such as integers (Kim et al., 2021), 8-bit (Quinn and Ballesteros, 2018; Zafrir et al., 2019; Bhandare et al., 2019; Prato et al., 2020; Dettmers et al., 2022a), ternary (Zhang et al., 2020; Ji et al., 2021; Zadeh et al., 2022), and even binary representations (Bai et al., 2021). Different components may have different sensitivities regarding their underlying precision, so there is a\n\n[2] (source: treviso2023, page 10)\nlocal context by convolutions for MT in resourceconstrained settings. Through quantization llama .cpp1 runs a 7B-parameter LLM on recent mobile phone hardware. Finally, ProFormer (Sankar et al., 2021) reduces runtime and memory via locality sensitive hashing and local projection attention layers. 7.5 Hardware Considerations To deliver more computational power, vendors pack denser computational units into domainspecific hardware, such as tensor cores in Intel FPGAs, Xilinx AI Engines, and matrix processors in the Google TPU. However, irregularities in the transformer, like sparsity and mixed data types, restrict the use of these resources. We suggest focusing on adapting efficient transformers to existing specialized hardware platforms, including using hardware-optimized data formats like block floating point, and exploring sparsity on dense tensor units. 8 Evaluating Efficiency Evaluating efficiency requires establishing which computational aspect one aims to minimize. We discuss the two most prominent aspects (FLOP/s and power consumption), and list open challenges. 8.1 Evaluation Measures Pareto Optimality When improving efficiency, multiple factors often need to be traded off. For instance, longer training time can increase task performance, but simultaneously increase 1\n\n[3] (source: treviso2023, page 11)\nquality scores. Advancing NLP by pushing Pareto barriers is an established practice (Kim et al., 2019; Bogoychev et al., 2020; Behnke and Heafield, 2021). For instance, the WNGT 2020 MT shared task (Birch et al., 2020) considers the Pareto frontier between real time taken, system or GPU memory usage, and model size, as well as BLEU score. Puvis de Chavannes et al. (2021) included power consumption as a trade-off against perplexity to explore Pareto-efficient hyperparameter combinations for transformer models. Finally, Liu et al. (2022b) examined Pareto efficiency for a number of tasks in an attempt to narrow model selection search space. FLOP/s A frequently reported efficiency measure is the number of floating point operations (FLOPs) and floating points per second (FLOP/s). While these discrete metrics seem well defined in terms of what the hardware does, there is some variation at multiple stages of the stack, adding uncertainty. For example, different operations may count as a FLOP on different hardware; non-floating-point operations are not considered; and hardware is rarely 100% utilized and achieving this\n\n[4] (source: treviso2023, page 12)\ntraining but show memory improvements at inference (Dehghani et al., 2022). Finally, while larger models run more slowly than smaller ones, they converge faster and better compress using methods like pruning and quantization (Li et al., 2020c). Disagreement Between Cost Factors As partially discussed in Section 7.2, cost indicators may disagree with each other. For instance, MoEs increase the overall parameter count, but improve the trade-off between quality and FLOPs, as they minimize the per-data cost by routing to subsections of the model (Rajbhandari et al., 2022). Conversely, unstructured sparsity techniques can significantly minimize the overall number of FLOPs, yet in practice, they introduce low-level operations that can lead to far higher memory requirements to store the indices that indicate what part of the matrix is sparse (Qu et al., 2022). Finally, Chen et al. (2022) and Dao et al. (2022a) found specific sparsity patterns that achieve more predictable speedups with current hardware. Trade-offs with Other Desiderata One major, but seldom studied, concern when improving efficiency are trade-offs with other\n\n[5] (source: treviso2023, page 13)\nconsidering compute budget variation when comparing new model development to baselines. ware paradigm. Key challenges include better understanding and modeling trade-offs between end-task performance and resource consumption, and the dependency between hardware choices and software implementations. Furthermore, we note that efficiency in NLP has many definitions and can be achieved in many different ways, but is also subject to various open challenges, and cannot be measured by a single metric. We outline several promising research directions aligned with overcoming these challenges, ranging from approaches that make better use of available data, strategies for reducing the cost of pre-training and fine-tuning large models, to prioritizing the importance of interactions between algorithms, software, and hardware. Impressive advances in NLP enabled primarily by scaling computation have produced remarkable progress in a short span of time. However, in order to realize the full potential of this technology for a broader swath of society, we must reduce the amount of computation that is required to achieve these remarkable results. We hope that this survey can serve to accelerate advances in this important area of research with great potential for impact both within our field and for society as a whole. Acknowledgments This work was initiated at and benefited substantially from the Dagstuhl Seminar 22232: Efficient and\n\n[6] (source: treviso2023, page 10)\nU communication. 7.2 Specialized Hardware Specialized NLP hardware has been built using Application Specific Integrated Circuits or Field Programmable Gate Arrays, though it is not yet broadly available. These designs use dedicated units for efficient operations like quantization and pruning (Section 6). For example, Zadeh et al. (2020, 2022), Li et al. (2021), and Qu et al. (2022) support ultra-low-bit and mixed precision computation that cannot be done on CPUs/GPUs; Ham et al. (2020, 2021) and Wang et al. (2021a) design hardware that predicts and prunes redundant heads/tokens and weak attention values in transformers. Qu et al. (2022) present a design that balances the workload to alleviate the irregularity in the pruned attention. Others develop new types of processors and memories optimized for transformer components: Lu et al. (2020) and Liu et al. (2021b) implemented dedicated hardware for softmax and layer normalization respectively, and Tambe et al. (2021) used embedded Resistive RAM—a nonvolatile memory with low latency and energy consumption—to store word embed\n\n[7] (source: treviso2023, page 9)\n2020; Ji et al., 2021; Zadeh et al., 2022), and even binary representations (Bai et al., 2021). Different components may have different sensitivities regarding their underlying precision, so there is a body of work on mixed-precision quantization. Shen et al. (2020) showed that embedding layers require more precise parameter representations than the attention layer, while Kim et al. (2021) showed that nonlinear functions require more bits than the general matrix multiplication. Others defined quantization as a constrained optimization problem to automatically identify layers where lower precision is sufficient (Hubara et al., 2021). Finally, several studies proposed quantization during training to make them robust against performance loss after quantization (Zafrir et al., 2019; Kim et al., 2021; Stock et al., 2021). For instance, Bai et al. (2021) and Zhang et al. (2020) proposed using knowledge distillation to maintain the accuracy of binarized and ternarized models. These show that component-customized quantization can preserve accuracy while improving efficiency. To maximize the benefit from quantization, one should also consider the available underlying hardware and associated specialized\n\n[8] (source: treviso2023, page 11)\ndoes, there is some variation at multiple stages of the stack, adding uncertainty. For example, different operations may count as a FLOP on different hardware; non-floating-point operations are not considered; and hardware is rarely 100% utilized and achieving this productively is a challenge, so theoretical FLOP/s performance cannot be multiplied with time elapsed to yield the amount of computing performed. Still, FLOP/s per unit power can indicate which hardware choices have the potential to offer Pareto-efficient trade-offs (Hsu et al., 2005). Power Consumption There exist various ways to measure power consumption, for instance, by using specific hardware such as an electricity meter. While this can provide precise figures with a high temporal accuracy, it cannot provide a fine-grained estimate for individual computers in a network. Moreover, it does not cover external energy costs such as cooling or networking. Another way is to use software tools such as MLCO2 (Luccioni et al., 2019). Some tools even provide a real-time breakdown of the power consumption of different components within a machine (Henderson et al., 2020) or local machine APIreported figures to stop training early if prudent (Anthony et al., 2020)\n\nQuestion: According to the survey, by how much can mapping to a low-precision data format reduce memory consumption and improve throughput compared with 32-bit floating point?\nAnswer:"
+      }
+    ],
+    "rendered": "<|im_start|>system\nYou are a careful research assistant. Answer the question using only the provided context. If the context does not contain the answer, reply exactly: \"The context does not contain the answer.\" Keep the answer short and factual.<|im_end|>\n<|im_start|>user\nContext:\n[1] (source: treviso2023, page 8)\n(Stanton et al., 2021). Recently, Zhu et al. (2022) discovered that some performance loss is due to undistillable classes and suggested ways to address this. 6.3 Quantization Mapping high-precision data types to lowprecision ones is referred to as quantization. Quantization can be applied at different stages in the NLP model-building pipeline to reduce training and inference costs. Various research has shown that low-precision data format can reduce memory consumption by 4x–24x and improve the throughput by 4.5x compared to 32-bit floating point format. Various studies targeted specific precision-levels such as integers (Kim et al., 2021), 8-bit (Quinn and Ballesteros, 2018; Zafrir et al., 2019; Bhandare et al., 2019; Prato et al., 2020; Dettmers et al., 2022a), ternary (Zhang et al., 2020; Ji et al., 2021; Zadeh et al., 2022), and even binary representations (Bai et al., 2021). Different components may have different sensitivities regarding their underlying precision, so there is a\n\n[2] (source: treviso2023, page 10)\nlocal context by convolutions for MT in resourceconstrained settings. Through quantization llama .cpp1 runs a 7B-parameter LLM on recent mobile phone hardware. Finally, ProFormer (Sankar et al., 2021) reduces runtime and memory via locality sensitive hashing and local projection attention layers. 7.5 Hardware Considerations To deliver more computational power, vendors pack denser computational units into domainspecific hardware, such as tensor cores in Intel FPGAs, Xilinx AI Engines, and matrix processors in the Google TPU. However, irregularities in the transformer, like sparsity and mixed data types, restrict the use of these resources. We suggest focusing on adapting efficient transformers to existing specialized hardware platforms, including using hardware-optimized data formats like block floating point, and exploring sparsity on dense tensor units. 8 Evaluating Efficiency Evaluating efficiency requires establishing which computational aspect one aims to minimize. We discuss the two most prominent aspects (FLOP/s and power consumption), and list open challenges. 8.1 Evaluation Measures Pareto Optimality When improving efficiency, multiple factors often need to be traded off. For instance, longer training time can increase task performance, but simultaneously increase 1\n\n[3] (source: treviso2023, page 11)\nquality scores. Advancing NLP by pushing Pareto barriers is an established practice (Kim et al., 2019; Bogoychev et al., 2020; Behnke and Heafield, 2021). For instance, the WNGT 2020 MT shared task (Birch et al., 2020) considers the Pareto frontier between real time taken, system or GPU memory usage, and model size, as well as BLEU score. Puvis de Chavannes et al. (2021) included power consumption as a trade-off against perplexity to explore Pareto-efficient hyperparameter combinations for transformer models. Finally, Liu et al. (2022b) examined Pareto efficiency for a number of tasks in an attempt to narrow model selection search space. FLOP/s A frequently reported efficiency measure is the number of floating point operations (FLOPs) and floating points per second (FLOP/s). While these discrete metrics seem well defined in terms of what the hardware does, there is some variation at multiple stages of the stack, adding uncertainty. For example, different operations may count as a FLOP on different hardware; non-floating-point operations are not considered; and hardware is rarely 100% utilized and achieving this\n\n[4] (source: treviso2023, page 12)\ntraining but show memory improvements at inference (Dehghani et al., 2022). Finally, while larger models run more slowly than smaller ones, they converge faster and better compress using methods like pruning and quantization (Li et al., 2020c). Disagreement Between Cost Factors As partially discussed in Section 7.2, cost indicators may disagree with each other. For instance, MoEs increase the overall parameter count, but improve the trade-off between quality and FLOPs, as they minimize the per-data cost by routing to subsections of the model (Rajbhandari et al., 2022). Conversely, unstructured sparsity techniques can significantly minimize the overall number of FLOPs, yet in practice, they introduce low-level operations that can lead to far higher memory requirements to store the indices that indicate what part of the matrix is sparse (Qu et al., 2022). Finally, Chen et al. (2022) and Dao et al. (2022a) found specific sparsity patterns that achieve more predictable speedups with current hardware. Trade-offs with Other Desiderata One major, but seldom studied, concern when improving efficiency are trade-offs with other\n\n[5] (source: treviso2023, page 13)\nconsidering compute budget variation when comparing new model development to baselines. ware paradigm. Key challenges include better understanding and modeling trade-offs between end-task performance and resource consumption, and the dependency between hardware choices and software implementations. Furthermore, we note that efficiency in NLP has many definitions and can be achieved in many different ways, but is also subject to various open challenges, and cannot be measured by a single metric. We outline several promising research directions aligned with overcoming these challenges, ranging from approaches that make better use of available data, strategies for reducing the cost of pre-training and fine-tuning large models, to prioritizing the importance of interactions between algorithms, software, and hardware. Impressive advances in NLP enabled primarily by scaling computation have produced remarkable progress in a short span of time. However, in order to realize the full potential of this technology for a broader swath of society, we must reduce the amount of computation that is required to achieve these remarkable results. We hope that this survey can serve to accelerate advances in this important area of research with great potential for impact both within our field and for society as a whole. Acknowledgments This work was initiated at and benefited substantially from the Dagstuhl Seminar 22232: Efficient and\n\n[6] (source: treviso2023, page 10)\nU communication. 7.2 Specialized Hardware Specialized NLP hardware has been built using Application Specific Integrated Circuits or Field Programmable Gate Arrays, though it is not yet broadly available. These designs use dedicated units for efficient operations like quantization and pruning (Section 6). For example, Zadeh et al. (2020, 2022), Li et al. (2021), and Qu et al. (2022) support ultra-low-bit and mixed precision computation that cannot be done on CPUs/GPUs; Ham et al. (2020, 2021) and Wang et al. (2021a) design hardware that predicts and prunes redundant heads/tokens and weak attention values in transformers. Qu et al. (2022) present a design that balances the workload to alleviate the irregularity in the pruned attention. Others develop new types of processors and memories optimized for transformer components: Lu et al. (2020) and Liu et al. (2021b) implemented dedicated hardware for softmax and layer normalization respectively, and Tambe et al. (2021) used embedded Resistive RAM—a nonvolatile memory with low latency and energy consumption—to store word embed\n\n[7] (source: treviso2023, page 9)\n2020; Ji et al., 2021; Zadeh et al., 2022), and even binary representations (Bai et al., 2021). Different components may have different sensitivities regarding their underlying precision, so there is a body of work on mixed-precision quantization. Shen et al. (2020) showed that embedding layers require more precise parameter representations than the attention layer, while Kim et al. (2021) showed that nonlinear functions require more bits than the general matrix multiplication. Others defined quantization as a constrained optimization problem to automatically identify layers where lower precision is sufficient (Hubara et al., 2021). Finally, several studies proposed quantization during training to make them robust against performance loss after quantization (Zafrir et al., 2019; Kim et al., 2021; Stock et al., 2021). For instance, Bai et al. (2021) and Zhang et al. (2020) proposed using knowledge distillation to maintain the accuracy of binarized and ternarized models. These show that component-customized quantization can preserve accuracy while improving efficiency. To maximize the benefit from quantization, one should also consider the available underlying hardware and associated specialized\n\n[8] (source: treviso2023, page 11)\ndoes, there is some variation at multiple stages of the stack, adding uncertainty. For example, different operations may count as a FLOP on different hardware; non-floating-point operations are not considered; and hardware is rarely 100% utilized and achieving this productively is a challenge, so theoretical FLOP/s performance cannot be multiplied with time elapsed to yield the amount of computing performed. Still, FLOP/s per unit power can indicate which hardware choices have the potential to offer Pareto-efficient trade-offs (Hsu et al., 2005). Power Consumption There exist various ways to measure power consumption, for instance, by using specific hardware such as an electricity meter. While this can provide precise figures with a high temporal accuracy, it cannot provide a fine-grained estimate for individual computers in a network. Moreover, it does not cover external energy costs such as cooling or networking. Another way is to use software tools such as MLCO2 (Luccioni et al., 2019). Some tools even provide a real-time breakdown of the power consumption of different components within a machine (Henderson et al., 2020) or local machine APIreported figures to stop training early if prudent (Anthony et al., 2020)\n\nQuestion: According to the survey, by how much can mapping to a low-precision data format reduce memory consumption and improve throughput compared with 32-bit floating point?\nAnswer:<|im_end|>\n<|im_start|>assistant\n",
+    "token_breakdown": {
+      "query_tokens": 32,
+      "context_tokens": 2271,
+      "chunk_tokens": [
+        286,
+        248,
+        276,
+        256,
+        251,
+        267,
+        277,
+        261
+      ]
+    }
+  },
+  "generation": {
+    "t_in": 2366,
+    "t_out": 32,
+    "generation_ms": 1341.6118966415524,
+    "prefill_ms": 598.4967341646552,
+    "decode_ms": 743.1151624768972,
+    "decode_tokens_per_s": 41.7162797441423,
+    "hit_max_new_tokens": false,
+    "answer": "By up to 24x reduction in memory consumption and by 4.5x improvement in throughput compared to 32-bit floating point format."
+  },
+  "energy": {
+    "codecarbon": {
+      "co2_kg": 2.8202257924168485e-05,
+      "energy_kwh": 9.697996225707427e-05,
+      "cpu_energy_kwh": 3.3525417304419806e-06,
+      "gpu_energy_kwh": 8.983673851048479e-05,
+      "ram_energy_kwh": 3.7906820161475078e-06,
+      "cc_duration_s": 4.550824888050556,
+      "cpu_power_w": 20.565299645748706,
+      "gpu_power_w": 163.89374452763258,
+      "ram_power_w": 10.0,
+      "country": "Ireland",
+      "region": "leinster",
+      "carbon_intensity_g_per_kwh": 290.80500000000006
+    },
+    "gpu_nvml_retrieval_j": 1.255,
+    "gpu_nvml_generation_j": 322.157,
+    "gpu_peak_mem_mb": 15248.0537109375
+  },
+  "grading": {
+    "suggested_grade": "P",
+    "suggestion_reason": "all key facts present; evidence passage was retrieved",
+    "evidence_retrieved_at_rank": 1
+  }
+}

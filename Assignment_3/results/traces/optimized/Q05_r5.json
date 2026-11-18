@@ -1,0 +1,122 @@
+{
+  "run_id": "20261118-015420_main",
+  "timestamp": "2026-11-18T02:01:11.249+00:00",
+  "config": {
+    "name": "optimized",
+    "label": "B. Optimized (low context / high-quality retrieval)",
+    "embedding_model": "BAAI/bge-small-en-v1.5",
+    "chunk_size": 512,
+    "chunk_overlap": 50,
+    "top_k": 3,
+    "query_prefix": "Represent this sentence for searching relevant passages: "
+  },
+  "question": {
+    "id": "Q05",
+    "question": "According to Table 2 of Strubell et al., what percentage of Google's energy comes from renewable sources?",
+    "reference_answer": "56%.",
+    "doc_id": "strubell2019",
+    "evidence": "Google 56% 14% 15% 10%",
+    "keywords": [
+      [
+        "56"
+      ]
+    ],
+    "evidence_page": 2
+  },
+  "repeat": 5,
+  "retrieval": {
+    "query": "Represent this sentence for searching relevant passages: According to Table 2 of Strubell et al., what percentage of Google's energy comes from renewable sources?",
+    "query_embed_tokens": 34,
+    "encode_ms": 8.853164501488209,
+    "search_ms": 0.03873370587825775,
+    "retrieval_ms": 8.891898207366467
+  },
+  "retrieved_chunks": [
+    {
+      "rank": 1,
+      "chunk_id": "optimized-strubell2019-0003",
+      "score": 0.6843670606613159,
+      "doc_id": "strubell2019",
+      "page_start": 2,
+      "page_end": 3,
+      "embed_tokens": 510,
+      "text": "23% 31% 10% Table 2: Percent energy sourced from: Renewable (e.g. hydro, solar, wind), natural gas, coal and nuclear for the top 3 cloud compute providers (Cook et al., 2017), compared to the United States,4 China5 and Germany (Burger, 2019). We estimate the total time expected for models to train to completion using training times and hardware reported in the original papers. We then calculate the power consumption in kilowatt-hours (kWh) as follows. Let pc be the average power draw (in watts) from all CPU sockets during training, let pr be the average power draw from all DRAM (main memory) sockets, let pg be the average power draw of a GPU during training, and let g be the number of GPUs used to train. We estimate total power consumption as combined GPU, CPU and DRAM consumption, then multiply this by Power Usage Effectiveness (PUE), which accounts for the additional energy required to support the compute infrastructure (mainly cooling). We use a PUE coefficient of 1.58, the 2018 global average for data centers (Ascierto, 2018). Then the total power pt required at a given instance during training is given by: pt = 1.58t(pc + pr + gpg) 1000 (1) The U.S. Environmental Protection Agency (EPA) provides average CO2 produced (in pounds per kilowatt-hour) for power consumed in the U.S. (EPA, 2018), which we use to convert power to estimated CO2 emissions: CO2e = 0.954pt (2) This conversion takes into account the relative proportions of different energy sources (primarily natural gas, coal, nuclear and renewable) consumed to produce energy in the United States. Table 2 lists the relative energy sources for China, Germany and the United States compared to the top 5U.S. Dept. of Energy: https://bit.ly/2JTbGnI 5China Electricity Council; trans. China Energy Portal: https://bit.ly/2QHE5O3 three cloud service providers. The U.S. breakdown of energy is comparable to that of the most popular cloud compute service, Amazon Web Services, so we believe this conversion to provide a reasonable estimate of CO2 emissions per kilowatt hour of compute energy used. 2.1 Models We analyze four models, the computational requirements of which"
+    },
+    {
+      "rank": 2,
+      "chunk_id": "optimized-strubell2019-0001",
+      "score": 0.6435452699661255,
+      "doc_id": "strubell2019",
+      "page_start": 1,
+      "page_end": 2,
+      "embed_tokens": 510,
+      "text": ",023 American life, avg, 1 year 36,156 Car, avg incl. fuel, 1 lifetime 126,000 Training one model (GPU) NLP pipeline (parsing, SRL) 39 w/ tuning & experiments 78,468 Transformer (big) 192 w/ neural arch. search 626,155 Table 1: Estimated CO2 emissions from training common NLP models, compared to familiar consumption.1 NLP models could be trained and developed on a commodity laptop or server, many now require multiple instances of specialized hardware such as GPUs or TPUs, therefore limiting access to these highly accurate models on the basis of finances. Even when these expensive computational resources are available, model training also incurs a substantial cost to the environment due to the energy required to power this hardware for weeks or months at a time. Though some of this energy may come from renewable or carbon credit-offset resources, the high energy demands of these models are still a concern since (1) energy is not currently derived from carbon-neural sources in many locations, and (2) when renewable energy is available, it is still limited to the equipment we have to produce and store it, and energy spent training a neural network might better be allocated to heating a family’s home. It is estimated that we must cut carbon emissions by half over the next decade to deter escalating rates of natural disaster, and based on the estimated CO2 emissions listed in Table 1, 1Sources: (1) Air travel and per-capita consumption: https://bit.ly/2Hw0xWc; (2) car lifetime: https: //bit.ly/2Qbr0w1. model training and development likely make up a substantial portion of the greenhouse gas emissions attributed to many NLP researchers. To heighten the awareness of the NLP community to this issue and promote mindful practice and policy, we characterize the dollar cost and carbon emissions that result from training the neural networks at the core of many state-of-the-art NLP models. We do this by estimating the kilowatts of energy required to train a variety of popular off-the-shelf NLP models, which can be converted to approximate carbon emissions and electricity costs. To estimate the even greater resources required to transfer an existing model to a new task or develop new models, we perform a case study of the full computational resources required for the development and tuning of a recent"
+    },
+    {
+      "rank": 3,
+      "chunk_id": "optimized-strubell2019-0002",
+      "score": 0.6323996186256409,
+      "doc_id": "strubell2019",
+      "page_start": 2,
+      "page_end": 2,
+      "embed_tokens": 510,
+      "text": "be converted to approximate carbon emissions and electricity costs. To estimate the even greater resources required to transfer an existing model to a new task or develop new models, we perform a case study of the full computational resources required for the development and tuning of a recent state-of-the-art NLP pipeline (Strubell et al., 2018). We conclude with recommendations to the community based on our findings, namely: (1) Time to retrain and sensitivity to hyperparameters should be reported for NLP machine learning models; (2) academic researchers need equitable access to computational resources; and (3) researchers should prioritize developing efficient models and hardware. 2 Methods To quantify the computational and environmental cost of training deep neural network models for NLP, we perform an analysis of the energy required to train a variety of popular offthe-shelf NLP models, as well as a case study of the complete sum of resources required to develop LISA (Strubell et al., 2018), a state-of-the-art NLP model from EMNLP 2018, including all tuning and experimentation. We measure energy use as follows. We train the models described in §2.1 using the default settings provided, and sample GPU and CPU power consumption during training. Each model was trained for a maximum of 1 day. We train all models on a single NVIDIA Titan X GPU, with the exception of ELMo which was trained on 3 NVIDIA GTX 1080 Ti GPUs. While training, we repeatedly query the NVIDIA System Management Interface2 to sample the GPU power consumption and report the average over all samples. To sample CPU power consumption, we use Intel’s Running Average Power Limit interface.3 2nvidia-smi: https://bit.ly/30sGEbi 3RAPL power meter: https://bit.ly/2LObQhV Consumer Renew. Gas Coal Nuc. China 22% 3% 65% 4% Germany 40% 7% 38% 13% United States 17% 35% 27% 19% Amazon-AWS 17% 24% 30% 26% Google 56% 14% 15% 10% Microsoft 32% 23% 31% 10% Table 2: Percent energy sourced from: Renewable (e.g. hydro, solar, wind), natural gas, coal and nuclear for the top 3 cloud compute providers (Cook et al., 2017), compared"
+    }
+  ],
+  "prompt": {
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful research assistant. Answer the question using only the provided context. If the context does not contain the answer, reply exactly: \"The context does not contain the answer.\" Keep the answer short and factual."
+      },
+      {
+        "role": "user",
+        "content": "Context:\n[1] (source: strubell2019, page 2)\n23% 31% 10% Table 2: Percent energy sourced from: Renewable (e.g. hydro, solar, wind), natural gas, coal and nuclear for the top 3 cloud compute providers (Cook et al., 2017), compared to the United States,4 China5 and Germany (Burger, 2019). We estimate the total time expected for models to train to completion using training times and hardware reported in the original papers. We then calculate the power consumption in kilowatt-hours (kWh) as follows. Let pc be the average power draw (in watts) from all CPU sockets during training, let pr be the average power draw from all DRAM (main memory) sockets, let pg be the average power draw of a GPU during training, and let g be the number of GPUs used to train. We estimate total power consumption as combined GPU, CPU and DRAM consumption, then multiply this by Power Usage Effectiveness (PUE), which accounts for the additional energy required to support the compute infrastructure (mainly cooling). We use a PUE coefficient of 1.58, the 2018 global average for data centers (Ascierto, 2018). Then the total power pt required at a given instance during training is given by: pt = 1.58t(pc + pr + gpg) 1000 (1) The U.S. Environmental Protection Agency (EPA) provides average CO2 produced (in pounds per kilowatt-hour) for power consumed in the U.S. (EPA, 2018), which we use to convert power to estimated CO2 emissions: CO2e = 0.954pt (2) This conversion takes into account the relative proportions of different energy sources (primarily natural gas, coal, nuclear and renewable) consumed to produce energy in the United States. Table 2 lists the relative energy sources for China, Germany and the United States compared to the top 5U.S. Dept. of Energy: https://bit.ly/2JTbGnI 5China Electricity Council; trans. China Energy Portal: https://bit.ly/2QHE5O3 three cloud service providers. The U.S. breakdown of energy is comparable to that of the most popular cloud compute service, Amazon Web Services, so we believe this conversion to provide a reasonable estimate of CO2 emissions per kilowatt hour of compute energy used. 2.1 Models We analyze four models, the computational requirements of which\n\n[2] (source: strubell2019, page 1)\n,023 American life, avg, 1 year 36,156 Car, avg incl. fuel, 1 lifetime 126,000 Training one model (GPU) NLP pipeline (parsing, SRL) 39 w/ tuning & experiments 78,468 Transformer (big) 192 w/ neural arch. search 626,155 Table 1: Estimated CO2 emissions from training common NLP models, compared to familiar consumption.1 NLP models could be trained and developed on a commodity laptop or server, many now require multiple instances of specialized hardware such as GPUs or TPUs, therefore limiting access to these highly accurate models on the basis of finances. Even when these expensive computational resources are available, model training also incurs a substantial cost to the environment due to the energy required to power this hardware for weeks or months at a time. Though some of this energy may come from renewable or carbon credit-offset resources, the high energy demands of these models are still a concern since (1) energy is not currently derived from carbon-neural sources in many locations, and (2) when renewable energy is available, it is still limited to the equipment we have to produce and store it, and energy spent training a neural network might better be allocated to heating a family’s home. It is estimated that we must cut carbon emissions by half over the next decade to deter escalating rates of natural disaster, and based on the estimated CO2 emissions listed in Table 1, 1Sources: (1) Air travel and per-capita consumption: https://bit.ly/2Hw0xWc; (2) car lifetime: https: //bit.ly/2Qbr0w1. model training and development likely make up a substantial portion of the greenhouse gas emissions attributed to many NLP researchers. To heighten the awareness of the NLP community to this issue and promote mindful practice and policy, we characterize the dollar cost and carbon emissions that result from training the neural networks at the core of many state-of-the-art NLP models. We do this by estimating the kilowatts of energy required to train a variety of popular off-the-shelf NLP models, which can be converted to approximate carbon emissions and electricity costs. To estimate the even greater resources required to transfer an existing model to a new task or develop new models, we perform a case study of the full computational resources required for the development and tuning of a recent\n\n[3] (source: strubell2019, page 2)\nbe converted to approximate carbon emissions and electricity costs. To estimate the even greater resources required to transfer an existing model to a new task or develop new models, we perform a case study of the full computational resources required for the development and tuning of a recent state-of-the-art NLP pipeline (Strubell et al., 2018). We conclude with recommendations to the community based on our findings, namely: (1) Time to retrain and sensitivity to hyperparameters should be reported for NLP machine learning models; (2) academic researchers need equitable access to computational resources; and (3) researchers should prioritize developing efficient models and hardware. 2 Methods To quantify the computational and environmental cost of training deep neural network models for NLP, we perform an analysis of the energy required to train a variety of popular offthe-shelf NLP models, as well as a case study of the complete sum of resources required to develop LISA (Strubell et al., 2018), a state-of-the-art NLP model from EMNLP 2018, including all tuning and experimentation. We measure energy use as follows. We train the models described in §2.1 using the default settings provided, and sample GPU and CPU power consumption during training. Each model was trained for a maximum of 1 day. We train all models on a single NVIDIA Titan X GPU, with the exception of ELMo which was trained on 3 NVIDIA GTX 1080 Ti GPUs. While training, we repeatedly query the NVIDIA System Management Interface2 to sample the GPU power consumption and report the average over all samples. To sample CPU power consumption, we use Intel’s Running Average Power Limit interface.3 2nvidia-smi: https://bit.ly/30sGEbi 3RAPL power meter: https://bit.ly/2LObQhV Consumer Renew. Gas Coal Nuc. China 22% 3% 65% 4% Germany 40% 7% 38% 13% United States 17% 35% 27% 19% Amazon-AWS 17% 24% 30% 26% Google 56% 14% 15% 10% Microsoft 32% 23% 31% 10% Table 2: Percent energy sourced from: Renewable (e.g. hydro, solar, wind), natural gas, coal and nuclear for the top 3 cloud compute providers (Cook et al., 2017), compared\n\nQuestion: According to Table 2 of Strubell et al., what percentage of Google's energy comes from renewable sources?\nAnswer:"
+      }
+    ],
+    "rendered": "<|im_start|>system\nYou are a careful research assistant. Answer the question using only the provided context. If the context does not contain the answer, reply exactly: \"The context does not contain the answer.\" Keep the answer short and factual.<|im_end|>\n<|im_start|>user\nContext:\n[1] (source: strubell2019, page 2)\n23% 31% 10% Table 2: Percent energy sourced from: Renewable (e.g. hydro, solar, wind), natural gas, coal and nuclear for the top 3 cloud compute providers (Cook et al., 2017), compared to the United States,4 China5 and Germany (Burger, 2019). We estimate the total time expected for models to train to completion using training times and hardware reported in the original papers. We then calculate the power consumption in kilowatt-hours (kWh) as follows. Let pc be the average power draw (in watts) from all CPU sockets during training, let pr be the average power draw from all DRAM (main memory) sockets, let pg be the average power draw of a GPU during training, and let g be the number of GPUs used to train. We estimate total power consumption as combined GPU, CPU and DRAM consumption, then multiply this by Power Usage Effectiveness (PUE), which accounts for the additional energy required to support the compute infrastructure (mainly cooling). We use a PUE coefficient of 1.58, the 2018 global average for data centers (Ascierto, 2018). Then the total power pt required at a given instance during training is given by: pt = 1.58t(pc + pr + gpg) 1000 (1) The U.S. Environmental Protection Agency (EPA) provides average CO2 produced (in pounds per kilowatt-hour) for power consumed in the U.S. (EPA, 2018), which we use to convert power to estimated CO2 emissions: CO2e = 0.954pt (2) This conversion takes into account the relative proportions of different energy sources (primarily natural gas, coal, nuclear and renewable) consumed to produce energy in the United States. Table 2 lists the relative energy sources for China, Germany and the United States compared to the top 5U.S. Dept. of Energy: https://bit.ly/2JTbGnI 5China Electricity Council; trans. China Energy Portal: https://bit.ly/2QHE5O3 three cloud service providers. The U.S. breakdown of energy is comparable to that of the most popular cloud compute service, Amazon Web Services, so we believe this conversion to provide a reasonable estimate of CO2 emissions per kilowatt hour of compute energy used. 2.1 Models We analyze four models, the computational requirements of which\n\n[2] (source: strubell2019, page 1)\n,023 American life, avg, 1 year 36,156 Car, avg incl. fuel, 1 lifetime 126,000 Training one model (GPU) NLP pipeline (parsing, SRL) 39 w/ tuning & experiments 78,468 Transformer (big) 192 w/ neural arch. search 626,155 Table 1: Estimated CO2 emissions from training common NLP models, compared to familiar consumption.1 NLP models could be trained and developed on a commodity laptop or server, many now require multiple instances of specialized hardware such as GPUs or TPUs, therefore limiting access to these highly accurate models on the basis of finances. Even when these expensive computational resources are available, model training also incurs a substantial cost to the environment due to the energy required to power this hardware for weeks or months at a time. Though some of this energy may come from renewable or carbon credit-offset resources, the high energy demands of these models are still a concern since (1) energy is not currently derived from carbon-neural sources in many locations, and (2) when renewable energy is available, it is still limited to the equipment we have to produce and store it, and energy spent training a neural network might better be allocated to heating a family’s home. It is estimated that we must cut carbon emissions by half over the next decade to deter escalating rates of natural disaster, and based on the estimated CO2 emissions listed in Table 1, 1Sources: (1) Air travel and per-capita consumption: https://bit.ly/2Hw0xWc; (2) car lifetime: https: //bit.ly/2Qbr0w1. model training and development likely make up a substantial portion of the greenhouse gas emissions attributed to many NLP researchers. To heighten the awareness of the NLP community to this issue and promote mindful practice and policy, we characterize the dollar cost and carbon emissions that result from training the neural networks at the core of many state-of-the-art NLP models. We do this by estimating the kilowatts of energy required to train a variety of popular off-the-shelf NLP models, which can be converted to approximate carbon emissions and electricity costs. To estimate the even greater resources required to transfer an existing model to a new task or develop new models, we perform a case study of the full computational resources required for the development and tuning of a recent\n\n[3] (source: strubell2019, page 2)\nbe converted to approximate carbon emissions and electricity costs. To estimate the even greater resources required to transfer an existing model to a new task or develop new models, we perform a case study of the full computational resources required for the development and tuning of a recent state-of-the-art NLP pipeline (Strubell et al., 2018). We conclude with recommendations to the community based on our findings, namely: (1) Time to retrain and sensitivity to hyperparameters should be reported for NLP machine learning models; (2) academic researchers need equitable access to computational resources; and (3) researchers should prioritize developing efficient models and hardware. 2 Methods To quantify the computational and environmental cost of training deep neural network models for NLP, we perform an analysis of the energy required to train a variety of popular offthe-shelf NLP models, as well as a case study of the complete sum of resources required to develop LISA (Strubell et al., 2018), a state-of-the-art NLP model from EMNLP 2018, including all tuning and experimentation. We measure energy use as follows. We train the models described in §2.1 using the default settings provided, and sample GPU and CPU power consumption during training. Each model was trained for a maximum of 1 day. We train all models on a single NVIDIA Titan X GPU, with the exception of ELMo which was trained on 3 NVIDIA GTX 1080 Ti GPUs. While training, we repeatedly query the NVIDIA System Management Interface2 to sample the GPU power consumption and report the average over all samples. To sample CPU power consumption, we use Intel’s Running Average Power Limit interface.3 2nvidia-smi: https://bit.ly/30sGEbi 3RAPL power meter: https://bit.ly/2LObQhV Consumer Renew. Gas Coal Nuc. China 22% 3% 65% 4% Germany 40% 7% 38% 13% United States 17% 35% 27% 19% Amazon-AWS 17% 24% 30% 26% Google 56% 14% 15% 10% Microsoft 32% 23% 31% 10% Table 2: Percent energy sourced from: Renewable (e.g. hydro, solar, wind), natural gas, coal and nuclear for the top 3 cloud compute providers (Cook et al., 2017), compared\n\nQuestion: According to Table 2 of Strubell et al., what percentage of Google's energy comes from renewable sources?\nAnswer:<|im_end|>\n<|im_start|>assistant\n",
+    "token_breakdown": {
+      "query_tokens": 23,
+      "context_tokens": 1637,
+      "chunk_tokens": [
+        529,
+        511,
+        541
+      ]
+    }
+  },
+  "generation": {
+    "t_in": 1724,
+    "t_out": 4,
+    "generation_ms": 499.4888361543417,
+    "prefill_ms": 428.5535281524062,
+    "decode_ms": 70.93530800193548,
+    "decode_tokens_per_s": 42.29205574067775,
+    "hit_max_new_tokens": false,
+    "answer": "56%"
+  },
+  "energy": {
+    "codecarbon": {
+      "co2_kg": 1.0361434005614705e-05,
+      "energy_kwh": 3.563017831747977e-05,
+      "cpu_energy_kwh": 1.2949637546688626e-06,
+      "gpu_energy_kwh": 3.2882804106293406e-05,
+      "ram_energy_kwh": 1.4524104565175044e-06,
+      "cc_duration_s": 3.705687773413956,
+      "cpu_power_w": 27.226934930476283,
+      "gpu_power_w": 113.30700468326089,
+      "ram_power_w": 10.0,
+      "country": "Ireland",
+      "region": "leinster",
+      "carbon_intensity_g_per_kwh": 290.80500000000006
+    },
+    "gpu_nvml_retrieval_j": 0.0,
+    "gpu_nvml_generation_j": 118.378,
+    "gpu_peak_mem_mb": 15128.884765625
+  },
+  "grading": {
+    "suggested_grade": "P",
+    "suggestion_reason": "all key facts present; evidence passage was retrieved",
+    "evidence_retrieved_at_rank": 3
+  }
+}

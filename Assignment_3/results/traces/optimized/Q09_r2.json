@@ -1,0 +1,124 @@
+{
+  "run_id": "20261118-015420_main",
+  "timestamp": "2026-11-18T01:57:30.044+00:00",
+  "config": {
+    "name": "optimized",
+    "label": "B. Optimized (low context / high-quality retrieval)",
+    "embedding_model": "BAAI/bge-small-en-v1.5",
+    "chunk_size": 512,
+    "chunk_overlap": 50,
+    "top_k": 3,
+    "query_prefix": "Represent this sentence for searching relevant passages: "
+  },
+  "question": {
+    "id": "Q09",
+    "question": "Using adversarial filtering, what fraction of the SNLI data did Mishra and Sachdeva find was enough for performance comparable to the full corpus?",
+    "reference_answer": "Only about 2% of the SNLI data.",
+    "doc_id": "treviso2023",
+    "evidence": "a subset of only ∼2% of the SNLI data",
+    "keywords": [
+      [
+        "2%",
+        "2 %",
+        "two percent"
+      ]
+    ],
+    "evidence_page": 2
+  },
+  "repeat": 2,
+  "retrieval": {
+    "query": "Represent this sentence for searching relevant passages: Using adversarial filtering, what fraction of the SNLI data did Mishra and Sachdeva find was enough for performance comparable to the full corpus?",
+    "query_embed_tokens": 43,
+    "encode_ms": 10.383926331996918,
+    "search_ms": 0.040386803448200226,
+    "retrieval_ms": 10.424313135445118
+  },
+  "retrieved_chunks": [
+    {
+      "rank": 1,
+      "chunk_id": "optimized-treviso2023-0003",
+      "score": 0.7252054214477539,
+      "doc_id": "treviso2023",
+      "page_start": 2,
+      "page_end": 2,
+      "embed_tokens": 510,
+      "text": ") found—via adversarial filtering (Zellers et al., 2018)—a subset of only ∼2% of the SNLI data (Bowman et al., 2015) that leads to performance comparable to using the full corpus. While such filtering approaches are useful for mitigating biases (Le Bras et al., 2020), they may not always serve as tools to filter existing datasets, as these often suffer from insufficient training data. 2.2 Active Learning Active learning aims to reduce the number of training instances. In contrast to filtering, it is applied during data collection (instead of after) to only annotate the most helpful or useful instances for training (Settles, 2012; Ren et al., 2021b). To assess usefulness of an instance without knowing its actual label, one can use the model uncertainty—assuming that labeling instances with the highest uncertainty is most helpful (Lewis and Gale, 1994; Tang et al., 2002; Gal et al., 2017; Yuan et al., 2020); instance representativeness—to maximize diversity of sampled instances while avoiding outliers (Bod ́o et al., 2011; Sener and Savarese, 2018; Gissin and Shalev-Shwartz, 2019); or a combination of both criteria (Kirsch et al., 2019; Ash et al., 2020; Margatina et al., 2021; Siddiqui et al., 2021; Agarwal et al., 2022). Active learning has been successfully applied in machine translation (MT; Liu et al. 2018), language learning (Lee et al., 2020), entity linking (Klie et al., 2020), and coreference resolution (Li et al., 2020a; Yuan et al., 2022). Despite its advantages, some open questions make active learning difficult to apply in practice. It remains unclear how model-based sampling impacts the performance of models using architectures different from that in sampling (Lowell et al., 2019; Ein-Dor et al., 2020). Also, selecting ‘‘difficult’’ instances may increase annotation cost and difficulty (Settles et al., 2008; Lee et al., 2022a). Finally, it is prone to selection biases and can favor outliers (Cortes et al., 2008; Karamcheti et al., 2021). 2.3 Curriculum Learning"
+    },
+    {
+      "rank": 2,
+      "chunk_id": "optimized-strubell2019-0010",
+      "score": 0.6770710945129395,
+      "doc_id": "strubell2019",
+      "page_start": 5,
+      "page_end": 5,
+      "embed_tokens": 201,
+      "text": "because their interoperability with popular deep learning frameworks such as PyTorch and TensorFlow is not optimized, i.e. there are not simple examples of how to tune TensorFlow Estimators using Bayesian search. Integrating these tools into the workflows with which NLP researchers and practitioners are already familiar could have notable impact on the cost of developing and tuning in NLP. Acknowledgements We are grateful to Sherief Farouk and the anonymous reviewers for helpful feedback on earlier drafts. This work was supported in part by the Centers for Data Science and Intelligent Information Retrieval, the Chan Zuckerberg Initiative under the Scientific Knowledge Base Construction project, the IBM Cognitive Horizons Network agreement no. W1668553, and National Science Foundation grant no. IIS-1514053. Any opinions, findings and conclusions or recommendations expressed in this material are those of the authors and do not necessarily reflect those of the sponsor. 10For example, the Hyperopt Python library."
+    },
+    {
+      "rank": 3,
+      "chunk_id": "optimized-treviso2023-0002",
+      "score": 0.670809805393219,
+      "doc_id": "treviso2023",
+      "page_start": 1,
+      "page_end": 2,
+      "embed_tokens": 510,
+      "text": "consider efficient methods 826 Transactions of the Association for Computational Linguistics, vol. 11, pp. 826–860, 2023. https://doi.org/10.1162/tacl a 00577 Action Editor: Xavier Carreras. Submission batch: 10/2022; Revision batch: 1/2023; Published 7/2023. c© 2023 Association for Computational Linguistics. Distributed under a CC-BY 4.0 license. Figure 1: Exponential growth in the number of parameters in pre-trained language models. Adapted from Lakim et al. (2022). for the two typical training setups in modern NLP: pre-training (Section 4) and fine-tuning (Section 5). We then discuss methods for making inference more efficient (Section 6). While we mainly focus on algorithmic approaches, we provide appropriate pointers regarding hardware that are connected to the scale at which we expect to deploy a model (Section 7). We then discuss how to quantify efficiency and what factors to consider during evaluation (Section 8), and, finally, how to efficiently decide upon the best suited model (Section 9). To guide the reader, Figure 3 presents a typology of efficient NLP methods considered in this survey. 2Data Data efficiency is improved by using fewer training instances, or by making better use of available instances. Fixed compute budgets motivate balancing model size and training data size, especially during pre-training (Hoffmann et al., 2022). 2.1 Filtering Improving data quality can boost performance while reducing training costs during pre-training and fine-tuning. For instance, Lee et al. (2022b) showed that removing duplicates in pre-training increases training efficiency, giving equal or even better model performance compared to using all data. Zhang et al. (2022) used MinhashLSH (Leskovec et al., 2020) to remove duplicates while developing OPT. De-duplication can lead to substantially reduced computation cost, especially in cases with abundant pre-training data but limited compute budget (Hoffmann et al., 2022). Similar observations have been made for finetuning. For instance, Mishra and Sachdeva (2020) found—via adversarial filtering (Zellers et al., 2018)—a subset of only ∼2% of the SNLI data (Bowman et al., 2015) that leads to performance comparable to using the full corpus"
+    }
+  ],
+  "prompt": {
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful research assistant. Answer the question using only the provided context. If the context does not contain the answer, reply exactly: \"The context does not contain the answer.\" Keep the answer short and factual."
+      },
+      {
+        "role": "user",
+        "content": "Context:\n[1] (source: treviso2023, page 2)\n) found—via adversarial filtering (Zellers et al., 2018)—a subset of only ∼2% of the SNLI data (Bowman et al., 2015) that leads to performance comparable to using the full corpus. While such filtering approaches are useful for mitigating biases (Le Bras et al., 2020), they may not always serve as tools to filter existing datasets, as these often suffer from insufficient training data. 2.2 Active Learning Active learning aims to reduce the number of training instances. In contrast to filtering, it is applied during data collection (instead of after) to only annotate the most helpful or useful instances for training (Settles, 2012; Ren et al., 2021b). To assess usefulness of an instance without knowing its actual label, one can use the model uncertainty—assuming that labeling instances with the highest uncertainty is most helpful (Lewis and Gale, 1994; Tang et al., 2002; Gal et al., 2017; Yuan et al., 2020); instance representativeness—to maximize diversity of sampled instances while avoiding outliers (Bod ́o et al., 2011; Sener and Savarese, 2018; Gissin and Shalev-Shwartz, 2019); or a combination of both criteria (Kirsch et al., 2019; Ash et al., 2020; Margatina et al., 2021; Siddiqui et al., 2021; Agarwal et al., 2022). Active learning has been successfully applied in machine translation (MT; Liu et al. 2018), language learning (Lee et al., 2020), entity linking (Klie et al., 2020), and coreference resolution (Li et al., 2020a; Yuan et al., 2022). Despite its advantages, some open questions make active learning difficult to apply in practice. It remains unclear how model-based sampling impacts the performance of models using architectures different from that in sampling (Lowell et al., 2019; Ein-Dor et al., 2020). Also, selecting ‘‘difficult’’ instances may increase annotation cost and difficulty (Settles et al., 2008; Lee et al., 2022a). Finally, it is prone to selection biases and can favor outliers (Cortes et al., 2008; Karamcheti et al., 2021). 2.3 Curriculum Learning\n\n[2] (source: strubell2019, page 5)\nbecause their interoperability with popular deep learning frameworks such as PyTorch and TensorFlow is not optimized, i.e. there are not simple examples of how to tune TensorFlow Estimators using Bayesian search. Integrating these tools into the workflows with which NLP researchers and practitioners are already familiar could have notable impact on the cost of developing and tuning in NLP. Acknowledgements We are grateful to Sherief Farouk and the anonymous reviewers for helpful feedback on earlier drafts. This work was supported in part by the Centers for Data Science and Intelligent Information Retrieval, the Chan Zuckerberg Initiative under the Scientific Knowledge Base Construction project, the IBM Cognitive Horizons Network agreement no. W1668553, and National Science Foundation grant no. IIS-1514053. Any opinions, findings and conclusions or recommendations expressed in this material are those of the authors and do not necessarily reflect those of the sponsor. 10For example, the Hyperopt Python library.\n\n[3] (source: treviso2023, page 1)\nconsider efficient methods 826 Transactions of the Association for Computational Linguistics, vol. 11, pp. 826–860, 2023. https://doi.org/10.1162/tacl a 00577 Action Editor: Xavier Carreras. Submission batch: 10/2022; Revision batch: 1/2023; Published 7/2023. c© 2023 Association for Computational Linguistics. Distributed under a CC-BY 4.0 license. Figure 1: Exponential growth in the number of parameters in pre-trained language models. Adapted from Lakim et al. (2022). for the two typical training setups in modern NLP: pre-training (Section 4) and fine-tuning (Section 5). We then discuss methods for making inference more efficient (Section 6). While we mainly focus on algorithmic approaches, we provide appropriate pointers regarding hardware that are connected to the scale at which we expect to deploy a model (Section 7). We then discuss how to quantify efficiency and what factors to consider during evaluation (Section 8), and, finally, how to efficiently decide upon the best suited model (Section 9). To guide the reader, Figure 3 presents a typology of efficient NLP methods considered in this survey. 2Data Data efficiency is improved by using fewer training instances, or by making better use of available instances. Fixed compute budgets motivate balancing model size and training data size, especially during pre-training (Hoffmann et al., 2022). 2.1 Filtering Improving data quality can boost performance while reducing training costs during pre-training and fine-tuning. For instance, Lee et al. (2022b) showed that removing duplicates in pre-training increases training efficiency, giving equal or even better model performance compared to using all data. Zhang et al. (2022) used MinhashLSH (Leskovec et al., 2020) to remove duplicates while developing OPT. De-duplication can lead to substantially reduced computation cost, especially in cases with abundant pre-training data but limited compute budget (Hoffmann et al., 2022). Similar observations have been made for finetuning. For instance, Mishra and Sachdeva (2020) found—via adversarial filtering (Zellers et al., 2018)—a subset of only ∼2% of the SNLI data (Bowman et al., 2015) that leads to performance comparable to using the full corpus\n\nQuestion: Using adversarial filtering, what fraction of the SNLI data did Mishra and Sachdeva find was enough for performance comparable to the full corpus?\nAnswer:"
+      }
+    ],
+    "rendered": "<|im_start|>system\nYou are a careful research assistant. Answer the question using only the provided context. If the context does not contain the answer, reply exactly: \"The context does not contain the answer.\" Keep the answer short and factual.<|im_end|>\n<|im_start|>user\nContext:\n[1] (source: treviso2023, page 2)\n) found—via adversarial filtering (Zellers et al., 2018)—a subset of only ∼2% of the SNLI data (Bowman et al., 2015) that leads to performance comparable to using the full corpus. While such filtering approaches are useful for mitigating biases (Le Bras et al., 2020), they may not always serve as tools to filter existing datasets, as these often suffer from insufficient training data. 2.2 Active Learning Active learning aims to reduce the number of training instances. In contrast to filtering, it is applied during data collection (instead of after) to only annotate the most helpful or useful instances for training (Settles, 2012; Ren et al., 2021b). To assess usefulness of an instance without knowing its actual label, one can use the model uncertainty—assuming that labeling instances with the highest uncertainty is most helpful (Lewis and Gale, 1994; Tang et al., 2002; Gal et al., 2017; Yuan et al., 2020); instance representativeness—to maximize diversity of sampled instances while avoiding outliers (Bod ́o et al., 2011; Sener and Savarese, 2018; Gissin and Shalev-Shwartz, 2019); or a combination of both criteria (Kirsch et al., 2019; Ash et al., 2020; Margatina et al., 2021; Siddiqui et al., 2021; Agarwal et al., 2022). Active learning has been successfully applied in machine translation (MT; Liu et al. 2018), language learning (Lee et al., 2020), entity linking (Klie et al., 2020), and coreference resolution (Li et al., 2020a; Yuan et al., 2022). Despite its advantages, some open questions make active learning difficult to apply in practice. It remains unclear how model-based sampling impacts the performance of models using architectures different from that in sampling (Lowell et al., 2019; Ein-Dor et al., 2020). Also, selecting ‘‘difficult’’ instances may increase annotation cost and difficulty (Settles et al., 2008; Lee et al., 2022a). Finally, it is prone to selection biases and can favor outliers (Cortes et al., 2008; Karamcheti et al., 2021). 2.3 Curriculum Learning\n\n[2] (source: strubell2019, page 5)\nbecause their interoperability with popular deep learning frameworks such as PyTorch and TensorFlow is not optimized, i.e. there are not simple examples of how to tune TensorFlow Estimators using Bayesian search. Integrating these tools into the workflows with which NLP researchers and practitioners are already familiar could have notable impact on the cost of developing and tuning in NLP. Acknowledgements We are grateful to Sherief Farouk and the anonymous reviewers for helpful feedback on earlier drafts. This work was supported in part by the Centers for Data Science and Intelligent Information Retrieval, the Chan Zuckerberg Initiative under the Scientific Knowledge Base Construction project, the IBM Cognitive Horizons Network agreement no. W1668553, and National Science Foundation grant no. IIS-1514053. Any opinions, findings and conclusions or recommendations expressed in this material are those of the authors and do not necessarily reflect those of the sponsor. 10For example, the Hyperopt Python library.\n\n[3] (source: treviso2023, page 1)\nconsider efficient methods 826 Transactions of the Association for Computational Linguistics, vol. 11, pp. 826–860, 2023. https://doi.org/10.1162/tacl a 00577 Action Editor: Xavier Carreras. Submission batch: 10/2022; Revision batch: 1/2023; Published 7/2023. c© 2023 Association for Computational Linguistics. Distributed under a CC-BY 4.0 license. Figure 1: Exponential growth in the number of parameters in pre-trained language models. Adapted from Lakim et al. (2022). for the two typical training setups in modern NLP: pre-training (Section 4) and fine-tuning (Section 5). We then discuss methods for making inference more efficient (Section 6). While we mainly focus on algorithmic approaches, we provide appropriate pointers regarding hardware that are connected to the scale at which we expect to deploy a model (Section 7). We then discuss how to quantify efficiency and what factors to consider during evaluation (Section 8), and, finally, how to efficiently decide upon the best suited model (Section 9). To guide the reader, Figure 3 presents a typology of efficient NLP methods considered in this survey. 2Data Data efficiency is improved by using fewer training instances, or by making better use of available instances. Fixed compute budgets motivate balancing model size and training data size, especially during pre-training (Hoffmann et al., 2022). 2.1 Filtering Improving data quality can boost performance while reducing training costs during pre-training and fine-tuning. For instance, Lee et al. (2022b) showed that removing duplicates in pre-training increases training efficiency, giving equal or even better model performance compared to using all data. Zhang et al. (2022) used MinhashLSH (Leskovec et al., 2020) to remove duplicates while developing OPT. De-duplication can lead to substantially reduced computation cost, especially in cases with abundant pre-training data but limited compute budget (Hoffmann et al., 2022). Similar observations have been made for finetuning. For instance, Mishra and Sachdeva (2020) found—via adversarial filtering (Zellers et al., 2018)—a subset of only ∼2% of the SNLI data (Bowman et al., 2015) that leads to performance comparable to using the full corpus\n\nQuestion: Using adversarial filtering, what fraction of the SNLI data did Mishra and Sachdeva find was enough for performance comparable to the full corpus?\nAnswer:<|im_end|>\n<|im_start|>assistant\n",
+    "token_breakdown": {
+      "query_tokens": 30,
+      "context_tokens": 1382,
+      "chunk_tokens": [
+        575,
+        199,
+        555
+      ]
+    }
+  },
+  "generation": {
+    "t_in": 1476,
+    "t_out": 3,
+    "generation_ms": 419.4863885641098,
+    "prefill_ms": 372.6451378315687,
+    "decode_ms": 46.841250732541084,
+    "decode_tokens_per_s": 42.69740813326703,
+    "hit_max_new_tokens": false,
+    "answer": "2%"
+  },
+  "energy": {
+    "codecarbon": {
+      "co2_kg": 7.984237196457483e-06,
+      "energy_kwh": 2.745563933377171e-05,
+      "cpu_energy_kwh": 1.0928887616101769e-06,
+      "gpu_energy_kwh": 2.5124464542614078e-05,
+      "ram_energy_kwh": 1.238286029547453e-06,
+      "cc_duration_s": 3.625196565873921,
+      "cpu_power_w": 4.410304177473205,
+      "gpu_power_w": 101.66150474406173,
+      "ram_power_w": 10.0,
+      "country": "Ireland",
+      "region": "leinster",
+      "carbon_intensity_g_per_kwh": 290.80500000000006
+    },
+    "gpu_nvml_retrieval_j": 0.0,
+    "gpu_nvml_generation_j": 90.448,
+    "gpu_peak_mem_mb": 15080.54296875
+  },
+  "grading": {
+    "suggested_grade": "P",
+    "suggestion_reason": "all key facts present; evidence passage was retrieved",
+    "evidence_retrieved_at_rank": 1
+  }
+}

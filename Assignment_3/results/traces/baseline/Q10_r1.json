@@ -1,0 +1,177 @@
+{
+  "run_id": "20261118-015420_main",
+  "timestamp": "2026-11-18T01:56:08.784+00:00",
+  "config": {
+    "name": "baseline",
+    "label": "A. Baseline (high context / low-quality retrieval)",
+    "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+    "chunk_size": 256,
+    "chunk_overlap": 50,
+    "top_k": 8,
+    "query_prefix": ""
+  },
+  "question": {
+    "id": "Q10",
+    "question": "What is the name of the effect, mentioned in the survey, where efficiency gains end up being counteracted by increased use?",
+    "reference_answer": "Jevons' paradox.",
+    "doc_id": "treviso2023",
+    "evidence": "an effect known as Jevons’ paradox",
+    "keywords": [
+      [
+        "Jevons"
+      ]
+    ],
+    "evidence_page": 12
+  },
+  "repeat": 1,
+  "retrieval": {
+    "query": "What is the name of the effect, mentioned in the survey, where efficiency gains end up being counteracted by increased use?",
+    "query_embed_tokens": 28,
+    "encode_ms": 5.8805737644433975,
+    "search_ms": 0.04271138459444046,
+    "retrieval_ms": 5.923285149037838
+  },
+  "retrieved_chunks": [
+    {
+      "rank": 1,
+      "chunk_id": "baseline-treviso2023-0050",
+      "score": 0.41225528717041016,
+      "doc_id": "treviso2023",
+      "page_start": 11,
+      "page_end": 12,
+      "embed_tokens": 254,
+      "text": "PU power consumption are not available. Carbon Emissions Carbon emissions are usually computed using the power consumption and the carbon intensity of the marginal energy generation used to run the program. Thus, low-energy does not mean low-carbon, and high-energy models can—in the right region and with some care—be zero-carbon in terms of point energy consumption impact, if executed at the right time (i.e., when the energy mix is low-carbon intensity; Dodge et al., 2022). For estimating the CO2 emissions from a specific program execution, APIs such as ElectricityMap2 provide real-time access to carbon intensity for many regions. However, as carbon intensity varies and is affected by other factors like the power usage efficiency in a data center, it is often a poor basis for comparison; in fact, Henderson et al. (2020) recommended using multiple runs for a stable estimate. Furthermore, one needs to consider that zero-carbon program executions still consume energy, and that efficiency does not intrinsically guarantee a reduction in overall resource consumption, as the resulting cost reduction may lead to an increase 2https://electricitymap.org. in demand counteracting any gains, an effect known as Je"
+    },
+    {
+      "rank": 2,
+      "chunk_id": "baseline-treviso2023-0035",
+      "score": 0.37220844626426697,
+      "doc_id": "treviso2023",
+      "page_start": 8,
+      "page_end": 8,
+      "embed_tokens": 254,
+      "text": "sparsity. In contrast, structured pruning methods often lead to a higher improvement in terms of inference speed (Hoefler et al., 2021). The increasing popularity of pruning methods has further raised the question of how to quantify and compare them (Gale et al., 2019; Blalock et al., 2020; Tessera et al., 2021; Hoefler et al., 2021) and motivated work that combines pruning with other efficiency methods such as adapters (R ̈uckl ́e et al., 2021) and distillation (Zafrir et al., 2021). While early pruning (e.g., during pre-training) can further reduce training costs, it increases the risk of over-pruning: removing nodes essential for downstream task performance (Gordon et al., 2020). Although this can be mitigated by ‘‘regrowing’’ pruned weights (Mostafa and Wang, 2019), this increases training costs. Other pruning downsides include additional costs for hyperparameter tuning such as the number of preserved weights. 6.2 Knowledge Distillation The process of knowledge distillation uses supervision signals"
+    },
+    {
+      "rank": 3,
+      "chunk_id": "baseline-treviso2023-0051",
+      "score": 0.37164267897605896,
+      "doc_id": "treviso2023",
+      "page_start": 11,
+      "page_end": 12,
+      "embed_tokens": 254,
+      "text": "that efficiency does not intrinsically guarantee a reduction in overall resource consumption, as the resulting cost reduction may lead to an increase 2https://electricitymap.org. in demand counteracting any gains, an effect known as Jevons’ paradox (Jevons, 1866). 8.2 Open Challenges in Measuring Efficiency Hardware choice can lead to pronounced differences in certain efficiency measurements such as latency and thoroughput (Lee-Thorp et al., 2022). Properly measuring efficiency remains a major challenge (Cao et al., 2020). Separating Different Stages It is important to characterize efficiency of pre-training and finetuning stages separately (Sections 4 and 5). Models may present different memory requirements during training yet result in trained models with comparable inference memory consumption. This is because training often involves design choices that increase the memory overhead of backward propagation. Further, some optimizers may require substantially more memory than others. Similarly, parameter sharing techniques may show few benefits during training but show memory improvements at inference (Dehghani et al., 2022). Finally, while larger models run more slowly than smaller ones, they converge faster and better compress using methods like pruning and quantization (Li"
+    },
+    {
+      "rank": 4,
+      "chunk_id": "baseline-treviso2023-0053",
+      "score": 0.37109774351119995,
+      "doc_id": "treviso2023",
+      "page_start": 12,
+      "page_end": 12,
+      "embed_tokens": 254,
+      "text": "o et al. (2022a) found specific sparsity patterns that achieve more predictable speedups with current hardware. Trade-offs with Other Desiderata One major, but seldom studied, concern when improving efficiency are trade-offs with other desiderata such as fairness and robustness. For instance, Hooker et al. (2020), Renduchintala et al. (2021), and Silva et al. (2021) found that compression techniques such as pruning can amplify existing biases; Mohammadshahi et al. (2022) and Ogueji et al. (2022) further explored these trade-offs in a multilingual setting. So far, only a few studies investigated preserving a model’s fairness when increasing its efficiency. To quantify such effects, Xu et al. (2021) proposed a novel metric called loyalty, which measures the resemblance of predicted distributions made by teacher and student models. Hessenthaler et al. (2022) established that many approaches for increasing fairness in NLP models also increase computation, and jointly with work like Wang et al. (2022a) showed that distillation can decrease model fairness. Xu and Hu (2022) studied these"
+    },
+    {
+      "rank": 5,
+      "chunk_id": "baseline-treviso2023-0049",
+      "score": 0.36267465353012085,
+      "doc_id": "treviso2023",
+      "page_start": 11,
+      "page_end": 11,
+      "embed_tokens": 254,
+      "text": "tools even provide a real-time breakdown of the power consumption of different components within a machine (Henderson et al., 2020) or local machine APIreported figures to stop training early if prudent (Anthony et al., 2020). Finally, Hershcovich et al. (2022) introduced a model card for NLP systems that encourages researchers to document efficiency in a consistent manner. Measuring power consumption programmatically comes with a number of caveats. First, sampling frequency is often restricted at various levels of the stack and may result in a lag in measurement start. Consequently, shorter experiments may log an energy use of zero, and there will almost always be energy demand that is missed. Second, inefficiencies such as heat loss are not reported by current APIs and hence do not cover cooling and other system management activities. Third, not all architectures and operating systems are supported. For instance, power consumption under macOS is difficult to manage, and direct figures for TPU power consumption are not available. Carbon Emissions Carbon emissions are usually computed using the power consumption and the carbon intensity of the marginal energy generation used to run the program. Thus, low-energy does not mean low-carbon, and high-energy models"
+    },
+    {
+      "rank": 6,
+      "chunk_id": "baseline-treviso2023-0047",
+      "score": 0.35658910870552063,
+      "doc_id": "treviso2023",
+      "page_start": 11,
+      "page_end": 11,
+      "embed_tokens": 254,
+      "text": "quality scores. Advancing NLP by pushing Pareto barriers is an established practice (Kim et al., 2019; Bogoychev et al., 2020; Behnke and Heafield, 2021). For instance, the WNGT 2020 MT shared task (Birch et al., 2020) considers the Pareto frontier between real time taken, system or GPU memory usage, and model size, as well as BLEU score. Puvis de Chavannes et al. (2021) included power consumption as a trade-off against perplexity to explore Pareto-efficient hyperparameter combinations for transformer models. Finally, Liu et al. (2022b) examined Pareto efficiency for a number of tasks in an attempt to narrow model selection search space. FLOP/s A frequently reported efficiency measure is the number of floating point operations (FLOPs) and floating points per second (FLOP/s). While these discrete metrics seem well defined in terms of what the hardware does, there is some variation at multiple stages of the stack, adding uncertainty. For example, different operations may count as a FLOP on different hardware; non-floating-point operations are not considered; and hardware is rarely 100% utilized and achieving this"
+    },
+    {
+      "rank": 7,
+      "chunk_id": "baseline-treviso2023-0046",
+      "score": 0.3540327847003937,
+      "doc_id": "treviso2023",
+      "page_start": 10,
+      "page_end": 11,
+      "embed_tokens": 254,
+      "text": "FLOP/s and power consumption), and list open challenges. 8.1 Evaluation Measures Pareto Optimality When improving efficiency, multiple factors often need to be traded off. For instance, longer training time can increase task performance, but simultaneously increase 1https://github.com/ggerganov/llama.cpp, 20 March 2023. resource consumption. A principled way to characterize trade-offs is to identify Pareto-optimal solutions (Pareto, 1896), those for which no other system reaches a better or equal task performance with lower resource consumption. As there may be several Pareto-optimal solutions, final choice depends on the application context; a small, average-quality model and a large, higher-quality model can both be optimal. Thus, as long as a model contributes to or extends the Pareto-optimal curve for a given problem and measurement space, it it worthwhile—even if other solutions may use less resources or produce higher quality scores. Advancing NLP by pushing Pareto barriers is an established practice (Kim et al., 2019; Bogoychev et al., 2020; Behnke and Heafield, 2021). For instance, the WNGT"
+    },
+    {
+      "rank": 8,
+      "chunk_id": "baseline-strubell2019-0006",
+      "score": 0.3246901333332062,
+      "doc_id": "strubell2019",
+      "page_start": 2,
+      "page_end": 2,
+      "embed_tokens": 254,
+      "text": "X 1080 Ti GPUs. While training, we repeatedly query the NVIDIA System Management Interface2 to sample the GPU power consumption and report the average over all samples. To sample CPU power consumption, we use Intel’s Running Average Power Limit interface.3 2nvidia-smi: https://bit.ly/30sGEbi 3RAPL power meter: https://bit.ly/2LObQhV Consumer Renew. Gas Coal Nuc. China 22% 3% 65% 4% Germany 40% 7% 38% 13% United States 17% 35% 27% 19% Amazon-AWS 17% 24% 30% 26% Google 56% 14% 15% 10% Microsoft 32% 23% 31% 10% Table 2: Percent energy sourced from: Renewable (e.g. hydro, solar, wind), natural gas, coal and nuclear for the top 3 cloud compute providers (Cook et al., 2017), compared to the United States,4 China5 and Germany (Burger, 2019). We estimate the total time expected for models to train to completion using training times and hardware reported in the original papers. We then calculate the power consumption in kilow"
+    }
+  ],
+  "prompt": {
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful research assistant. Answer the question using only the provided context. If the context does not contain the answer, reply exactly: \"The context does not contain the answer.\" Keep the answer short and factual."
+      },
+      {
+        "role": "user",
+        "content": "Context:\n[1] (source: treviso2023, page 11)\nPU power consumption are not available. Carbon Emissions Carbon emissions are usually computed using the power consumption and the carbon intensity of the marginal energy generation used to run the program. Thus, low-energy does not mean low-carbon, and high-energy models can—in the right region and with some care—be zero-carbon in terms of point energy consumption impact, if executed at the right time (i.e., when the energy mix is low-carbon intensity; Dodge et al., 2022). For estimating the CO2 emissions from a specific program execution, APIs such as ElectricityMap2 provide real-time access to carbon intensity for many regions. However, as carbon intensity varies and is affected by other factors like the power usage efficiency in a data center, it is often a poor basis for comparison; in fact, Henderson et al. (2020) recommended using multiple runs for a stable estimate. Furthermore, one needs to consider that zero-carbon program executions still consume energy, and that efficiency does not intrinsically guarantee a reduction in overall resource consumption, as the resulting cost reduction may lead to an increase 2https://electricitymap.org. in demand counteracting any gains, an effect known as Je\n\n[2] (source: treviso2023, page 8)\nsparsity. In contrast, structured pruning methods often lead to a higher improvement in terms of inference speed (Hoefler et al., 2021). The increasing popularity of pruning methods has further raised the question of how to quantify and compare them (Gale et al., 2019; Blalock et al., 2020; Tessera et al., 2021; Hoefler et al., 2021) and motivated work that combines pruning with other efficiency methods such as adapters (R ̈uckl ́e et al., 2021) and distillation (Zafrir et al., 2021). While early pruning (e.g., during pre-training) can further reduce training costs, it increases the risk of over-pruning: removing nodes essential for downstream task performance (Gordon et al., 2020). Although this can be mitigated by ‘‘regrowing’’ pruned weights (Mostafa and Wang, 2019), this increases training costs. Other pruning downsides include additional costs for hyperparameter tuning such as the number of preserved weights. 6.2 Knowledge Distillation The process of knowledge distillation uses supervision signals\n\n[3] (source: treviso2023, page 11)\nthat efficiency does not intrinsically guarantee a reduction in overall resource consumption, as the resulting cost reduction may lead to an increase 2https://electricitymap.org. in demand counteracting any gains, an effect known as Jevons’ paradox (Jevons, 1866). 8.2 Open Challenges in Measuring Efficiency Hardware choice can lead to pronounced differences in certain efficiency measurements such as latency and thoroughput (Lee-Thorp et al., 2022). Properly measuring efficiency remains a major challenge (Cao et al., 2020). Separating Different Stages It is important to characterize efficiency of pre-training and finetuning stages separately (Sections 4 and 5). Models may present different memory requirements during training yet result in trained models with comparable inference memory consumption. This is because training often involves design choices that increase the memory overhead of backward propagation. Further, some optimizers may require substantially more memory than others. Similarly, parameter sharing techniques may show few benefits during training but show memory improvements at inference (Dehghani et al., 2022). Finally, while larger models run more slowly than smaller ones, they converge faster and better compress using methods like pruning and quantization (Li\n\n[4] (source: treviso2023, page 12)\no et al. (2022a) found specific sparsity patterns that achieve more predictable speedups with current hardware. Trade-offs with Other Desiderata One major, but seldom studied, concern when improving efficiency are trade-offs with other desiderata such as fairness and robustness. For instance, Hooker et al. (2020), Renduchintala et al. (2021), and Silva et al. (2021) found that compression techniques such as pruning can amplify existing biases; Mohammadshahi et al. (2022) and Ogueji et al. (2022) further explored these trade-offs in a multilingual setting. So far, only a few studies investigated preserving a model’s fairness when increasing its efficiency. To quantify such effects, Xu et al. (2021) proposed a novel metric called loyalty, which measures the resemblance of predicted distributions made by teacher and student models. Hessenthaler et al. (2022) established that many approaches for increasing fairness in NLP models also increase computation, and jointly with work like Wang et al. (2022a) showed that distillation can decrease model fairness. Xu and Hu (2022) studied these\n\n[5] (source: treviso2023, page 11)\ntools even provide a real-time breakdown of the power consumption of different components within a machine (Henderson et al., 2020) or local machine APIreported figures to stop training early if prudent (Anthony et al., 2020). Finally, Hershcovich et al. (2022) introduced a model card for NLP systems that encourages researchers to document efficiency in a consistent manner. Measuring power consumption programmatically comes with a number of caveats. First, sampling frequency is often restricted at various levels of the stack and may result in a lag in measurement start. Consequently, shorter experiments may log an energy use of zero, and there will almost always be energy demand that is missed. Second, inefficiencies such as heat loss are not reported by current APIs and hence do not cover cooling and other system management activities. Third, not all architectures and operating systems are supported. For instance, power consumption under macOS is difficult to manage, and direct figures for TPU power consumption are not available. Carbon Emissions Carbon emissions are usually computed using the power consumption and the carbon intensity of the marginal energy generation used to run the program. Thus, low-energy does not mean low-carbon, and high-energy models\n\n[6] (source: treviso2023, page 11)\nquality scores. Advancing NLP by pushing Pareto barriers is an established practice (Kim et al., 2019; Bogoychev et al., 2020; Behnke and Heafield, 2021). For instance, the WNGT 2020 MT shared task (Birch et al., 2020) considers the Pareto frontier between real time taken, system or GPU memory usage, and model size, as well as BLEU score. Puvis de Chavannes et al. (2021) included power consumption as a trade-off against perplexity to explore Pareto-efficient hyperparameter combinations for transformer models. Finally, Liu et al. (2022b) examined Pareto efficiency for a number of tasks in an attempt to narrow model selection search space. FLOP/s A frequently reported efficiency measure is the number of floating point operations (FLOPs) and floating points per second (FLOP/s). While these discrete metrics seem well defined in terms of what the hardware does, there is some variation at multiple stages of the stack, adding uncertainty. For example, different operations may count as a FLOP on different hardware; non-floating-point operations are not considered; and hardware is rarely 100% utilized and achieving this\n\n[7] (source: treviso2023, page 10)\nFLOP/s and power consumption), and list open challenges. 8.1 Evaluation Measures Pareto Optimality When improving efficiency, multiple factors often need to be traded off. For instance, longer training time can increase task performance, but simultaneously increase 1https://github.com/ggerganov/llama.cpp, 20 March 2023. resource consumption. A principled way to characterize trade-offs is to identify Pareto-optimal solutions (Pareto, 1896), those for which no other system reaches a better or equal task performance with lower resource consumption. As there may be several Pareto-optimal solutions, final choice depends on the application context; a small, average-quality model and a large, higher-quality model can both be optimal. Thus, as long as a model contributes to or extends the Pareto-optimal curve for a given problem and measurement space, it it worthwhile—even if other solutions may use less resources or produce higher quality scores. Advancing NLP by pushing Pareto barriers is an established practice (Kim et al., 2019; Bogoychev et al., 2020; Behnke and Heafield, 2021). For instance, the WNGT\n\n[8] (source: strubell2019, page 2)\nX 1080 Ti GPUs. While training, we repeatedly query the NVIDIA System Management Interface2 to sample the GPU power consumption and report the average over all samples. To sample CPU power consumption, we use Intel’s Running Average Power Limit interface.3 2nvidia-smi: https://bit.ly/30sGEbi 3RAPL power meter: https://bit.ly/2LObQhV Consumer Renew. Gas Coal Nuc. China 22% 3% 65% 4% Germany 40% 7% 38% 13% United States 17% 35% 27% 19% Amazon-AWS 17% 24% 30% 26% Google 56% 14% 15% 10% Microsoft 32% 23% 31% 10% Table 2: Percent energy sourced from: Renewable (e.g. hydro, solar, wind), natural gas, coal and nuclear for the top 3 cloud compute providers (Cook et al., 2017), compared to the United States,4 China5 and Germany (Burger, 2019). We estimate the total time expected for models to train to completion using training times and hardware reported in the original papers. We then calculate the power consumption in kilow\n\nQuestion: What is the name of the effect, mentioned in the survey, where efficiency gains end up being counteracted by increased use?\nAnswer:"
+      }
+    ],
+    "rendered": "<|im_start|>system\nYou are a careful research assistant. Answer the question using only the provided context. If the context does not contain the answer, reply exactly: \"The context does not contain the answer.\" Keep the answer short and factual.<|im_end|>\n<|im_start|>user\nContext:\n[1] (source: treviso2023, page 11)\nPU power consumption are not available. Carbon Emissions Carbon emissions are usually computed using the power consumption and the carbon intensity of the marginal energy generation used to run the program. Thus, low-energy does not mean low-carbon, and high-energy models can—in the right region and with some care—be zero-carbon in terms of point energy consumption impact, if executed at the right time (i.e., when the energy mix is low-carbon intensity; Dodge et al., 2022). For estimating the CO2 emissions from a specific program execution, APIs such as ElectricityMap2 provide real-time access to carbon intensity for many regions. However, as carbon intensity varies and is affected by other factors like the power usage efficiency in a data center, it is often a poor basis for comparison; in fact, Henderson et al. (2020) recommended using multiple runs for a stable estimate. Furthermore, one needs to consider that zero-carbon program executions still consume energy, and that efficiency does not intrinsically guarantee a reduction in overall resource consumption, as the resulting cost reduction may lead to an increase 2https://electricitymap.org. in demand counteracting any gains, an effect known as Je\n\n[2] (source: treviso2023, page 8)\nsparsity. In contrast, structured pruning methods often lead to a higher improvement in terms of inference speed (Hoefler et al., 2021). The increasing popularity of pruning methods has further raised the question of how to quantify and compare them (Gale et al., 2019; Blalock et al., 2020; Tessera et al., 2021; Hoefler et al., 2021) and motivated work that combines pruning with other efficiency methods such as adapters (R ̈uckl ́e et al., 2021) and distillation (Zafrir et al., 2021). While early pruning (e.g., during pre-training) can further reduce training costs, it increases the risk of over-pruning: removing nodes essential for downstream task performance (Gordon et al., 2020). Although this can be mitigated by ‘‘regrowing’’ pruned weights (Mostafa and Wang, 2019), this increases training costs. Other pruning downsides include additional costs for hyperparameter tuning such as the number of preserved weights. 6.2 Knowledge Distillation The process of knowledge distillation uses supervision signals\n\n[3] (source: treviso2023, page 11)\nthat efficiency does not intrinsically guarantee a reduction in overall resource consumption, as the resulting cost reduction may lead to an increase 2https://electricitymap.org. in demand counteracting any gains, an effect known as Jevons’ paradox (Jevons, 1866). 8.2 Open Challenges in Measuring Efficiency Hardware choice can lead to pronounced differences in certain efficiency measurements such as latency and thoroughput (Lee-Thorp et al., 2022). Properly measuring efficiency remains a major challenge (Cao et al., 2020). Separating Different Stages It is important to characterize efficiency of pre-training and finetuning stages separately (Sections 4 and 5). Models may present different memory requirements during training yet result in trained models with comparable inference memory consumption. This is because training often involves design choices that increase the memory overhead of backward propagation. Further, some optimizers may require substantially more memory than others. Similarly, parameter sharing techniques may show few benefits during training but show memory improvements at inference (Dehghani et al., 2022). Finally, while larger models run more slowly than smaller ones, they converge faster and better compress using methods like pruning and quantization (Li\n\n[4] (source: treviso2023, page 12)\no et al. (2022a) found specific sparsity patterns that achieve more predictable speedups with current hardware. Trade-offs with Other Desiderata One major, but seldom studied, concern when improving efficiency are trade-offs with other desiderata such as fairness and robustness. For instance, Hooker et al. (2020), Renduchintala et al. (2021), and Silva et al. (2021) found that compression techniques such as pruning can amplify existing biases; Mohammadshahi et al. (2022) and Ogueji et al. (2022) further explored these trade-offs in a multilingual setting. So far, only a few studies investigated preserving a model’s fairness when increasing its efficiency. To quantify such effects, Xu et al. (2021) proposed a novel metric called loyalty, which measures the resemblance of predicted distributions made by teacher and student models. Hessenthaler et al. (2022) established that many approaches for increasing fairness in NLP models also increase computation, and jointly with work like Wang et al. (2022a) showed that distillation can decrease model fairness. Xu and Hu (2022) studied these\n\n[5] (source: treviso2023, page 11)\ntools even provide a real-time breakdown of the power consumption of different components within a machine (Henderson et al., 2020) or local machine APIreported figures to stop training early if prudent (Anthony et al., 2020). Finally, Hershcovich et al. (2022) introduced a model card for NLP systems that encourages researchers to document efficiency in a consistent manner. Measuring power consumption programmatically comes with a number of caveats. First, sampling frequency is often restricted at various levels of the stack and may result in a lag in measurement start. Consequently, shorter experiments may log an energy use of zero, and there will almost always be energy demand that is missed. Second, inefficiencies such as heat loss are not reported by current APIs and hence do not cover cooling and other system management activities. Third, not all architectures and operating systems are supported. For instance, power consumption under macOS is difficult to manage, and direct figures for TPU power consumption are not available. Carbon Emissions Carbon emissions are usually computed using the power consumption and the carbon intensity of the marginal energy generation used to run the program. Thus, low-energy does not mean low-carbon, and high-energy models\n\n[6] (source: treviso2023, page 11)\nquality scores. Advancing NLP by pushing Pareto barriers is an established practice (Kim et al., 2019; Bogoychev et al., 2020; Behnke and Heafield, 2021). For instance, the WNGT 2020 MT shared task (Birch et al., 2020) considers the Pareto frontier between real time taken, system or GPU memory usage, and model size, as well as BLEU score. Puvis de Chavannes et al. (2021) included power consumption as a trade-off against perplexity to explore Pareto-efficient hyperparameter combinations for transformer models. Finally, Liu et al. (2022b) examined Pareto efficiency for a number of tasks in an attempt to narrow model selection search space. FLOP/s A frequently reported efficiency measure is the number of floating point operations (FLOPs) and floating points per second (FLOP/s). While these discrete metrics seem well defined in terms of what the hardware does, there is some variation at multiple stages of the stack, adding uncertainty. For example, different operations may count as a FLOP on different hardware; non-floating-point operations are not considered; and hardware is rarely 100% utilized and achieving this\n\n[7] (source: treviso2023, page 10)\nFLOP/s and power consumption), and list open challenges. 8.1 Evaluation Measures Pareto Optimality When improving efficiency, multiple factors often need to be traded off. For instance, longer training time can increase task performance, but simultaneously increase 1https://github.com/ggerganov/llama.cpp, 20 March 2023. resource consumption. A principled way to characterize trade-offs is to identify Pareto-optimal solutions (Pareto, 1896), those for which no other system reaches a better or equal task performance with lower resource consumption. As there may be several Pareto-optimal solutions, final choice depends on the application context; a small, average-quality model and a large, higher-quality model can both be optimal. Thus, as long as a model contributes to or extends the Pareto-optimal curve for a given problem and measurement space, it it worthwhile—even if other solutions may use less resources or produce higher quality scores. Advancing NLP by pushing Pareto barriers is an established practice (Kim et al., 2019; Bogoychev et al., 2020; Behnke and Heafield, 2021). For instance, the WNGT\n\n[8] (source: strubell2019, page 2)\nX 1080 Ti GPUs. While training, we repeatedly query the NVIDIA System Management Interface2 to sample the GPU power consumption and report the average over all samples. To sample CPU power consumption, we use Intel’s Running Average Power Limit interface.3 2nvidia-smi: https://bit.ly/30sGEbi 3RAPL power meter: https://bit.ly/2LObQhV Consumer Renew. Gas Coal Nuc. China 22% 3% 65% 4% Germany 40% 7% 38% 13% United States 17% 35% 27% 19% Amazon-AWS 17% 24% 30% 26% Google 56% 14% 15% 10% Microsoft 32% 23% 31% 10% Table 2: Percent energy sourced from: Renewable (e.g. hydro, solar, wind), natural gas, coal and nuclear for the top 3 cloud compute providers (Cook et al., 2017), compared to the United States,4 China5 and Germany (Burger, 2019). We estimate the total time expected for models to train to completion using training times and hardware reported in the original papers. We then calculate the power consumption in kilow\n\nQuestion: What is the name of the effect, mentioned in the survey, where efficiency gains end up being counteracted by increased use?\nAnswer:<|im_end|>\n<|im_start|>assistant\n",
+    "token_breakdown": {
+      "query_tokens": 25,
+      "context_tokens": 2256,
+      "chunk_tokens": [
+        246,
+        260,
+        256,
+        263,
+        250,
+        276,
+        260,
+        295
+      ]
+    }
+  },
+  "generation": {
+    "t_in": 2345,
+    "t_out": 6,
+    "generation_ms": 713.5697416961193,
+    "prefill_ms": 595.4371746629477,
+    "decode_ms": 118.13256703317165,
+    "decode_tokens_per_s": 42.32533098680569,
+    "hit_max_new_tokens": false,
+    "answer": "Jevons' paradox"
+  },
+  "energy": {
+    "codecarbon": {
+      "co2_kg": 1.38618224164701e-05,
+      "energy_kwh": 4.766707043025429e-05,
+      "cpu_energy_kwh": 1.7977444648840069e-06,
+      "gpu_energy_kwh": 4.382086839882504e-05,
+      "ram_energy_kwh": 2.048457566545242e-06,
+      "cc_duration_s": 3.908699870109558,
+      "cpu_power_w": 4.386246130678461,
+      "gpu_power_w": 107.08736934180475,
+      "ram_power_w": 10.0,
+      "country": "Ireland",
+      "region": "leinster",
+      "carbon_intensity_g_per_kwh": 290.80500000000006
+    },
+    "gpu_nvml_retrieval_j": 0.0,
+    "gpu_nvml_generation_j": 157.755,
+    "gpu_peak_mem_mb": 15244.3115234375
+  },
+  "grading": {
+    "suggested_grade": "P",
+    "suggestion_reason": "all key facts present; evidence passage was retrieved",
+    "evidence_retrieved_at_rank": 3
+  }
+}
