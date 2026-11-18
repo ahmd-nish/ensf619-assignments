@@ -1,0 +1,22 @@
+[
+  {
+    "id": "strubell2019",
+    "file": "P19-1355.pdf",
+    "title": "Energy and Policy Considerations for Deep Learning in NLP",
+    "authors": "Emma Strubell, Ananya Ganesh, Andrew McCallum",
+    "venue": "ACL 2019",
+    "url": "https://aclanthology.org/P19-1355.pdf",
+    "license": "CC BY 4.0 (ACL Anthology policy for papers published 2016 onwards: https://aclanthology.org/faq/copyright/)",
+    "sha256": "184c42b148a3db99f4a59ed8336c403dc2229bf3100bbc934212116acd8c61d9"
+  },
+  {
+    "id": "treviso2023",
+    "file": "2023.tacl-1.48.pdf",
+    "title": "Efficient Methods for Natural Language Processing: A Survey",
+    "authors": "Marcos Treviso, Ji-Ung Lee, Tianchu Ji, et al.",
+    "venue": "TACL 11 (2023)",
+    "url": "https://aclanthology.org/2023.tacl-1.48.pdf",
+    "license": "CC BY 4.0 (stated in the paper)",
+    "sha256": "4cf4c5ce6839a847060724a47a1ce175bf95157fd60bea3a1f43f4e5c77a351c"
+  }
+]

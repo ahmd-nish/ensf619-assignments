@@ -13,6 +13,10 @@ models/
 # Course handouts
 Assignment 1.pdf
 Assignment 2 (1).pdf
+Assignment 3.pdf
 
 # Report sources (Markdown, figure scripts, PDF build tooling) kept locally
 _report_sources/
+
+# Assignment 3 raw run folders (published results go to Assignment_3/results/)
+Assignment_3/runs/

@@ -1,0 +1,82 @@
+[
+  {
+    "id": "Q01",
+    "question": "What Power Usage Effectiveness (PUE) coefficient do Strubell et al. use in their energy estimates, and what does that value represent?",
+    "reference_answer": "1.58, the 2018 global average PUE for data centers.",
+    "doc_id": "strubell2019",
+    "evidence": "We use a PUE coefficient of 1.58, the 2018 global average for data centers",
+    "keywords": [["1.58"]]
+  },
+  {
+    "id": "Q02",
+    "question": "What factor do Strubell et al. use to convert kilowatt-hours into pounds of CO2e, and which organisation provides it?",
+    "reference_answer": "0.954 pounds of CO2 per kWh, the U.S. Environmental Protection Agency (EPA) average.",
+    "doc_id": "strubell2019",
+    "evidence": "CO2e = 0 .954pt",
+    "keywords": [["0.954", ".954"], ["EPA", "Environmental Protection Agency"]]
+  },
+  {
+    "id": "Q03",
+    "question": "How many pounds of CO2e do Strubell et al. estimate for training a Transformer (big) model with neural architecture search?",
+    "reference_answer": "626,155 lbs of CO2e.",
+    "doc_id": "strubell2019",
+    "evidence": "w/ neural arch. search 626,155",
+    "keywords": [["626,155", "626155"]]
+  },
+  {
+    "id": "Q04",
+    "question": "In the LISA development case study, how many small hyperparameter grid searches were performed and how many training jobs did they produce in total?",
+    "reference_answer": "123 grid searches, producing 4,789 jobs in total (over 172 days).",
+    "doc_id": "strubell2019",
+    "evidence": "123 small hyperparameter grid searches were performed, resulting in 4789 jobs in total",
+    "keywords": [["123"], ["4789", "4,789"]]
+  },
+  {
+    "id": "Q05",
+    "question": "According to Table 2 of Strubell et al., what percentage of Google's energy comes from renewable sources?",
+    "reference_answer": "56%.",
+    "doc_id": "strubell2019",
+    "evidence": "Google 56% 14% 15% 10%",
+    "keywords": [["56"]]
+  },
+  {
+    "id": "Q06",
+    "question": "According to the efficiency survey, RETRO matched the performance of models how many times larger, and how large was the database it retrieved from?",
+    "reference_answer": "Models 25 times larger, by retrieving chunks from a 2 trillion token database.",
+    "doc_id": "treviso2023",
+    "evidence": "RETRO (Borgeaud et al., 2022) matched the performance of models 25 times larger by retrieving chunks of tokens from a 2 trillion token database",
+    "keywords": [["25"], ["2 trillion", "two trillion"]]
+  },
+  {
+    "id": "Q07",
+    "question": "According to the survey, what share of BERT did Gordon et al. (2020) find could be pruned at pre-training without affecting its performance?",
+    "reference_answer": "Up to about 40%.",
+    "doc_id": "treviso2023",
+    "evidence": "up to ∼40% of BERT can be pruned at pre-training without affecting its performance",
+    "keywords": [["40"]]
+  },
+  {
+    "id": "Q08",
+    "question": "According to the survey, by how much can mapping to a low-precision data format reduce memory consumption and improve throughput compared with 32-bit floating point?",
+    "reference_answer": "Memory consumption reduced by 4x–24x and throughput improved by 4.5x.",
+    "doc_id": "treviso2023",
+    "evidence": "can reduce memory consumption by 4x–24x and improve the throughput by 4.5x compared to 32-bit floating point format",
+    "keywords": [["24"], ["4.5"]]
+  },
+  {
+    "id": "Q09",
+    "question": "Using adversarial filtering, what fraction of the SNLI data did Mishra and Sachdeva find was enough for performance comparable to the full corpus?",
+    "reference_answer": "Only about 2% of the SNLI data.",
+    "doc_id": "treviso2023",
+    "evidence": "a subset of only ∼2% of the SNLI data",
+    "keywords": [["2%", "2 %", "two percent"]]
+  },
+  {
+    "id": "Q10",
+    "question": "What is the name of the effect, mentioned in the survey, where efficiency gains end up being counteracted by increased use?",
+    "reference_answer": "Jevons' paradox.",
+    "doc_id": "treviso2023",
+    "evidence": "an effect known as Jevons’ paradox",
+    "keywords": [["Jevons"]]
+  }
+]
