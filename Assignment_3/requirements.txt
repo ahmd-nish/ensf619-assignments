@@ -1,0 +1,12 @@
+torch>=2.6   # recent transformers needs torch 2.6+; uninstall a mismatched torchvision if present
+transformers>=4.45
+accelerate
+sentence-transformers>=3.0
+faiss-cpu
+codecarbon>=3.0
+pypdf
+pandas
+openpyxl
+psutil
+nvidia-ml-py
+huggingface_hub
